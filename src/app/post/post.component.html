@@ -1,1 +1,20 @@
-<p>post works!</p>
+<div class="post">
+  <div class="post-entry">
+    <h2 class="title">{{ postTitle }}</h2>
+    <div class="content">
+      <p>{{ postContent }}</p>
+    </div>
+    <div class="tags">
+      <div class="tag" *ngFor="let tag of tags">{{ tag }}</div>
+    </div>
+    <div class="meta">
+      <p class="by-user">Posted by <a href="#">{{ postedBy }}</a></p>
+      <p class="date-time">posted on {{ postedDate }}</p>
+      <p class="edit-time" *ngIf="lastEditedDate">last edit on {{ lastEditedDate }}</p>
+    </div>
+  </div>
+  <div class="post-likes">
+    <span class="like-element" (click)="like()" [ngClass]="{'liked': isLiked}"></span>
+    <p class="vote-count">{{ likesCount }}</p>
+  </div>
+</div>
