@@ -8,6 +8,7 @@ import { TagComponent } from './tag/tag.component';
 import { CommentComponent } from './comment/comment.component';
 import { UserComponent } from './user/user.component';
 import { AppRoutingModule } from './app-routing.module';
+import { VoteComponent } from './vote/vote.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AppRoutingModule } from './app-routing.module';
     PostComponent,
     TagComponent,
     CommentComponent,
-    UserComponent
+    UserComponent,
+    VoteComponent
   ],
   imports: [
     BrowserModule,

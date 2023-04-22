@@ -1,0 +1,38 @@
+.vote-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.up-vote {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid black;
+}
+
+.down-vote {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid black;
+}
+
+.down-vote.clicked {
+  border-top: 20px solid red;
+}
+
+.up-vote.clicked {
+  border-bottom: 20px solid red;
+}
+
+.vote-count {
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,9 @@
+<div class="vote-box">
+  <div>
+    <span class="up-vote" (click)="upvote()" [ngClass]="{'clicked' : isUpvotedOrDownvoted === 1}"></span>
+  </div>
+  <p class="vote-count">{{ voteCount }}</p>
+  <div>
+    <span class="down-vote" (click)="downvote()" [ngClass]="{'clicked' : isUpvotedOrDownvoted === -1}"></span>
+  </div>
+</div>

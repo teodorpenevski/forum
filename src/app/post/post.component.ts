@@ -1,4 +1,7 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
+
+import { VoteComponent } from "../vote/vote.component";
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',

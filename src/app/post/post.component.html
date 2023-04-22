@@ -13,8 +13,5 @@
       <p class="edit-time" *ngIf="lastEditedDate">last edit on {{ lastEditedDate }}</p>
     </div>
   </div>
-  <div class="post-likes">
-    <span class="like-element" (click)="like()" [ngClass]="{'liked': isLiked}"></span>
-    <p class="vote-count">{{ likesCount }}</p>
-  </div>
+  <app-vote></app-vote>
 </div>

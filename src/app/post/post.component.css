@@ -8,44 +8,6 @@
   border-radius: 5px;
 }
 
-.post-likes {
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  gap: 5px;
-  margin: 10px 0;
-  width: 50rem;
-}
-
-.like-element {
-  display: inline-block;
-  border: solid black;
-  border-width: 0 10px 10px 0;
-  padding: 3px;
-  transform: rotate(-135deg);
-  width: 2.5em;
-  height: 2.5em;
-}
-
-.liked {
-  border-color: red;
-}
-
-.like-element:hover {
-  border-color: #666666;
-}
-
-.liked:hover {
-  border-color: darkred;
-}
-
-.vote-count {
-  font-size: 1.2em;
-  font-weight: bold;
-}
-
 .title {
   font-weight: bold;
   font-size: 2em;
