@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/users")
-class UserController(val service: UserService) {
+class UserController(
+    val service: UserService,
+    val postService: PostService,
+) {
 
     @GetMapping
     fun getUsers(): ResponseEntity<List<User>> {
@@ -30,4 +33,20 @@ class UserController(val service: UserService) {
     @GetMapping("/{username}")
     fun getUserByUsername(@PathVariable username: String): ResponseEntity<User> =
         ResponseEntity.ok(service.getUserByUsername(username))
+
+    @PostMapping("/{username}/likePost/{postId}")
+    fun likePost(@PathVariable username: String, @PathVariable postId: Long) {
+        service.likePost(username, postId)
+        postService.likePost(username, postId)
+    }
+
+    @PostMapping("/{username}/followPost/{postId}")
+    fun followPost(@PathVariable username: String, @PathVariable postId: Long) {
+        service.followPost(username, postId)
+    }
+
+    @PostMapping("/{username}/followTag/{tagId}")
+    fun followTag(@PathVariable username: String, @PathVariable tagId: Long) {
+        service.followTag(username, tagId)
+    }
 }

@@ -24,6 +24,10 @@ class CommentServiceImpl(private val repository: CommentRepository) : CommentSer
         .stream()
         .filter { it.post.id == postId }.toList()
 
+    override fun editComment(comment: Comment): Comment {
+        return repository.save(comment)
+    }
+
     override fun deleteComment(commentId: Long) = repository.deleteById(commentId)
 
     override fun saveComment(comment: Comment): Comment = repository.save(comment)

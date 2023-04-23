@@ -24,4 +24,36 @@ class UserServiceImpl(private val repository: UserRepository) : UserService {
         return repository.existsByUsername(username)
     }
 
+    override fun likePost(username: String, postId: Long): User {
+        val user = repository.findByUsername(username)
+        val post = user.postsLiked.find { it.id == postId }
+        if (post != null) {
+            user.postsLiked.remove(post)
+        } else {
+            user.postsLiked.add(post)
+        }
+        return repository.save(user)
+    }
+
+    override fun followPost(username: String, postId: Long): User {
+        val user = repository.findByUsername(username)
+        val post = user.postsFollowed.find { it.id == postId }
+        if (post != null) {
+            user.postsFollowed.remove(post)
+        } else {
+            user.postsFollowed.add(post)
+        }
+        return repository.save(user)
+    }
+
+    override fun followTag(username: String, tagId: Long): User {
+        val user = repository.findByUsername(username)
+        val tag = user.tagsFollowed.find { it.id == tagId }
+        if (tag != null) {
+            user.tagsFollowed.remove(tag)
+        } else {
+            user.tagsFollowed.add(tag)
+        }
+        return repository.save(user)
+    }
 }

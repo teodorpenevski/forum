@@ -18,5 +18,22 @@ data class User(
     @OneToMany(mappedBy = "createdBy")
     @JsonManagedReference
     val commentsCreated: List<Comment> = listOf(),
+    @ManyToMany
+    @JoinTable(
+        name = "postsLiked",
+        joinColumns = [JoinColumn(name = "username")],
+        inverseJoinColumns = [JoinColumn(name = "post_id")]
+    )
+    @JsonManagedReference.
+    val postsLiked: Set<Post> = setOf(),
+    @ManyToMany
+    @JoinTable(
+        name = "postsFollowed",
+        joinColumns = [JoinColumn(name = "username")],
+        inverseJoinColumns = [JoinColumn(name = "post_id")]
+    )
+    @JsonManagedReference
+    val postsFollowed: Set<Post> = setOf(),
+    val tagsFollowed: Set<Tag> = setOf(),
 ) {
 }

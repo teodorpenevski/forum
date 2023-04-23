@@ -30,6 +30,11 @@ class PostController(
         service.createPost(postDto, postDto.tagIds, "user1")
     }
 
+    @PostMapping("/{id}/edit")
+    fun editPost(@PathVariable id: Long, @RequestBody postDto: PostDto) {
+        service.editPost(id, postDto)
+    }
+
     @PostMapping("/{id}/comment")
     fun postComment(@PathVariable id: Long, @RequestBody commentDto: CommentDto) {
         val post = service.findById(id)

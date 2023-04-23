@@ -8,6 +8,7 @@ interface CommentService {
     fun findById(id: Long): Comment
     fun findAllCommentsByUser(username: String): List<Comment>
     fun findAllCommentsForPost(postId: Long): List<Comment>
+    fun editComment(comment: CommentDto): Comment
     fun deleteComment(commentId: Long)
     fun saveComment(comment: Comment): Comment
 }

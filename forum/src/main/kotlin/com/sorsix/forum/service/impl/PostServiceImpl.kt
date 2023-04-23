@@ -26,6 +26,25 @@ class PostServiceImpl(
         return repository.save(newPost)
     }
 
+    override fun editPost(post: PostDto, oldPostId: Long): Post {
+        val tags = tagRepository.findAllById(post.tagIds)
+        val oldPost = repository.findById(oldPostId).get()
+        val newPost = Post(oldPostId, post.title, post.text, oldPost.likes, oldPost.dislikes, tags, oldPost.createdBy)
+        return repository.save(newPost)
+    }
+
+    override fun likePost(username: String, postId: Long): Post {
+        val user = userRepository.findByUsername(username)
+        val post = repository.findById(postId).get()
+        val likedPost = user.postsLiked.find { it.id == postId }
+        if (likedPost != null) {
+            post.likes += 1
+        } else {
+            post.likes -= 1
+        }
+        return repository.save(post)
+    }
+
     override fun findAllPostsByUser(username: String): List<Post> = repository
         .findAll()
         .stream()

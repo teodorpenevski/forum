@@ -24,5 +24,11 @@ data class Post(
     @OneToMany(mappedBy = "post")
     @JsonManagedReference
     val comments: List<Comment> = listOf(),
+    @ManyToMany(mappedBy = "postsLiked")
+    @JsonBackReference
+    val likedBy: Set<User> = SetOf(),
+    @ManyToMany(mappedBy = "postsFollowed")
+    @JsonBackReference
+    val followedBy: Set<User> = SetOf(),
 ) {
 }

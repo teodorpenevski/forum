@@ -22,10 +22,20 @@ class CommentController(val service: CommentService) {
         } else ResponseEntity.noContent().build()
     }
 
-    @GetMapping("/{id}")
-    fun getCommentsForPost(@PathVariable id: Long): ResponseEntity<List<Comment>> {
-        return if (service.findAllCommentsForPost(id).isNotEmpty()) {
-            ResponseEntity.ok(service.findAllCommentsForPost(id))
+    @GetMapping("/{postId}")
+    fun getCommentsForPost(@PathVariable postId: Long): ResponseEntity<List<Comment>> {
+        return if (service.findAllCommentsForPost(postId).isNotEmpty()) {
+            ResponseEntity.ok(service.findAllCommentsForPost(postId))
         } else ResponseEntity.noContent().build()
     }
+
+    @PostMapping("/edit/{id}")
+    fun editComment(@RequestBody comment: CommentDto): ResponseEntity<Comment> {
+        return ResponseEntity.ok(service.editComment(comment))
+    }
+
+    @DeleteMapping("/delete/{id}")
+    fun deleteComment(@PathVariable id: Long) =
+        service.deleteComment(id)
+
 }

@@ -23,8 +23,9 @@ class TagController(val service: TagService) {
     }
 
     @PostMapping
-    fun createTag(@RequestBody tag: Tag){
-        service.createTag(tag)
+    fun createTag(@RequestBody tag: Tag) {
+        if (!service.tagExists(tag.name))
+            service.createTag(tag)
     }
 
     @GetMapping("/{name}")
