@@ -1,9 +1,5 @@
 <div class="vote-box">
-  <div>
-    <span class="up-vote" (click)="upvote()" [ngClass]="{'clicked' : isUpvotedOrDownvoted === 1}"></span>
-  </div>
-  <p class="vote-count">{{ voteCount }}</p>
-  <div>
-    <span class="down-vote" (click)="downvote()" [ngClass]="{'clicked' : isUpvotedOrDownvoted === -1}"></span>
-  </div>
+  <div class="vote-count">{{ likeCount }}</div>
+    <img ngSrc="/assets/like-icon.svg" (click)="like()" class="svg-icon" [ngClass]="{'clicked': isLiked}" width="36" height="36" alt="like">
+    <img ngSrc="/assets/save-icon.svg" (click)="save()" class="svg-icon" [ngClass]="{'clicked': isSaved}" width="36" height="36" alt="save">
 </div>

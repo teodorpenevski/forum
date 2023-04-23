@@ -9,6 +9,8 @@ import { CommentComponent } from './comment/comment.component';
 import { UserComponent } from './user/user.component';
 import { AppRoutingModule } from './app-routing.module';
 import { VoteComponent } from './vote/vote.component';
+import { AnswerComponent } from './answer/answer.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { VoteComponent } from './vote/vote.component';
     TagComponent,
     CommentComponent,
     UserComponent,
-    VoteComponent
+    VoteComponent,
+    AnswerComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     AppRoutingModule,
+    NgOptimizedImage,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,17 +1,10 @@
 <div class="post">
-  <div class="post-entry">
-    <h2 class="title">{{ postTitle }}</h2>
-    <div class="content">
-      <p>{{ postContent }}</p>
-    </div>
-    <div class="tags">
-      <div class="tag" *ngFor="let tag of tags">{{ tag }}</div>
-    </div>
-    <div class="meta">
-      <p class="by-user">Posted by <a href="#">{{ postedBy }}</a></p>
-      <p class="date-time">posted on {{ postedDate }}</p>
-      <p class="edit-time" *ngIf="lastEditedDate">last edit on {{ lastEditedDate }}</p>
-    </div>
+  <h2 class="title">{{ postTitle }}</h2>
+  <div class="tags">
+    <div class="tag" *ngFor="let tag of tags">{{ tag }}</div>
   </div>
-  <app-vote></app-vote>
+  <app-answer></app-answer>
+  <div class="answer-section">
+    <app-answer *ngFor="let answerId of answers" [answerId]="answerId"></app-answer>
+  </div>
 </div>
