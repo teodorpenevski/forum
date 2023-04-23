@@ -3,11 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { AppComponent } from './app.component';
-import { PostComponent } from './post/post.component';
-import { TagComponent } from './tag/tag.component';
-import { CommentComponent } from './comment/comment.component';
-import { UserComponent } from './user/user.component';
+import { PostComponent } from './components/post/post.component';
+import { TagComponent } from './components/tag/tag.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { UserComponent } from './components/user/user.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NavBarComponent } from './pages/nav-bar/nav-bar.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { TagsPageComponent } from './pages/tags-page/tags-page.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { AppRoutingModule } from './app-routing.module';
     PostComponent,
     TagComponent,
     CommentComponent,
-    UserComponent
+    UserComponent,
+    NavBarComponent,
+    HomePageComponent,
+    TagsPageComponent
   ],
   imports: [
     BrowserModule,
