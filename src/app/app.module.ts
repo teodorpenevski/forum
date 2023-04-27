@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavBarComponent } from './pages/nav-bar/nav-bar.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { TagsPageComponent } from './pages/tags-page/tags-page.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { NavLinksComponent } from './components/nav-links/nav-links.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { TagsPageComponent } from './pages/tags-page/tags-page.component';
     UserComponent,
     NavBarComponent,
     HomePageComponent,
-    TagsPageComponent
+    TagsPageComponent,
+    SearchBarComponent,
+    NavLinksComponent
   ],
   imports: [
     BrowserModule,

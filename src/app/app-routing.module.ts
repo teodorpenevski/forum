@@ -6,7 +6,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { TagsPageComponent } from './pages/tags-page/tags-page.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomePageComponent },
+  { path: '', component: HomePageComponent },
   { path: 'tags', component: TagsPageComponent },
   { path: 'posts', component: PostComponent }
 ];
