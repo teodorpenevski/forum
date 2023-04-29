@@ -8,6 +8,8 @@ header {
       var(--color-background-mid),
       var(--color-background-mid));
 
+  border-bottom: 1px ridge var(--color-accent-green-light);
+
   /* flexbox */
   display: flex;
   flex-direction: row;

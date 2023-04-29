@@ -1,0 +1,21 @@
+.tag-container {
+  height: 100%;
+  width: auto;
+  padding: 0 0.3rem;
+  margin: 0;
+
+  background-color: var(--color-background-mid-light);
+
+  border: 1px solid var(--color-background-dark);
+  border-radius: 7px;
+
+  /* flexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tag-name {
+  text-align: center;
+}

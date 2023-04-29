@@ -1,4 +1,119 @@
 <main>
-  <div>Left</div>
-  <div>Right</div>
+
+  <section id="side-bar">
+    <!-- app-side-bar -->
+  </section>
+
+  <!-- router-outlet -->
+
+  <section id="content">
+
+    <h2>
+      <span class="heading-page">Trending today</span>
+    </h2>
+
+
+    <section id="trending-tags">
+
+      <div class="content-heading-inline">
+        <h3>
+          <span class="heading-section-inline">
+            Tags
+          </span>
+        </h3>
+      </div>
+
+
+      <div class="content-display-inline">
+
+        <!-- app-tag-preview -->
+        <ul id="tag-list" class="flex-row">
+          <li *ngFor="let post of posts">
+            <app-tag></app-tag>
+          </li>
+        </ul>
+
+      </div>
+
+    </section> <!-- #trending-tags -->
+
+
+    <section id="trending-posts">
+
+      <h3>
+        <span class="heading-section">
+          Posts
+        </span>
+      </h3>
+
+      <div class="content-display">
+
+        <!-- app-post-preview -->
+        <ul id="post-list" class="flex-column">
+          <li *ngFor="let post of posts">
+            <app-post-preview></app-post-preview>
+          </li>
+        </ul>
+
+      </div>
+
+    </section> <!-- #trending-posts -->
+
+
+    <section id="popular-tags">
+
+      <h3>
+        <span class="heading-section">
+          Popular tags
+        </span>
+      </h3>
+
+      <div class="content-display">
+
+        <div id="all-time">
+
+          <h4>
+            All time
+          </h4>
+
+        </div>
+
+        <div id="previous-year">
+
+          <h4>
+            Previous year
+          </h4>
+
+        </div>
+
+        <div id="this-year">
+
+          <h4>
+            This year
+          </h4>
+
+        </div>
+
+        <div id="previous-month">
+
+          <h4>
+            Previous month
+          </h4>
+
+        </div>
+
+        <div id="this-month">
+
+          <h4>
+            This month
+          </h4>
+
+        </div>
+
+      </div>
+
+    </section> <!-- #popular-tags -->
+
+  </section>
+
 </main>

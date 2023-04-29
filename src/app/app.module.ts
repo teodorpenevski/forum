@@ -13,6 +13,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { TagsPageComponent } from './pages/tags-page/tags-page.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { NavLinksComponent } from './components/nav-links/nav-links.component';
+import { PostPreviewComponent } from './components/post-preview/post-preview.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NavLinksComponent } from './components/nav-links/nav-links.component';
     HomePageComponent,
     TagsPageComponent,
     SearchBarComponent,
-    NavLinksComponent
+    NavLinksComponent,
+    PostPreviewComponent
   ],
   imports: [
     BrowserModule,
