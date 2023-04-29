@@ -2,7 +2,11 @@ header {
   width: 100%;
   height: 7vmin;
 
-  background-color: dimgrey;
+  background: linear-gradient(75deg,
+      var(--color-background-dark),
+      var(--color-background-mid),
+      var(--color-background-mid),
+      var(--color-background-mid));
 
   /* flexbox */
   display: flex;
@@ -41,7 +45,9 @@ nav {
   margin: 0;
   padding: 0;
 
-  border: 1px solid black;
+  border: 1px solid var(--color-primary-darker);
   border-radius: 5px;
-  background-color: #9fd8ef;
+  background-color: var(--color-accent-green-light);
+
+  color: var(--color-text-light);
 }

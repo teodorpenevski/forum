@@ -1,4 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --color-background-light: #F0EFF2;
+  --color-background-mid: #ACABAD;
+  --color-background-dark: #676767;
+  --color-primary-lighter: #d2dfec;
+  --color-primary-light: #8faed0;
+  --color-primary-main: #1F5DA0;
+  --color-primary-dark: #194a80;
+  --color-primary-darker: #102f50;
+  --color-accent-orange-light: #fa8128;
+  --color-accent-orange-dark: #CC5500;
+  --color-accent-green-light: #5d7d76;
+  --color-accent-green-dark: #18453B;
+  --color-text-light: #EAE8E8;
+  --color-text-dark: #003366;
+}
+
 html {
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--color-text-light);
 }

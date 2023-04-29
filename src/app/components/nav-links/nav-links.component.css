@@ -6,7 +6,7 @@
   font-weight: 500;
   letter-spacing: 0.07em;
 
-  color: whitesmoke;
+  color: var(--color-text-light);
 
   /* flexbox */
   display: flex;
@@ -34,12 +34,12 @@
 }
 
 .nav-link:hover {
-  color: #9fd8ef;
+  color: var(--color-primary-main);
 }
 
 .selected {
-  color: #9fd8ef;
-  border-bottom: 1px dashed #9fd8ef;
+  color: var(--color-accent-green-dark);
+  /* border-bottom: 2px dashed var(--color-accent-green-dark); */
 }
 
 app-search-bar {

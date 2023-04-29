@@ -18,9 +18,9 @@
 
   padding: 0.5em;
 
-  border: 1px solid black;
+  border: 1px solid var(--color-primary-darker);
   border-radius: 5px 0 0 5px;
-  background-color: #cfebf7;
+  background-color: var(--color-primary-lighter);
   /* background-image: url("C:\Users\Matej\Documents\My Folder\Sorsix\Projects\Final Project\forum\forum\src\assets\icons\magnifying-glass-solid.svg"); */
 }
 
@@ -31,9 +31,9 @@
   margin: 0;
   padding: 0;
 
-  border: 1px solid black;
+  border: 1px solid var(--color-primary-darker);
   border-radius: 0 5px 5px 0;
-  background-color: #9fd8ef;
+  background-color: var(--color-primary-light);
 
   /* flexbox */
   display: flex;
