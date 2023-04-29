@@ -29,3 +29,21 @@
   border-left: black solid 1px;
   border-right: black solid 1px;
 }
+
+.button-section {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.button {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 8em;
+}
+
+.comment-button {
+  margin-left: auto;
+}

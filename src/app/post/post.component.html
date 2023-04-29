@@ -4,6 +4,11 @@
     <div class="tag" *ngFor="let tag of tags">{{ tag }}</div>
   </div>
   <app-answer></app-answer>
+  <div class="button-section">
+    <button class="button edit-button" (click)="onEdit()">Edit</button>
+    <button class="button delete-button" (click)="onDelete()">Delete</button>
+    <button class="button comment-button" (click)="onComment()">Add Comment</button>
+  </div>
   <div class="answer-section">
     <app-answer *ngFor="let answerId of answers" [answerId]="answerId"></app-answer>
   </div>

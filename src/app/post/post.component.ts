@@ -17,7 +17,7 @@ export class PostComponent {
   likesCount: number = 0;
   lastEditedDate = 'March 1, 2018';
   tags: string[] = ['dogs', 'pets', 'cute'];
-  answers: number[] = [1, 2, 3];
+  answers: number[] = [1, ];
 
   constructor() { }
 
@@ -25,12 +25,15 @@ export class PostComponent {
 
   }
 
-  like() {
-    this.isLiked = !this.isLiked;
-    if (this.isLiked) {
-      this.likesCount++;
-    } else {
-      this.likesCount--;
-    }
+  onComment() {
+    this.answers.push(Math.max(...this.answers) + 1);
+  }
+
+  onEdit() {
+
+  }
+
+  onDelete() {
+
   }
 }

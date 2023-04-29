@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 
 export class VoteComponent {
-  isLiked: boolean = false;
+  isUpvotedOrDownvoted: number = 0;
   isSaved: boolean = false;
-  likeCount: number = 0;
+  voteCount: number = 0;
 
   constructor() { }
 
@@ -17,12 +17,31 @@ export class VoteComponent {
 
   }
 
-  like() {
-    this.isLiked = !this.isLiked;
-    if (this.isLiked) {
-      this.likeCount++;
-    } else {
-      this.likeCount--;
+  upvote() {
+    if (this.isUpvotedOrDownvoted === 1) {
+      this.isUpvotedOrDownvoted = 0;
+      this.voteCount--;
+    } else if (this.isUpvotedOrDownvoted === 0) {
+      this.isUpvotedOrDownvoted = 1;
+      this.voteCount++;
+    }
+    else {
+      this.isUpvotedOrDownvoted = 1;
+      this.voteCount += 2;
+    }
+  }
+
+  downvote() {
+    if (this.isUpvotedOrDownvoted === -1) {
+      this.isUpvotedOrDownvoted = 0;
+      this.voteCount++;
+    } else if (this.isUpvotedOrDownvoted === 0) {
+      this.isUpvotedOrDownvoted = -1;
+      this.voteCount--;
+    }
+    else {
+      this.isUpvotedOrDownvoted = -1;
+      this.voteCount -= 2;
     }
   }
 

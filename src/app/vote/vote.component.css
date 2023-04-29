@@ -16,14 +16,21 @@
   height: 36px;
 }
 
+.down-vote {
+  transform: rotate(180deg);
+}
+
 .clicked {
   filter: invert(26%) sepia(73%) saturate(7132%) hue-rotate(354deg) brightness(90%) contrast(126%);
 }
 
 .vote-count {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 0;
+  vertical-align: middle;
+  line-height: 50px;
+  font-size: 50px;
+  height: 50px;
+  flex: 1 0 0;
 }
 
 .save-icon {
