@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+.button {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.clickable {
+  cursor: pointer;
+}

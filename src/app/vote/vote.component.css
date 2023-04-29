@@ -38,3 +38,35 @@
   width: 36px;
   height: 36px;
 }
+
+.extras {
+  display: block;
+  height: 36px;
+  width: 36px;
+  line-height: 18px;
+}
+
+.extras:hover {
+  fill: #aaa;
+}
+
+.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+.dropdown:hover span {
+  background-color: #aaa;
+}
+
+.show {
+  display: block;
+}

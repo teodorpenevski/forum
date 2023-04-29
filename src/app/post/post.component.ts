@@ -9,6 +9,7 @@ import { VoteComponent } from "../vote/vote.component";
 })
 
 export class PostComponent {
+  user: string = 'John Doe';
   postedBy = 'John Doe';
   postedDate = 'March 1, 2018';
   postTitle = 'Dogs are awesome';

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 
 @Component({
   selector: 'app-vote',
@@ -10,6 +10,7 @@ export class VoteComponent {
   isUpvotedOrDownvoted: number = 0;
   isSaved: boolean = false;
   voteCount: number = 0;
+  clicked: boolean = false;
 
   constructor() { }
 
@@ -47,5 +48,21 @@ export class VoteComponent {
 
   save() {
     this.isSaved = !this.isSaved;
+  }
+
+  edit() {
+
+  }
+
+  delete() {
+
+  }
+
+  @HostListener('document:click', ['$event.target.className'])
+  onClick(element: any) {
+    if (element === 'extras')
+      this.clicked = !this.clicked;
+    else
+      this.clicked = false;
   }
 }
