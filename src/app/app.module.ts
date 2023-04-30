@@ -14,6 +14,8 @@ import { TagsPageComponent } from './pages/tags-page/tags-page.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { NavLinksComponent } from './components/nav-links/nav-links.component';
 import { PostPreviewComponent } from './components/post-preview/post-preview.component';
+import { SideBarComponent } from './pages/side-bar/side-bar.component';
+import { ContentDisplayComponent } from './components/content-display/content-display.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { PostPreviewComponent } from './components/post-preview/post-preview.com
     TagsPageComponent,
     SearchBarComponent,
     NavLinksComponent,
-    PostPreviewComponent
+    PostPreviewComponent,
+    SideBarComponent,
+    ContentDisplayComponent
   ],
   imports: [
     BrowserModule,

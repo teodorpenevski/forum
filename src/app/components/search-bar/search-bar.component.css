@@ -13,15 +13,15 @@
 }
 
 .search-bar input {
-  width: 80%;
+  width: 70%;
   height: 60%;
 
   padding: 0.5em;
 
   border: 1px solid var(--color-primary-darker);
+  border-right: 0;
   border-radius: 5px 0 0 5px;
   background-color: var(--color-primary-lighter);
-  /* background-image: url("C:\Users\Matej\Documents\My Folder\Sorsix\Projects\Final Project\forum\forum\src\assets\icons\magnifying-glass-solid.svg"); */
 }
 
 .search-bar button {

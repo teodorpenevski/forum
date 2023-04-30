@@ -30,6 +30,11 @@ html {
   color: var(--color-text-light);
 }
 
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
 h1,
 h2,
 h3,
@@ -39,4 +44,10 @@ h6,
 p {
   margin: 0;
   padding: 0;
+}
+
+
+app-home-page {
+  width: 100%;
+  height: auto;
 }

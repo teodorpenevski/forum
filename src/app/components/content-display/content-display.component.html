@@ -1,0 +1,27 @@
+<section class="content-wrapper" [class.inline]="type === 'inline'" [class.dropdown]="type === 'dropdown'">
+
+  <div class="content-heading">
+    <h3>
+      {{ displayHeading }}
+    </h3>
+  </div> <!-- .content-heading -->
+
+
+  <div class="content-display">
+
+    <ng-container class="tags" *ngIf="displayData[0].type == 'tag'">
+
+      <app-tag *ngFor="let item of displayData" [tagInfo]="parseToTag(item)"></app-tag>
+
+    </ng-container> <!-- .tags -->
+
+
+    <ng-container class="posts" *ngIf="displayData[0].type == 'post'">
+
+      <app-post-preview *ngFor="let item of displayData" [postInfo]="parseToPost(item)"></app-post-preview>
+
+    </ng-container> <!-- .posts -->
+
+  </div> <!-- .content-display -->
+
+</section> <!-- .content-wrapper -->
