@@ -11,6 +11,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { VoteComponent } from './vote/vote.component';
 import { AnswerComponent } from './answer/answer.component';
 import {NgOptimizedImage} from "@angular/common";
+import { PostPreviewComponent } from './post-preview/post-preview.component';
+import { PostsPageComponent } from './posts-page/posts-page.component';
+import { FilterComponent } from './filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import {NgOptimizedImage} from "@angular/common";
     CommentComponent,
     UserComponent,
     VoteComponent,
-    AnswerComponent
+    AnswerComponent,
+    PostPreviewComponent,
+    PostsPageComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

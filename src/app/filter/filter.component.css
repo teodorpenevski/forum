@@ -1,0 +1,23 @@
+.filter-controller {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.filter-controller-settings {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.filter-controller-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.separator {
+  height: 1px;
+  width: 100%;
+  background-color: black;
+  margin: 0;
+}

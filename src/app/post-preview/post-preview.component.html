@@ -1,0 +1,30 @@
+<div class="post-preview">
+    <div class="post-content">
+      <h3 class="post-title">
+        <a href="">{{ postTitle }}</a>
+      </h3>
+      <p class="post-text">
+        {{ postText }}
+      </p>
+      <div class="post-attributes">
+        <ul class="post-tags">
+          <li class="post-tag" *ngFor="let tag of tags">{{ tag }}</li>
+        </ul>
+        <p class="post-meta">
+          Posted by
+          <a href="#">{{ postBy }}</a>
+          on {{ postDate }}
+        </p>
+      </div>
+    </div>
+  <div class="post-stats">
+    <div class="post-votes">
+      <span class="post-vote-label">Votes </span>
+      <span class="post-vote-count">{{ postVotes }}</span>
+    </div>
+    <div class="post-comments">
+      <span class="post-comment-label">Comments </span>
+      <span class="post-comment-count">{{ postComments }}</span>
+    </div>
+  </div>
+</div>

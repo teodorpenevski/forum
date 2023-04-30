@@ -1,0 +1,39 @@
+<form class="filter-controller">
+  <div class="filter-controller-settings">
+    <fieldset class="filter">
+      <legend>Filter by</legend>
+      <div>
+        <input type="checkbox" id="no-comments" name="no-comments" value="no-comments">
+        <label for="no-comments">No comments</label>
+      </div>
+    </fieldset>
+    <fieldset class="sort">
+      <legend>Sort by</legend>
+      <div>
+        <input type="radio" id="newest-created" name="newest-created" value="newest-created">
+        <label for="newest-created">Newest created</label>
+      </div>
+      <div>
+        <input type="radio" id="highest-votes" name="highest-votes" value="highest-votes">
+        <label for="highest-votes">Highest votes</label>
+      </div>
+    </fieldset>
+    <fieldset class="tags">
+      <legend>Tagged with</legend>
+      <div>
+        <input type="radio" id="followed-tags" name="followed-tags" value="followed-tags">
+        <label for="followed-tags">Followed tags</label>
+      </div>
+      <div>
+        <input type="radio" id="insert-tags" name="insert-tags" value="insert-tags">
+        <label for="insert-tags">Insert tags</label>
+      </div>
+      <input type="search" placeholder="Search Tags">
+    </fieldset>
+  </div>
+  <div class="separator"></div>
+  <div class="filter-controller-buttons">
+    <button type="submit">Apply</button>
+    <button type="reset">Cancel</button>
+  </div>
+</form>
