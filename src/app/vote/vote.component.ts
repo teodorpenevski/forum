@@ -58,11 +58,19 @@ export class VoteComponent {
 
   }
 
-  @HostListener('document:click', ['$event.target.className'])
+  report() {
+
+  }
+
+  @HostListener('click', ['$event.target'])
   onClick(element: any) {
-    if (element === 'extras')
+    if (element.innerText === '...')
       this.clicked = !this.clicked;
-    else
+  }
+
+  @HostListener('document:click', ['$event.target'])
+  onDocumentClick(element: any) {
+    if (element.innerText !== '...')
       this.clicked = false;
   }
 }

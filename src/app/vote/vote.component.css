@@ -59,8 +59,14 @@
   position: absolute;
   background-color: #f9f9f9;
   min-width: 100px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   z-index: 100;
+  font-size: 0.8em;
+  border: 1px solid #ccc;
+  border-bottom: 0;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas: "report" "edit" "delete";
 }
 
 .dropdown:hover span {
@@ -68,5 +74,29 @@
 }
 
 .show {
-  display: block;
+  display: grid;
+}
+
+.dropdown-item {
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+  height: 1.2em;
+  padding: 5px;
+  font-size: 1em;
+}
+
+.dropdown-item:hover {
+  background-color: #ccc;
+}
+
+.report {
+  grid-area: report;
+}
+
+.edit {
+  grid-area: edit;
+}
+
+.delete {
+  grid-area: delete;
 }

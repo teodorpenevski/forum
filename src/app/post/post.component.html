@@ -10,6 +10,22 @@
     <button type="submit" class="button comment-button" (click)="onComment()">Add comment</button>
   </div>
   <div class="answer-section">
+    <div class="answer-section-header">
+      <h3 class="answer-section-title" *ngIf="answers.length != 1">{{ answers.length }} Answers</h3>
+      <h3 class="answer-section-title" *ngIf="answers.length == 1">1 Answer</h3>
+      <div class="answer" *ngIf="answers.length == 0">No answers yet</div>
+      <div class="sort-buttons">
+        <button class="button" (click)="sort('created')" [ngClass]="{'sorted': sortAttribute === 'created', 'descending': !ascendingOrDescending}">Created
+          <img ngSrc="assets/upvote-icon.svg" alt="arrow-down" height="36" width="36"/>
+        </button>
+        <button class="button" (click)="sort('votes')" [ngClass]="{'sorted': sortAttribute === 'votes', 'descending': !ascendingOrDescending}">Votes
+          <img ngSrc="assets/upvote-icon.svg" alt="arrow-down" height="36" width="36"/>
+        </button>
+        <button class="button" (click)="sort('modified')" [ngClass]="{'sorted': sortAttribute === 'modified', 'descending': !ascendingOrDescending}">Modified
+          <img ngSrc="assets/upvote-icon.svg" alt="arrow-down" height="36" width="36"/>
+        </button>
+      </div>
+    </div>
     <app-answer *ngFor="let answerId of answers" [answerId]="answerId"></app-answer>
   </div>
 </div>

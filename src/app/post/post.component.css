@@ -58,3 +58,28 @@
 .comment-button {
   margin-left: auto;
 }
+
+.answer-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sort-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.sorted {
+  background-color: red;
+}
+
+.sort-buttons .button {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.sorted.descending img {
+  transform: rotate(180deg);
+}
