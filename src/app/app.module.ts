@@ -15,6 +15,7 @@ import { PostPreviewComponent } from './post-preview/post-preview.component';
 import { PostsPageComponent } from './posts-page/posts-page.component';
 import { FilterComponent } from './filter/filter.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { CreatePostComponent } from './create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     AnswerComponent,
     PostPreviewComponent,
     PostsPageComponent,
-    FilterComponent
+    FilterComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,
