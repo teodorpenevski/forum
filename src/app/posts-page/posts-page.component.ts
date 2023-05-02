@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-posts-page',
@@ -19,11 +19,11 @@ export class PostsPageComponent {
   }
 
   createPost() {
-
+    this.posts.push({});
   }
 
   sort(attribute: string) {
-
+    this.sortAttribute = attribute;
   }
 
 

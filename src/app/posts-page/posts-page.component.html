@@ -7,16 +7,9 @@
     <div class="posts-controller-header">
       <div class="posts-count" *ngIf="posts.length !== 1">{{posts.length}} Posts</div>
       <div class="posts-count" *ngIf="posts.length === 1">1 Post</div>
-      <div class="posts-buttons">
-        <div class="posts-sort">
-          <button class="button" (click)="sort('created')" [ngClass]="{'sorted': sortAttribute === 'created'}">Created</button>
-          <button class="button" (click)="sort('votes')" [ngClass]="{'sorted': sortAttribute === 'votes'}">Votes</button>
-          <button class="button" (click)="sort('modified')" [ngClass]="{'sorted': sortAttribute === 'modified'}">Modified</button>
-        </div>
-        <button class="button posts-filter-button" (click)="isExpanded = !isExpanded">Filter</button>
-      </div>
+      <button class="button posts-filter-button" (click)="isExpanded = !isExpanded">Filter</button>
     </div>
-    <app-filter *ngIf="isExpanded"></app-filter>
+    <app-filter *ngIf="isExpanded" (cancelFilterEvent)="isExpanded = false"></app-filter>
   </div>
   <div class="content">
     <app-post-preview *ngFor="let post of posts" [post]="post"></app-post-preview>

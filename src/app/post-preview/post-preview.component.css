@@ -56,6 +56,13 @@
 .post-stats {
   display: flex;
   flex-direction: column;
+  gap: 5px;
+}
+
+.post-stats div {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 

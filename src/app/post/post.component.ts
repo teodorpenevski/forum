@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-post',
@@ -8,6 +9,7 @@ import { Component } from '@angular/core';
 
 export class PostComponent {
   user: string = 'John Doe';
+  postId: number = 1;
   postedBy = 'John Doe';
   postedDate = 'March 1, 2018';
   postTitle = 'Dogs are awesome';
@@ -21,10 +23,14 @@ export class PostComponent {
   sortAttribute: string = 'created';
   ascendingOrDescending: boolean = true;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
 
+  }
+
+  getPost() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
   }
 
   onComment() {

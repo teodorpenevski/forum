@@ -14,6 +14,7 @@ import {NgOptimizedImage} from "@angular/common";
 import { PostPreviewComponent } from './post-preview/post-preview.component';
 import { PostsPageComponent } from './posts-page/posts-page.component';
 import { FilterComponent } from './filter/filter.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,8 @@ import { FilterComponent } from './filter/filter.component';
     NgbModule,
     AppRoutingModule,
     NgOptimizedImage,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,39 +1,39 @@
-<form class="filter-controller">
+<form class="filter-controller" ngForm [formGroup]="filterForm" (ngSubmit)="apply()">
   <div class="filter-controller-settings">
-    <fieldset class="filter">
+    <fieldset class="filter field">
       <legend>Filter by</legend>
       <div>
-        <input type="checkbox" id="no-comments" name="no-comments" value="no-comments">
+        <input type="checkbox" id="no-comments" formControlName="noComments" value="no-comments">
         <label for="no-comments">No comments</label>
       </div>
     </fieldset>
-    <fieldset class="sort">
+    <fieldset class="sort field">
       <legend>Sort by</legend>
       <div>
-        <input type="radio" id="newest-created" name="newest-created" value="newest-created">
-        <label for="newest-created">Newest created</label>
+        <input type="radio" id="newest" formControlName="sort" value="newest" required>
+        <label for="newest">Newest created</label>
       </div>
       <div>
-        <input type="radio" id="highest-votes" name="highest-votes" value="highest-votes">
+        <input type="radio" id="highest-votes" formControlName="sort" value="highest-votes" required>
         <label for="highest-votes">Highest votes</label>
       </div>
     </fieldset>
-    <fieldset class="tags">
+    <fieldset class="tags field">
       <legend>Tagged with</legend>
       <div>
-        <input type="radio" id="followed-tags" name="followed-tags" value="followed-tags">
+        <input type="radio" id="followed-tags" formControlName="followedTags" value="followed-tags" required>
         <label for="followed-tags">Followed tags</label>
       </div>
       <div>
-        <input type="radio" id="insert-tags" name="insert-tags" value="insert-tags">
+        <input type="radio" id="insert-tags" formControlName="followedTags" value="insert-tags" required>
         <label for="insert-tags">Insert tags</label>
       </div>
-      <input type="search" placeholder="Search Tags">
+      <input type="text" formControlName="tags" placeholder="Search Tags" (keyup)="searchTags($event)">
     </fieldset>
   </div>
   <div class="separator"></div>
   <div class="filter-controller-buttons">
-    <button type="submit">Apply</button>
-    <button type="reset">Cancel</button>
+    <button type="submit" class="button">Apply</button>
+    <button type="reset" class="button" (click)="cancel()">Cancel</button>
   </div>
 </form>

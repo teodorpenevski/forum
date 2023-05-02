@@ -5,7 +5,9 @@ import { PostComponent } from "./post/post.component";
 import { PostsPageComponent } from "./posts-page/posts-page.component";
 
 const routes: Routes = [
-  { path: '', component:  PostsPageComponent}
+  { path: '', redirectTo: '/posts', pathMatch: 'full' },
+  { path: 'posts/:id', component: PostComponent },
+  { path: 'posts', component: PostsPageComponent },
 ];
 
 @NgModule({
@@ -13,4 +15,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class AppRoutingModule { }
+export class AppRoutingModule {}
