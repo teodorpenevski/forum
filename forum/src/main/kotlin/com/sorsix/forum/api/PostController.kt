@@ -30,6 +30,13 @@ class PostController(
         service.createPost(postDto, postDto.tagIds, "user1")
     }
 
+    @GetMapping("/{id}")
+    fun getPost(@PathVariable id: Long): ResponseEntity<Post> {
+        return if (service.findById(id) != null) {
+            ResponseEntity.ok(service.findById(id))
+        } else ResponseEntity.notFound().build()
+    }
+
     @PostMapping("/{id}/edit")
     fun editPost(@PathVariable id: Long, @RequestBody postDto: PostDto) {
         service.editPost(id, postDto)
