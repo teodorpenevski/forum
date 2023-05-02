@@ -21,7 +21,7 @@
   flex-direction: column;
 }
 
-.form-description {
+.form-text {
   display: flex;
   flex-direction: column;
 }
@@ -72,8 +72,29 @@
 
 .tag {
   flex: 1 1 0;
-  padding: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 5px 2px 5px;
+  margin: 5px;
   width: fit-content(100%);
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.remove-tag {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 0 5px 0 5px;
+  background-color: transparent;
+  font-weight: bold;
+  margin: 0;
+}
+
+.remove-tag:hover {
+  background-color: #000;
+  color: #fff;
 }
 
 /*.expand {*/

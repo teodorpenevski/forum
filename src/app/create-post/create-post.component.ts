@@ -7,20 +7,19 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
   styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent {
-    tags$: string[] = [];
-    tags: string[] = [];
-    tagsInput: string = '';
-    createPostForm = new FormGroup({
+    tags: Set<string> = new Set();
+    postForm = new FormGroup({
       username: new FormControl('', [
         Validators.required,
       ]),
       title: new FormControl('', [
         Validators.required,
       ]),
-      description: new FormControl('', [
+      text: new FormControl('', [
         Validators.required,
       ]),
-      tags: new FormControl('')
+      tags: new FormControl(['']),
+      tagsInput: new FormControl('')
     })
 
     constructor() { }
@@ -29,19 +28,28 @@ export class CreatePostComponent {
     }
 
     createPost() {
-
-    }
-
-    searchTags(event: any) {
-      this.tagsInput = event.target.value;
-      console.log(this.tagsInput)
+      this.postForm.patchValue({tags: Array.from(this.tags)});
+      delete this.postForm.value.tagsInput;
+      console.log(this.postForm.value);
     }
 
     addToTags(event: any) {
-      if (event.code !== 'Space')
+      if (event.code !== 'Space') {
         return;
-      this.tags.push(this.tagsInput);
-      this.tagsInput = '';
-      console.log(this.tags)
+      }
+      let tag = this.postForm.value.tagsInput!!.trim();
+      if (tag === '') {
+        this.postForm.patchValue({tagsInput: ''});
+        return;
+      }
+      this.postForm.patchValue({tagsInput: tag});
+      if (this.tags.has(tag!!))
+        return;
+      this.tags.add(tag!!);
+      this.postForm.patchValue({tagsInput: ''});
+    }
+
+    removeTag(tag: string) {
+      this.tags.delete(tag);
     }
 }
