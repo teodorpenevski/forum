@@ -3,17 +3,29 @@
   <div class="tags">
     <div class="tag" *ngFor="let tag of tags">{{ tag }}</div>
   </div>
-  <app-answer></app-answer>
-  <div class="comment-form">
-    <label for="comment-textarea">Add comment as <a href="">{{ user }}</a></label>
-    <textarea id="comment-textarea" class="comment-textarea"></textarea>
-    <button type="submit" class="button comment-button" (click)="onComment()">Add comment</button>
+  <div class="text">
+    <div class="text-entry">
+      <div class="content">
+        <p>{{ postText }}</p>
+      </div>
+      <div class="meta">
+        <p class="by-user">Posted by <a href="#">{{ postedBy }}</a></p>
+        <p class="date-time">posted on {{ postedDate }}</p>
+        <p class="edit-time" *ngIf="lastEditedDate">last edit on {{ lastEditedDate }}</p>
+      </div>
+    </div>
+    <app-vote></app-vote>
   </div>
-  <div class="answer-section">
-    <div class="answer-section-header">
-      <h3 class="answer-section-title" *ngIf="answers.length != 1">{{ answers.length }} Answers</h3>
-      <h3 class="answer-section-title" *ngIf="answers.length == 1">1 Answer</h3>
-      <div class="answer" *ngIf="answers.length == 0">No answers yet</div>
+  <form class="comment-form" [formGroup]="commentForm" (ngSubmit)="onComment()">
+    <label for="comment-textarea">Add comment as <a href="">{{ user }}</a></label>
+    <textarea id="comment-textarea" class="comment-textarea" formControlName="commentText"></textarea>
+    <button type="submit" class="button comment-button">Add comment</button>
+  </form>
+  <div class="comment-section">
+    <div class="comment-section-header">
+      <h3 class="comment-section-title" *ngIf="comments.length != 1">{{ comments.length }} Answers</h3>
+      <h3 class="comment-section-title" *ngIf="comments.length == 1">1 Answer</h3>
+      <div class="comment" *ngIf="comments.length == 0">No answers yet</div>
       <div class="sort-buttons">
         <button class="button" (click)="sort('created')" [ngClass]="{'sorted': sortAttribute === 'created', 'descending': !ascendingOrDescending}">Created
           <img ngSrc="assets/upvote-icon.svg" alt="arrow-down" height="36" width="36"/>
@@ -26,6 +38,6 @@
         </button>
       </div>
     </div>
-    <app-answer *ngFor="let answerId of answers" [answerId]="answerId"></app-answer>
+    <app-comment *ngFor="let commentId of comments" [commentId]="commentId"></app-comment>
   </div>
 </div>

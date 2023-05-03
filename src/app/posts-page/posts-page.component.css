@@ -28,16 +28,6 @@
   margin-bottom: 10px;
 }
 
-.posts-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.posts-sort {
-  display: flex;
-  gap: 10px;
-}
-
 .posts-filter-controller {
   display: flex;
   gap: 10px;
@@ -48,9 +38,5 @@
   flex-direction: column;
   gap: 10px;
   padding: 0;
-}
-
-.sorted {
-  background-color: red;
 }
 

@@ -9,7 +9,6 @@ import { CommentComponent } from './comment/comment.component';
 import { UserComponent } from './user/user.component';
 import { AppRoutingModule } from './app-routing.module';
 import { VoteComponent } from './vote/vote.component';
-import { AnswerComponent } from './answer/answer.component';
 import {NgOptimizedImage} from "@angular/common";
 import { PostPreviewComponent } from './post-preview/post-preview.component';
 import { PostsPageComponent } from './posts-page/posts-page.component';
@@ -25,7 +24,6 @@ import { CreatePostComponent } from './create-post/create-post.component';
     CommentComponent,
     UserComponent,
     VoteComponent,
-    AnswerComponent,
     PostPreviewComponent,
     PostsPageComponent,
     FilterComponent,

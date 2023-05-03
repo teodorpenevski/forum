@@ -1,3 +1,13 @@
-<div id="comment">
-
+<div class="comment">
+  <div class="comment-entry">
+    <div class="content">
+      <p>{{ commentText }}</p>
+    </div>
+    <div class="meta">
+      <p class="by-user">Posted by <a href="#">{{ commentBy }}</a></p>
+      <p class="date-time">posted on {{ commentDate }}</p>
+      <p class="edit-time" *ngIf="lastEditDate">last edit on {{ lastEditDate }}</p>
+    </div>
+  </div>
+  <app-vote></app-vote>
 </div>

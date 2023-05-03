@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {PostService} from "../post.service";
 
 @Component({
   selector: 'app-post',
@@ -13,17 +15,27 @@ export class PostComponent {
   postedBy = 'John Doe';
   postedDate = 'March 1, 2018';
   postTitle = 'Dogs are awesome';
-  isLiked: boolean = false;
+  postText = 'Dogs are the best pets ever. They are loyal, friendly, and cute. They are also a lot of work. You have to feed them, walk them, and clean up after them. But it is all worth it.';
   isSaved: boolean = false;
-  likesCount: number = 0;
   lastEditedDate = 'March 1, 2018';
   tags: string[] = ['dogs', 'pets', 'cute'];
-  answers: number[] = [1, ];
-  answersCount: number = 1;
+  comments: number[] = [1, ];
+  commentCount: number = 1;
   sortAttribute: string = 'created';
   ascendingOrDescending: boolean = true;
 
-  constructor(private route: ActivatedRoute) { }
+  commentForm = new FormGroup({
+    user: new FormGroup('', [
+      Validators.required
+    ]),
+    commentText: new FormControl('', [
+      Validators.required
+    ]),
+  });
+
+  constructor(private route: ActivatedRoute,
+              private postService: PostService
+              ) { }
 
   ngOnInit() {
 
@@ -31,11 +43,23 @@ export class PostComponent {
 
   getPost() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.postService.getPost(id).subscribe(post => {
+      if (post) {
+        this.postId = post.postId;
+        this.postedBy = post.postedBy;
+        this.postedDate = post.postedDate;
+        this.postTitle = post.postTitle;
+        this.postText = post.postText;
+        this.comments = post.comments;
+        this.commentCount = post.commentCount;
+      }
+    });
   }
 
   onComment() {
-    this.answers.push(Math.max(...this.answers) + 1);
-    this.answersCount++;
+    this.comments.push(Math.max(...this.comments) + 1);
+    this.commentCount++;
+    console.log(this.commentForm.value);
   }
 
   onEdit() {
