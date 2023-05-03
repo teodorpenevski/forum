@@ -5,8 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface TagRepository : JpaRepository<Tag, Long> {
+interface TagRepository : JpaRepository<Tag, String> {
     fun findByNameIgnoreCase(name: String): Tag
-    fun existsByName(name: String): Boolean
     fun existsByNameIgnoreCase(name: String): Boolean
 }

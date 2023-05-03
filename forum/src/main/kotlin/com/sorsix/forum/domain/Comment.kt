@@ -1,14 +1,10 @@
 package com.sorsix.forum.domain
 
 import com.fasterxml.jackson.annotation.JsonBackReference
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import jakarta.persistence.ManyToOne
-import jakarta.persistence.OneToOne
+import jakarta.persistence.*
 
 @Entity
+@Table(name = "comments")
 data class Comment(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -6,12 +6,11 @@ import com.fasterxml.jackson.annotation.JsonManagedReference
 import jakarta.persistence.*
 
 @Entity
+@Table(name = "tags")
 data class Tag(
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
     val name: String,
     @ManyToMany(mappedBy = "tags")
-    @JsonManagedReference
+    @JsonBackReference
     val posts: List<Post> = listOf()
 )

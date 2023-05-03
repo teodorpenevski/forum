@@ -6,7 +6,7 @@ import jakarta.persistence.*
 import lombok.Getter
 
 @Entity
-@Getter
+@Table(name = "posts")
 data class Post(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,7 +16,12 @@ data class Post(
     var likes: Int = 0,
     var dislikes: Int = 0,
     @ManyToMany
-    @JsonBackReference
+    @JoinTable(
+        name = "posts_tags",
+        joinColumns = [JoinColumn(name = "posts_id")],
+        inverseJoinColumns = [JoinColumn(name = "tags_name")]
+    )
+    @JsonManagedReference
     val tags: List<Tag> = listOf(),
     @ManyToOne
     @JsonBackReference
@@ -26,9 +31,9 @@ data class Post(
     val comments: List<Comment> = listOf(),
     @ManyToMany(mappedBy = "postsLiked")
     @JsonBackReference
-    val likedBy: Set<User> = SetOf(),
+    val likedBy: Set<User> = setOf(),
     @ManyToMany(mappedBy = "postsFollowed")
     @JsonBackReference
-    val followedBy: Set<User> = SetOf(),
+    val followedBy: Set<User> = setOf(),
 ) {
 }

@@ -30,6 +30,13 @@ class PostController(
         service.createPost(postDto, postDto.tagIds, "user1")
     }
 
+    @GetMapping("/tag/{tagName}")
+    fun getPostsByTag(@PathVariable tagName: String): ResponseEntity<List<Post>> {
+        return if (service.findAllPostsByTag(tagName).isNotEmpty()) {
+            ResponseEntity.ok(service.findAllPostsByTag(tagName))
+        } else ResponseEntity.noContent().build()
+    }
+
     @GetMapping("/{id}")
     fun getPost(@PathVariable id: Long): ResponseEntity<Post> {
         return if (service.findById(id) != null) {
