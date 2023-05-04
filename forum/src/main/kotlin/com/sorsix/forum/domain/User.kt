@@ -25,7 +25,7 @@ data class User(
         inverseJoinColumns = [JoinColumn(name = "post_id")]
     )
     @JsonManagedReference
-    val postsLiked: Set<Post> = setOf(),
+    val postsLiked: List<Post> = listOf(),
     @ManyToMany
     @JoinTable(
         name = "postsFollowed",
@@ -33,8 +33,14 @@ data class User(
         inverseJoinColumns = [JoinColumn(name = "post_id")]
     )
     @JsonManagedReference
-    val postsFollowed: Set<Post> = mutableSetOf(),
-    @ElementCollection
-    val tagsFollowed: Set<Int> = mutableSetOf()
+    val postsFollowed: List<Post> = listOf(),
+    @ManyToMany
+    @JoinTable(
+        name = "tagsFollowed",
+        joinColumns = [JoinColumn(name = "username")],
+        inverseJoinColumns = [JoinColumn(name = "post_name")]
+    )
+    @JsonManagedReference
+    val tagsFollowed: List<Tag> = listOf()
 ) {
 }

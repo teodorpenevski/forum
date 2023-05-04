@@ -35,19 +35,18 @@ class UserController(
     fun getUserByUsername(@PathVariable username: String): ResponseEntity<User> =
         ResponseEntity.ok(service.getUserByUsername(username))
 
-//    @PostMapping("/{username}/likePost/{postId}")
-//    fun likePost(@PathVariable username: String, @PathVariable postId: Long) {
-//        service.likePost(username, postId)
-//        postService.likePost(username, postId)
-//    }
-//
-//    @PostMapping("/{username}/followPost/{postId}")
-//    fun followPost(@PathVariable username: String, @PathVariable postId: Long) {
-//        service.followPost(username, postId)
-//    }
-//
-//    @PostMapping("/{username}/followTag/{tagId}")
-//    fun followTag(@PathVariable username: String, @PathVariable tagId: Long) {
-//        service.followTag(username, tagId)
-//    }
+    @PostMapping("/{username}/likePost/{postId}")
+    fun likePost(@PathVariable username: String, @PathVariable postId: Long) {
+        service.likePost(username, postId)
+    }
+
+    @PostMapping("/{username}/followPost/{postId}")
+    fun followPost(@PathVariable username: String, @PathVariable postId: Long) {
+        service.followPost(username, postId)
+    }
+
+    @PostMapping("/{username}/followTag/{tagName}")
+    fun followTag(@PathVariable username: String, @PathVariable tagName: String) {
+        service.followTag(username, tagName)
+    }
 }

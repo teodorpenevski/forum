@@ -1,8 +1,6 @@
 package com.sorsix.forum.domain
 
 import com.fasterxml.jackson.annotation.JsonBackReference
-import com.fasterxml.jackson.annotation.JsonIgnore
-import com.fasterxml.jackson.annotation.JsonManagedReference
 import jakarta.persistence.*
 
 @Entity
@@ -12,5 +10,8 @@ data class Tag(
     val name: String,
     @ManyToMany(mappedBy = "tags")
     @JsonBackReference
-    val posts: List<Post> = listOf()
+    val posts: List<Post> = listOf(),
+    @ManyToMany(mappedBy = "tagsFollowed")
+    @JsonBackReference
+    val followedBy: List<User> = listOf()
 )

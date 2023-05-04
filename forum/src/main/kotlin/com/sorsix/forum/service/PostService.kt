@@ -33,18 +33,6 @@ class PostService(
         return repository.save(newPost)
     }
 
-    fun likePost(username: String, postId: Long): Post {
-        val user = userRepository.findByUsername(username)
-        val post = repository.findById(postId).get()
-        val likedPost = user.postsLiked.find { it.id == postId }
-        if (likedPost != null) {
-            post.likes += 1
-        } else {
-            post.likes -= 1
-        }
-        return repository.save(post)
-    }
-
     fun findAllPostsByUser(username: String): List<Post> = repository
         .findAll()
         .stream()
