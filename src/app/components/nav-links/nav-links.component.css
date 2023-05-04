@@ -20,7 +20,6 @@
 }
 
 .nav-item {
-
   width: auto;
   height: 100%;
 
@@ -35,11 +34,21 @@
 
 .nav-link:hover {
   color: var(--color-primary-main);
+  text-shadow: 0 0 1px var(--color-primary-light);
 }
 
-.selected {
+.nav-link:focus {
   color: var(--color-accent-green-dark);
-  /* border-bottom: 2px dashed var(--color-accent-green-dark); */
+}
+
+.selected-link {
+  color: var(--color-accent-green-dark);
+  border-bottom: 1px dashed var(--color-accent-green-dark);
+}
+
+.selected-link:hover {
+  color: var(--color-accent-orange-dark);
+  text-shadow: 0 0 1px var(--color-accent-green-dark);
 }
 
 app-search-bar {

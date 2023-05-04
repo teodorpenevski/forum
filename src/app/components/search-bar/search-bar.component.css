@@ -24,6 +24,12 @@
   background-color: var(--color-primary-lighter);
 }
 
+.search-bar input:focus {
+  outline: none;
+
+  box-shadow: inset 0 0 5px var(--color-accent-orange-light);
+}
+
 .search-bar button {
   width: 5%;
   height: 60%;
@@ -40,6 +46,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.search-bar button:hover {
+  background-color: var(--color-accent-orange-light);
+  box-shadow: 0 0 3px var(--color-accent-orange-dark);
+}
+
+.search-bar button:focus {
+  background-color: var(--color-accent-orange-dark);
+  box-shadow: 0 0 1px var(--color-accent-orange-dark);
 }
 
 .search-bar button img {

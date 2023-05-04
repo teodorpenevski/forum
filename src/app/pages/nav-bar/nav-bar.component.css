@@ -38,18 +38,29 @@ nav {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+
+  text-align: center;
 }
 
-.button button {
-  width: 30%;
-  height: 60%;
-
+.button a {
   margin: 0;
-  padding: 0;
+  padding: 0.15rem 1.25rem 0.25rem 1.25rem;
+
+  text-decoration: none;
 
   border: 1px solid var(--color-primary-darker);
   border-radius: 5px;
   background-color: var(--color-accent-green-light);
 
   color: var(--color-text-light);
+}
+
+.button a:hover {
+  background-color: var(--color-accent-orange-light);
+  box-shadow: 0 0 5px var(--color-accent-green-dark);
+}
+
+.button a:focus {
+  background-color: var(--color-accent-orange-dark);
+  box-shadow: 0 0 3px var(--color-accent-green-dark);
 }
