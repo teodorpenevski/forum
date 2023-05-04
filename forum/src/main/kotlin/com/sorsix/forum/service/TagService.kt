@@ -12,13 +12,13 @@ class TagService(
 
     fun findAllTags(): MutableList<Tag> = repository.findAll()
 
-    fun findTag(tagName: String): Tag = repository.findByNameIgnoreCase(tagName)
+    fun findTag(tagName: String): Tag? = repository.findByNameIgnoreCase(tagName)
 
     fun createTag(tag: Tag): Tag = repository.save(tag)
 
     fun deleteTag(tagName: String) = repository.deleteById(tagName)
 
-    fun findPostsForTag(tagName: String): List<Post> = repository.findByNameIgnoreCase(tagName).posts
+    fun findPostsForTag(tagName: String): List<Post> = repository.findByNameIgnoreCase(tagName)!!.posts
 
     fun tagExists(tagName: String): Boolean = repository.existsByNameIgnoreCase(tagName)
 

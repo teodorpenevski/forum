@@ -3,6 +3,7 @@ package com.sorsix.forum.service
 import com.sorsix.forum.repository.PostRepository
 import com.sorsix.forum.domain.Post
 import com.sorsix.forum.domain.PostDto
+import com.sorsix.forum.domain.Tag
 import com.sorsix.forum.repository.TagRepository
 import com.sorsix.forum.repository.UserRepository
 import org.springframework.stereotype.Service
@@ -18,15 +19,15 @@ class PostService(
 
     fun findById(id: Long): Post = repository.findById(id).get()
 
-    fun createPost(post: PostDto, tagNames: List<String>, username: String): Post {
-        val tags = tagRepository.findAllById(tagNames)
+    fun createPost(post: PostDto, username: String): Post {
+        val tags = post.tagNames.map { tagRepository.findByNameIgnoreCase(it) ?: tagRepository.save(Tag(it)) }
         val user = userRepository.findByUsername(username)
         val newPost = Post(0L, post.title, post.text, 0, 0, tags, user)
         return repository.save(newPost)
     }
 
     fun editPost(oldPostId: Long, post: PostDto): Post {
-        val tags = tagRepository.findAllById(post.tagIds)
+        val tags = tagRepository.findAllById(post.tagNames)
         val oldPost = repository.findById(oldPostId).get()
         val newPost = Post(oldPostId, post.title, post.text, oldPost.likes, oldPost.dislikes, tags, oldPost.createdBy)
         return repository.save(newPost)

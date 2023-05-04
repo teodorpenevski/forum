@@ -26,7 +26,7 @@ class CommentController(val service: CommentService) {
 
     @PostMapping("/edit/{id}")
     fun editComment(@RequestBody comment: CommentDto, @PathVariable id: String): ResponseEntity<Comment> {
-        return ResponseEntity.ok(service.editComment(id.toLong(), comment.comment))
+        return ResponseEntity.ok(service.editComment(id.toLong(), comment.text))
     }
 
     @DeleteMapping("/delete/{id}")

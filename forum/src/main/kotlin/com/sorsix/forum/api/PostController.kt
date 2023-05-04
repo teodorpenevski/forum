@@ -27,7 +27,7 @@ class PostController(
 
     @PostMapping
     fun createPost(@RequestBody postDto: PostDto) {
-        service.createPost(postDto, postDto.tagIds, "user1")
+        service.createPost(postDto, "theDude123")
     }
 
     @GetMapping("/tag/{tagName}")
@@ -39,9 +39,7 @@ class PostController(
 
     @GetMapping("/{id}")
     fun getPost(@PathVariable id: Long): ResponseEntity<Post> {
-        return if (service.findById(id) != null) {
-            ResponseEntity.ok(service.findById(id))
-        } else ResponseEntity.notFound().build()
+        return ResponseEntity.ok(service.findById(id))
     }
 
     @PostMapping("/{id}/edit")
@@ -53,8 +51,8 @@ class PostController(
     fun postComment(@PathVariable id: Long, @RequestBody commentDto: CommentDto) {
         val post = service.findById(id)
         // Change from static user to current user in the future
-        val user = userService.getUserByUsername("user1")
-        val comment = Comment(0, commentDto.comment, user, post)
+        val user = userService.getUserByUsername("theDude123")
+        val comment = Comment(0, commentDto.text, user, post)
         commentService.saveComment(comment)
     }
 
