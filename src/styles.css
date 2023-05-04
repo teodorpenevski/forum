@@ -13,6 +13,7 @@
   --color-accent-orange-lighter: #fdc094;
   --color-accent-orange-light: #fa8128;
   --color-accent-orange-dark: #CC5500;
+  --color-accent-green-lightest: #ced8d6;
   --color-accent-green-lighter: #aebebb;
   --color-accent-green-light: #5d7d76;
   --color-accent-green-dark: #18453B;
@@ -49,5 +50,6 @@ p {
 
 app-home-page {
   width: 100%;
+  min-height: 100%;
   height: auto;
 }

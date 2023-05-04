@@ -14,23 +14,23 @@ export class HomePageComponent {
   trendingTags: Tag[] = [
     {
       type: 'tag',
-      name: "tag1"
+      name: "java"
     },
     {
       type: 'tag',
-      name: "tag2"
+      name: "css"
     },
     {
       type: 'tag',
-      name: "tag3"
+      name: "python"
     },
     {
       type: 'tag',
-      name: "tag4"
+      name: "html"
     },
     {
       type: 'tag',
-      name: "tag5"
+      name: "kotlin"
     }
   ]
 

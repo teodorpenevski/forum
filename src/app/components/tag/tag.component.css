@@ -1,13 +1,15 @@
 .tag-container {
   height: 100%;
   width: auto;
-  padding: 0 0.3rem;
-  margin: 0;
 
-  background-color: var(--color-background-mid-light);
+  background-color: var(--color-accent-green-lightest);
+  /* background-color: var(--color-accent-orange-lightest); */
 
-  border: 1px solid var(--color-background-dark);
-  border-radius: 7px;
+  border: 1px solid var(--color-accent-green-dark);
+  border-radius: 0.9rem;
+
+  color: var(--color-accent-green-dark);
+  text-decoration: none;
 
   /* flexbox */
   display: flex;
@@ -16,7 +18,16 @@
   align-items: center;
 }
 
+.tag-container:hover {
+  background-color: var(--color-accent-orange-lightest);
+  box-shadow: 0 0 3px var(--color-accent-orange-dark);
+}
+
 .tag-name {
+  padding: 0.05rem 0.5rem 0.25rem 0.5rem;
+
   align-self: center;
   text-align: center;
+
+  font-size: 1rem;
 }
