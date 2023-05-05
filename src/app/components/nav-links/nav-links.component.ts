@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { Link } from 'src/app/models/link';
 
 @Component({
   selector: 'app-nav-links',
@@ -6,4 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-links.component.css']
 })
 export class NavLinksComponent {
+
+  @Input() navLinks: Link[] = [];
+
+  @Input() type: String = "inline";
 }

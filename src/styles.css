@@ -12,10 +12,12 @@
   --color-accent-orange-lightest: #fee6d4;
   --color-accent-orange-lighter: #fdc094;
   --color-accent-orange-light: #fa8128;
+  --color-accent-orange-main: #e36b14;
   --color-accent-orange-dark: #CC5500;
   --color-accent-green-lightest: #ced8d6;
   --color-accent-green-lighter: #aebebb;
   --color-accent-green-light: #5d7d76;
+  --color-accent-green-main: #3a6158;
   --color-accent-green-dark: #18453B;
   --color-text-light: #EAE8E8;
   --color-text-main: #1F5DA0;
@@ -32,8 +34,15 @@ html {
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+}
+
+app-root {
+  width: 100%;
+  min-height: 100%;
+  height: auto;
 }
 
 h1,

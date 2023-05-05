@@ -7,6 +7,7 @@ import { TagsPageComponent } from './pages/tags-page/tags-page.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
+  { path: 'home', redirectTo: '', pathMatch: 'full' },
   { path: 'tags', component: TagsPageComponent },
   { path: 'posts', component: PostComponent }
 ];

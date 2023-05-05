@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Link } from 'src/app/models/link';
 
 @Component({
   selector: 'app-side-bar',
@@ -6,5 +7,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent {
+
+  sideNavLinks: Link[] = [
+    {
+      name: 'Explore',
+      path: '/',
+      icon: './assets/icons/earth-americas-solid.svg'
+    },
+    {
+      name: 'Followed',
+      path: '/user/followed',
+      icon: './assets/icons/thumbtack-solid.svg'
+    },
+    {
+      name: 'Saved',
+      path: '/user/saved',
+      icon: './assets/icons/bookmark-solid.svg'
+    }
+  ]
 
 }
