@@ -17,6 +17,8 @@ class PostService(
 
     fun findAllPosts(): List<Post> = repository.findAll()
 
+    fun findAllPostIds(): List<Long> = repository.findAll().map { it.id }
+
     fun findById(id: Long): Post = repository.findById(id).get()
 
     fun createPost(post: PostDto, username: String): Post {

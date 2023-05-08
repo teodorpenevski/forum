@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/posts")
+@CrossOrigin(origins = ["http://localhost:4200"])
 class PostController(
     val service: PostService,
     val userService: UserService,
@@ -28,6 +29,13 @@ class PostController(
     @PostMapping
     fun createPost(@RequestBody postDto: PostDto) {
         service.createPost(postDto, "theDude123")
+    }
+
+    @GetMapping("/ids")
+    fun getPostIds(): ResponseEntity<List<Long>> {
+        return if (service.findAllPostIds().isNotEmpty()) {
+            ResponseEntity.ok(service.findAllPostIds())
+        } else ResponseEntity.noContent().build()
     }
 
     @GetMapping("/tag/{tagName}")

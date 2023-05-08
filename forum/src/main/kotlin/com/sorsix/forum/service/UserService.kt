@@ -27,6 +27,16 @@ class UserService(private val repository: UserRepository,
         return repository.existsByUsername(username)
     }
 
+    fun isPostLiked(username: String, postId: Long): Boolean {
+        val user = repository.findByUsername(username)
+        return user.postsLiked.any { it.id == postId }
+    }
+
+    fun isPostFollowed(username: String, postId: Long): Boolean {
+        val user = repository.findByUsername(username)
+        return user.postsFollowed.any { it.id == postId }
+    }
+
     fun likePost(username: String, postId: Long): User {
         val user = repository.findByUsername(username)
         val likedPosts = user.postsLiked.toMutableList()
