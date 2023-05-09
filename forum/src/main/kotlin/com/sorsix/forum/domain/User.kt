@@ -28,6 +28,14 @@ data class User(
     val postsLiked: List<Post> = listOf(),
     @ManyToMany
     @JoinTable(
+        name = "postsDisliked",
+        joinColumns = [JoinColumn(name = "username")],
+        inverseJoinColumns = [JoinColumn(name = "post_id")]
+    )
+    @JsonManagedReference
+    val postsDisliked: List<Post> = listOf(),
+    @ManyToMany
+    @JoinTable(
         name = "postsFollowed",
         joinColumns = [JoinColumn(name = "username")],
         inverseJoinColumns = [JoinColumn(name = "post_id")]

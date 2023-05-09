@@ -24,6 +24,7 @@ data class Post(
     @JsonManagedReference
     val tags: List<Tag> = listOf(),
     @ManyToOne
+    @JoinColumn(name = "username")
     @JsonBackReference
     val createdBy: User,
     @OneToMany(mappedBy = "post")
@@ -31,9 +32,12 @@ data class Post(
     val comments: List<Comment> = listOf(),
     @ManyToMany(mappedBy = "postsLiked")
     @JsonBackReference
-    val likedBy: Set<User> = setOf(),
+    val likedBy: List<User> = listOf(),
+    @ManyToMany(mappedBy = "postsDisliked")
+    @JsonBackReference
+    val dislikedBy: List<User> = listOf(),
     @ManyToMany(mappedBy = "postsFollowed")
     @JsonBackReference
-    val followedBy: Set<User> = setOf(),
+    val followedBy: List<User> = listOf(),
 ) {
 }

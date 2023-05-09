@@ -64,6 +64,13 @@ class PostController(
         commentService.saveComment(comment)
     }
 
+    @GetMapping("/{id}/comments")
+    fun getCommentsForPost(@PathVariable id: Long): ResponseEntity<List<Comment>> {
+        return if (commentService.findAllCommentsForPost(id).isNotEmpty()) {
+            ResponseEntity.ok(commentService.findAllCommentsForPost(id))
+        } else ResponseEntity.noContent().build()
+    }
+
     @DeleteMapping("/{id}")
     fun deletePost(@PathVariable id: Long) = service.deletePost(id)
 

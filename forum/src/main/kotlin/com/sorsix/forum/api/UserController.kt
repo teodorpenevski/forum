@@ -5,15 +5,11 @@ import com.sorsix.forum.domain.UserDto
 import com.sorsix.forum.service.PostService
 import com.sorsix.forum.service.UserService
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/users")
+@CrossOrigin(origins = ["http://localhost:4200"])
 class UserController(
     val service: UserService,
     val postService: PostService,
@@ -35,12 +31,12 @@ class UserController(
     fun getUserByUsername(@PathVariable username: String): ResponseEntity<User> =
         ResponseEntity.ok(service.getUserByUsername(username))
 
-    @GetMapping("/{username}/isPostLiked/{postId}")
-    fun isPostLiked(@PathVariable username: String, @PathVariable postId: Long): Boolean {
-        return service.isPostLiked(username, postId)
+    @GetMapping("/{username}/voteStatus/{postId}")
+    fun getVoteStatus(@PathVariable username: String, @PathVariable postId: Long): Int {
+        return service.getVoteStatus(username, postId)
     }
 
-    @GetMapping("/{username}/isPostFollowed/{postId}")
+    @GetMapping("/{username}/followStatus/{postId}")
     fun isPostFollowed(@PathVariable username: String, @PathVariable postId: Long): Boolean {
         return service.isPostFollowed(username, postId)
     }
@@ -48,6 +44,11 @@ class UserController(
     @PostMapping("/{username}/likePost/{postId}")
     fun likePost(@PathVariable username: String, @PathVariable postId: Long) {
         service.likePost(username, postId)
+    }
+
+    @PostMapping("/{username}/dislikePost/{postId}")
+    fun dislikePost(@PathVariable username: String, @PathVariable postId: Long) {
+        service.dislikePost(username, postId)
     }
 
     @PostMapping("/{username}/followPost/{postId}")
