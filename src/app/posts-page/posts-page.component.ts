@@ -7,7 +7,7 @@ import {PostService} from "../post.service";
   styleUrls: ['./posts-page.component.css']
 })
 export class PostsPageComponent {
-  postIds: number[] = [1, 2, 3, 4, 5];
+  postIds: number[] = [];
   isExpanded = false;
   sortAttribute = 'created';
   constructor(private service: PostService) { }

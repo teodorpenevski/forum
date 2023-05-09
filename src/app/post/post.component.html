@@ -9,7 +9,7 @@
         <p>{{ text }}</p>
       </div>
       <div class="meta">
-        <p class="by-user">Posted by <a href="#">{{ postedBy }}</a></p>
+        <p class="by-user">Posted by <a href="#">{{ createdBy }}</a></p>
         <p class="date-time">posted on {{ postedDate }}</p>
         <p class="edit-time" *ngIf="lastEditedDate">last edit on {{ lastEditedDate }}</p>
       </div>
@@ -18,7 +18,7 @@
   </div>
   <form class="comment-form" [formGroup]="commentForm" (ngSubmit)="onComment()">
     <label for="comment-textarea">Add comment as <a href="">{{ user }}</a></label>
-    <textarea id="comment-textarea" class="comment-textarea" formControlName="commentText"></textarea>
+    <textarea id="comment-textarea" class="comment-textarea" formControlName="text"></textarea>
     <button type="submit" class="button comment-button">Add comment</button>
   </form>
   <div class="comment-section">

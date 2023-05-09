@@ -7,6 +7,13 @@ export interface Post {
   text: string;
   likes: number;
   dislikes: number;
+  createdBy: string;
   tags: Tag[];
   comments: Comment[];
+}
+
+export interface PostDTO {
+  title: string;
+    text: string;
+    tagNames: string[];
 }

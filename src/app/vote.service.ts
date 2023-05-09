@@ -19,23 +19,23 @@ export class VoteService {
   }
 
   getVoteStatus(username: string, id: number): Observable<number> {
-    return this.http.get<number>(this.usersApi + '/' + username + '/isPostLiked/' + id);
+    return this.http.get<number>(this.usersApi + '/' + username + '/voteStatus/' + id);
   }
 
-  getSavedStatus(username: string, id: number): Observable<boolean> {
-    return this.http.get<boolean>(this.usersApi + '/' + username + '/isPostSaved/' + id);
+  getFollowStatus(username: string, id: number): Observable<boolean> {
+    return this.http.get<boolean>(this.usersApi + '/' + username + '/followStatus/' + id);
   }
 
   likePost(username: string, id: number) {
-    return this.http.post(this.usersApi + '/' + username + '/likePost' + id, null);
+    return this.http.post(this.usersApi + '/' + username + '/likePost/' + id, null);
   }
 
   dislikePost(username: string, id: number) {
-    return this.http.post(this.usersApi + '/' + username + '/likePost' + id, null);
+    return this.http.post(this.usersApi + '/' + username + '/dislikePost/' + id, null);
   }
 
   followPost(username: string, id: number) {
-    return this.http.post(this.usersApi + '/' + username + '/followPost' + id, null);
+    return this.http.post(this.usersApi + '/' + username + '/followPost/' + id, null);
   }
 
 

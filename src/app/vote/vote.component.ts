@@ -9,9 +9,8 @@ import { VoteService } from "../vote.service";
 
 export class VoteComponent {
   @Input() id: number = 1;
-  isUpvotedOrDownvoted: number = 0;
-  isSaved: boolean = false;
-  voteCount: number = 0;
+  voteStatus: number = 0;
+  followStatus: boolean = false;
   likes: number = 0;
   dislikes: number = 0;
   clicked: boolean = false;
@@ -21,13 +20,12 @@ export class VoteComponent {
   ngOnInit() {
     this.getVoteCount();
     this.getVoteStatus();
-    this.getSavedStatus();
+    this.getFollowStatus();
   }
 
   getVoteCount() {
     this.service.getVoteCount(this.id).subscribe(post => {
       if (post) {
-        this.voteCount = post.likes - post.dislikes;
         this.likes = post.likes;
         this.dislikes = post.dislikes;
       }
@@ -36,48 +34,50 @@ export class VoteComponent {
 
   getVoteStatus() {
     this.service.getVoteStatus('username', this.id).subscribe(status => {
-      this.isUpvotedOrDownvoted = status;
+      this.voteStatus = status
     });
   }
 
-  getSavedStatus() {
-    this.service.getSavedStatus('username', this.id).subscribe(status => {
-      this.isSaved = status;
+  getFollowStatus() {
+    this.service.getFollowStatus('username', this.id).subscribe(status => {
+      this.followStatus = status;
     });
   }
 
   like() {
-    if (this.isUpvotedOrDownvoted === 1) {
-      this.isUpvotedOrDownvoted = 0;
-      this.voteCount--;
-    } else if (this.isUpvotedOrDownvoted === 0) {
-      this.isUpvotedOrDownvoted = 1;
-      this.voteCount++;
+    if (this.voteStatus === 1) {
+      this.voteStatus = 0;
+      this.likes--;
+    } else if (this.voteStatus === 0) {
+      this.voteStatus = 1;
+      this.likes++;
     }
     else {
-      this.isUpvotedOrDownvoted = 1;
-      this.voteCount += 2;
+      this.voteStatus = 1;
+      this.likes++;
+      this.dislikes--;
     }
     this.service.likePost('username', this.id).subscribe();
   }
 
   dislike() {
-    if (this.isUpvotedOrDownvoted === -1) {
-      this.isUpvotedOrDownvoted = 0;
-      this.voteCount++;
-    } else if (this.isUpvotedOrDownvoted === 0) {
-      this.isUpvotedOrDownvoted = -1;
-      this.voteCount--;
+    if (this.voteStatus === -1) {
+      this.voteStatus = 0;
+      this.dislikes--;
+    } else if (this.voteStatus === 0) {
+      this.voteStatus = -1;
+      this.dislikes++;
     }
     else {
-      this.isUpvotedOrDownvoted = -1;
-      this.voteCount -= 2;
+      this.voteStatus = -1;
+      this.likes--;
+      this.dislikes++;
     }
     this.service.dislikePost('username', this.id).subscribe();
   }
 
   follow() {
-    this.isSaved = !this.isSaved;
+    this.followStatus = !this.followStatus;
     this.service.followPost('username', this.id).subscribe();
   }
 

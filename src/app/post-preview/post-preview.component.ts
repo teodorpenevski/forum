@@ -9,7 +9,8 @@ import {Tag} from "../tag";
   styleUrls: ['./post-preview.component.css']
 })
 export class PostPreviewComponent {
-    @Input() postId: number = 1;
+    @Input () postId: number = 1;
+
     title = 'Post Title';
     text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ' +
         'ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. ' +
@@ -30,6 +31,7 @@ export class PostPreviewComponent {
     commentsLength = 2;
     author = 'Author';
     created = '2020-01-01';
+    createdBy = 'User';
     constructor(private service: PostService) { }
 
     ngOnInit() {
@@ -45,6 +47,7 @@ export class PostPreviewComponent {
             this.title = post.title;
             this.text = post.text;
             this.tags = post.tags;
+            this.createdBy = post.createdBy;
             this.votes = post.likes - post.dislikes;
             this.commentsLength = post.comments.length;
         }

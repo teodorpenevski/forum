@@ -19,7 +19,7 @@ export class PostComponent implements Post {
   text = 'Dogs are the best pets ever. They are loyal, friendly, and cute. They are also a lot of work. You have to feed them, walk them, and clean up after them. But it is all worth it.';
   likes = 0;
   dislikes = 0;
-  postedBy = 'John Doe';
+  createdBy = 'John Doe';
   postedDate = 'March 1, 2018';
   isSaved: boolean = false;
   lastEditedDate = 'March 1, 2018';
@@ -46,10 +46,7 @@ export class PostComponent implements Post {
   ascendingOrDescending: boolean = true;
 
   commentForm = new FormGroup({
-    user: new FormGroup('', [
-      Validators.required
-    ]),
-    commentText: new FormControl('', [
+    text: new FormControl('', [
       Validators.required
     ]),
   });
@@ -79,7 +76,20 @@ export class PostComponent implements Post {
   }
 
   onComment() {
-    this.service.onComment(this.id, this.commentForm.value.commentText!!).subscribe();
+    if (this.commentForm.invalid) return;
+    this.service.onComment(this.id, this.commentForm.value.text!!).subscribe({
+      complete: () => {
+        this.updateComments();
+      }
+    });
+    this.commentForm.reset();
+  }
+
+  updateComments() {
+    this.service.getPostComments(this.id).subscribe(comments => {
+      this.comments = comments;
+      this.commentCount = comments.length;
+    });
   }
 
   onEdit() {

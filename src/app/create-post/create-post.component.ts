@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import {PostService} from "../post.service";
 
 @Component({
   selector: 'app-create-post',
@@ -9,9 +10,6 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 export class CreatePostComponent {
     tags: Set<string> = new Set();
     postForm = new FormGroup({
-      username: new FormControl('', [
-        Validators.required,
-      ]),
       title: new FormControl('', [
         Validators.required,
       ]),
@@ -22,7 +20,7 @@ export class CreatePostComponent {
       tagsInput: new FormControl('')
     })
 
-    constructor() { }
+    constructor(private service: PostService) { }
 
     ngOnInit(): void {
     }
@@ -31,6 +29,7 @@ export class CreatePostComponent {
       this.postForm.patchValue({tags: Array.from(this.tags)});
       delete this.postForm.value.tagsInput;
       console.log(this.postForm.value);
+      this.service.createPost({title: this.postForm.value.title!!, text: this.postForm.value.text!!, tagNames: this.postForm.value.tags!!}).subscribe();
     }
 
     addToTags(event: any) {

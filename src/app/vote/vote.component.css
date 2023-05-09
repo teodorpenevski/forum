@@ -24,6 +24,7 @@
   filter: invert(26%) sepia(73%) saturate(7132%) hue-rotate(354deg) brightness(90%) contrast(126%);
 }
 
+
 .vote-count {
   padding: 0;
   vertical-align: middle;
