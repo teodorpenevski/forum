@@ -15,6 +15,7 @@ import { PostsPageComponent } from './posts-page/posts-page.component';
 import { FilterComponent } from './filter/filter.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CreatePostComponent } from './create-post/create-post.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CreatePostComponent } from './create-post/create-post.component';
     NgOptimizedImage,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,13 @@
 .comment {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr fit-content(100%);
   gap: 10px;
   text-align: justify;
+}
+
+.comment-entry {
+  display: grid;
+  grid-template-rows: 1fr fit-content(100%);
 }
 
 .content {

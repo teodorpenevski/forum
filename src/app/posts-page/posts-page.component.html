@@ -5,13 +5,13 @@
   </div>
   <div class="posts-controller">
     <div class="posts-controller-header">
-      <div class="posts-count" *ngIf="posts.length !== 1">{{posts.length}} Posts</div>
-      <div class="posts-count" *ngIf="posts.length === 1">1 Post</div>
+      <div class="posts-count" *ngIf="postIds.length !== 1">{{postIds.length}} Posts</div>
+      <div class="posts-count" *ngIf="postIds.length === 1">1 Post</div>
       <button class="button posts-filter-button" (click)="isExpanded = !isExpanded">Filter</button>
     </div>
     <app-filter *ngIf="isExpanded" (cancelFilterEvent)="isExpanded = false"></app-filter>
   </div>
   <div class="content">
-    <app-post-preview *ngFor="let post of posts" [post]="post"></app-post-preview>
+    <app-post-preview *ngFor="let postId of postIds" [postId]="postId"></app-post-preview>
   </div>
 </div>

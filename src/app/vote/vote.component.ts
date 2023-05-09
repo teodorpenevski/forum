@@ -1,4 +1,5 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, HostListener, Input} from '@angular/core';
+import { VoteService } from "../vote.service";
 
 @Component({
   selector: 'app-vote',
@@ -7,18 +8,45 @@ import {Component, HostListener} from '@angular/core';
 })
 
 export class VoteComponent {
+  @Input() id: number = 1;
   isUpvotedOrDownvoted: number = 0;
   isSaved: boolean = false;
   voteCount: number = 0;
+  likes: number = 0;
+  dislikes: number = 0;
   clicked: boolean = false;
 
-  constructor() { }
+  constructor(private service: VoteService) { }
 
   ngOnInit() {
-
+    this.getVoteCount();
+    this.getVoteStatus();
+    this.getSavedStatus();
   }
 
-  upvote() {
+  getVoteCount() {
+    this.service.getVoteCount(this.id).subscribe(post => {
+      if (post) {
+        this.voteCount = post.likes - post.dislikes;
+        this.likes = post.likes;
+        this.dislikes = post.dislikes;
+      }
+    });
+  }
+
+  getVoteStatus() {
+    this.service.getVoteStatus('username', this.id).subscribe(status => {
+      this.isUpvotedOrDownvoted = status;
+    });
+  }
+
+  getSavedStatus() {
+    this.service.getSavedStatus('username', this.id).subscribe(status => {
+      this.isSaved = status;
+    });
+  }
+
+  like() {
     if (this.isUpvotedOrDownvoted === 1) {
       this.isUpvotedOrDownvoted = 0;
       this.voteCount--;
@@ -30,9 +58,10 @@ export class VoteComponent {
       this.isUpvotedOrDownvoted = 1;
       this.voteCount += 2;
     }
+    this.service.likePost('username', this.id).subscribe();
   }
 
-  downvote() {
+  dislike() {
     if (this.isUpvotedOrDownvoted === -1) {
       this.isUpvotedOrDownvoted = 0;
       this.voteCount++;
@@ -44,10 +73,12 @@ export class VoteComponent {
       this.isUpvotedOrDownvoted = -1;
       this.voteCount -= 2;
     }
+    this.service.dislikePost('username', this.id).subscribe();
   }
 
-  save() {
+  follow() {
     this.isSaved = !this.isSaved;
+    this.service.followPost('username', this.id).subscribe();
   }
 
   edit() {

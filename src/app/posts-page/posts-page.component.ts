@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {PostService} from "../post.service";
 
 @Component({
   selector: 'app-posts-page',
@@ -6,20 +7,17 @@ import {Component} from '@angular/core';
   styleUrls: ['./posts-page.component.css']
 })
 export class PostsPageComponent {
-  posts = [
-    {
-    }
-    ];
+  postIds: number[] = [1, 2, 3, 4, 5];
   isExpanded = false;
   sortAttribute = 'created';
-  constructor() { }
+  constructor(private service: PostService) { }
 
   ngOnInit() {
-
+    this.getPostIds();
   }
 
-  createPost() {
-    this.posts.push({});
+  getPostIds() {
+    return this.service.getPostIds().subscribe(postIds => this.postIds = postIds);
   }
 
   sort(attribute: string) {

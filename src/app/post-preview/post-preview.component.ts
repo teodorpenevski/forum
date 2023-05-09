@@ -1,4 +1,7 @@
 import { Component, Input } from '@angular/core';
+import {PostService} from "../post.service";
+import {Post} from "../post";
+import {Tag} from "../tag";
 
 @Component({
   selector: 'app-post-preview',
@@ -6,17 +9,44 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./post-preview.component.css']
 })
 export class PostPreviewComponent {
-    @Input() post: object = {}
-    postTitle = 'Post Title';
-    postId = 1;
-    postText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ' +
+    @Input() postId: number = 1;
+    title = 'Post Title';
+    text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ' +
         'ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. ' +
         'Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. ' +
         'Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue.';
-    tags = ['tag1', 'tag2', 'tag3'];
-    postDate = 'January 1, 2017';
-    postBy = 'John Doe';
-    postVotes = 10;
-    postComments = 2;
-    constructor() { }
+    tags: Tag[] = [
+      {
+        name: 'tag1',
+      },
+      {
+        name: 'tag2',
+      },
+      {
+        name: 'tag3',
+      }
+    ]
+    votes = 10;
+    commentsLength = 2;
+    author = 'Author';
+    created = '2020-01-01';
+    constructor(private service: PostService) { }
+
+    ngOnInit() {
+        this.getPost();
+    }
+
+    getPost() {
+        this.service.getPost(this.postId).subscribe(post => this.setPost(post));
+    }
+
+    setPost(post: Post | null) {
+        if (post) {
+            this.title = post.title;
+            this.text = post.text;
+            this.tags = post.tags;
+            this.votes = post.likes - post.dislikes;
+            this.commentsLength = post.comments.length;
+        }
+    }
 }
