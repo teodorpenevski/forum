@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+
+import { DisplayData } from 'src/app/models/display-data';
 import { Post } from 'src/app/models/post';
 import { Tag } from 'src/app/models/tag';
 
@@ -11,80 +13,134 @@ export class HomePageComponent {
 
   posts: number[] = [1, 2, 3, 4, 5]
 
-  trendingTags: Tag[] = [
+  trendingTags: Array<DisplayData> = [
     {
-      type: 'tag',
-      name: "java"
-    },
-    {
-      type: 'tag',
-      name: "css"
-    },
-    {
-      type: 'tag',
-      name: "python"
-    },
-    {
-      type: 'tag',
-      name: "html"
-    },
-    {
-      type: 'tag',
-      name: "kotlin"
+      heading: '',
+      data: [
+        {
+          type: 'tag',
+          name: "java"
+        },
+        {
+          type: 'tag',
+          name: "css"
+        },
+        {
+          type: 'tag',
+          name: "python"
+        }, {
+          type: 'tag',
+          name: "html"
+        },
+        {
+          type: 'tag',
+          name: "kotlin"
+        },
+        {
+          type: 'tag',
+          name: "php"
+        }
+      ]
     }
   ]
 
-  trendingPosts: Post[] = [
+  trendingPosts: Array<DisplayData> = [
     {
-      type: 'post',
-      heading: "Post 1",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
-    },
-    {
-      type: 'post',
-      heading: "Post 2",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
-    },
-    {
-      type: 'post',
-      heading: "Post 3",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
-    },
-    {
-      type: 'post',
-      heading: "Post 4",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
-    },
-    {
-      type: 'post',
-      heading: "Post 5",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
-    },
-    {
-      type: 'post',
-      heading: "Post 6",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
-    },
-    {
-      type: 'post',
-      heading: "Post 7",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
-    },
-    {
-      type: 'post',
-      heading: "Post 8",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
-    },
-    {
-      type: 'post',
-      heading: "Post 9",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
-    },
-    {
-      type: 'post',
-      heading: "Post 10",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
+      heading: '',
+      data: [
+        {
+          type: 'post',
+          heading: "Post 1",
+          body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
+        },
+        {
+          type: 'post',
+          heading: "Post 2",
+          body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
+        },
+        {
+          type: 'post',
+          heading: "Post 3",
+          body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
+        },
+        {
+          type: 'post',
+          heading: "Post 4",
+          body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
+        },
+        {
+          type: 'post',
+          heading: "Post 5",
+          body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
+        },
+        {
+          type: 'post',
+          heading: "Post 6",
+          body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
+        },
+        {
+          type: 'post',
+          heading: "Post 7",
+          body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
+        },
+        {
+          type: 'post',
+          heading: "Post 8",
+          body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
+        },
+        {
+          type: 'post',
+          heading: "Post 9",
+          body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
+        },
+        {
+          type: 'post',
+          heading: "Post 10",
+          body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fuga provident aliquid quae cupiditate quod natus quas laboriosam repellendus! Exercitationem reiciendis ipsam assumenda quaerat deleniti? At repellendus nihil consequatur error!"
+        }
+      ]
     }
   ]
 
+  popularTags: Array<DisplayData> = [
+    {
+      heading: 'Today',
+      data: [
+        {
+          type: 'tag',
+          name: "java"
+        },
+        {
+          type: 'tag',
+          name: "css"
+        }
+      ]
+    },
+    {
+      heading: 'Yesterday',
+      data: [
+        {
+          type: 'tag',
+          name: "python"
+        },
+        {
+          type: 'tag',
+          name: "html"
+        }
+      ]
+    },
+    {
+      heading: "This year",
+      data: [
+        {
+          type: 'tag',
+          name: "kotlin"
+        },
+        {
+          type: 'tag',
+          name: "php"
+        }
+      ]
+    }
+  ]
 }

@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 
 import { Tag } from 'src/app/models/tag';
 import { Post } from 'src/app/models/post';
+import { DisplayData } from 'src/app/models/display-data';
 
 @Component({
   selector: 'app-content-display',
@@ -14,7 +15,7 @@ export class ContentDisplayComponent {
 
   @Input() displayHeading = "Heading";
 
-  @Input() displayData: Array<Tag | Post> = [];
+  @Input() displayData: Array<DisplayData> = [];
 
   parseToTag(item: Tag | Post): Tag {
     return item as Tag;

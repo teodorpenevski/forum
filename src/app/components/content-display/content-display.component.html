@@ -9,18 +9,32 @@
 
   <div class="content-display">
 
-    <ng-container class="tags" *ngIf="displayData[0].type == 'tag'">
+    <div *ngFor="let dataGroup of displayData" class="display-group">
 
-      <app-tag *ngFor="let item of displayData" [tagInfo]="parseToTag(item)"></app-tag>
+      <div *ngIf="dataGroup.heading" class="group-heading">
+        <h4>
+          {{dataGroup.heading}}
+        </h4>
+      </div> <!-- group-heading -->
 
-    </ng-container> <!-- .tags -->
+      <div class="group-content">
+
+        <ng-container name="tags" *ngIf="dataGroup.data[0].type == 'tag'">
+
+          <app-tag *ngFor="let item of dataGroup.data" [tagInfo]="parseToTag(item)"></app-tag>
+
+        </ng-container> <!-- .tags -->
 
 
-    <ng-container class="posts" *ngIf="displayData[0].type == 'post'">
+        <ng-container name="posts" *ngIf="dataGroup.data[0].type == 'post'">
 
-      <app-post-preview *ngFor="let item of displayData" [postInfo]="parseToPost(item)"></app-post-preview>
+          <app-post-preview *ngFor="let item of dataGroup.data" [postInfo]="parseToPost(item)"></app-post-preview>
 
-    </ng-container> <!-- .posts -->
+        </ng-container> <!-- .posts -->
+
+      </div> <!-- group-content -->
+
+    </div> <!-- .display-group -->
 
   </div> <!-- .content-display -->
 
