@@ -5,13 +5,15 @@ import com.sorsix.forum.domain.UserDto
 import com.sorsix.forum.repository.PostRepository
 import com.sorsix.forum.repository.TagRepository
 import com.sorsix.forum.repository.UserRepository
+import com.sorsix.forum.service.util.GlobalState
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
 @Service
 class UserService(private val repository: UserRepository,
                   private val postRepository: PostRepository,
-                  private val tagRepository: TagRepository
+                  private val tagRepository: TagRepository,
+                  private val globalState: GlobalState
 ) {
 
     fun findAllUsers(): List<User> = repository.findAll()
@@ -22,6 +24,13 @@ class UserService(private val repository: UserRepository,
         val newUser = User(user.username, user.password, LocalDateTime.now())
         return repository.save(newUser)
     }
+
+    fun loginUser(userDto: UserDto) : User {
+        globalState.loggedInUser = userDto.username
+        return repository.findByUsername(userDto.username)
+    }
+
+    fun getCurrentUser(): String? = globalState.loggedInUser
 
     fun existsByUsername(username: String): Boolean {
         return repository.existsByUsername(username)
@@ -104,4 +113,6 @@ class UserService(private val repository: UserRepository,
         }
         return repository.save(User(user.username, user.password, user.dateJoined, user.postsCreated, user.commentsCreated, user.postsLiked, user.postsDisliked, user.postsFollowed, tagsFollowed))
     }
+
+
 }

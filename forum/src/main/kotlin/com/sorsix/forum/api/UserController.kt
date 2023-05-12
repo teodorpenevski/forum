@@ -27,6 +27,14 @@ class UserController(
         service.saveUser(user)
     }
 
+    @PostMapping("/login")
+    fun login(@RequestBody userDto: UserDto): ResponseEntity<User> =
+        ResponseEntity.ok(service.loginUser(userDto))
+
+
+    @GetMapping("/current")
+    fun getLoggedInUser(): String? = service.getCurrentUser()
+
     @GetMapping("/{username}")
     fun getUserByUsername(@PathVariable username: String): ResponseEntity<User> =
         ResponseEntity.ok(service.getUserByUsername(username))
