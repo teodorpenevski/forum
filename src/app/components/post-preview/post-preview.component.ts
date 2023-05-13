@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PostService } from "../../services/post.service";
+import { PostService } from 'src/app/services/post.service';
 import { Post, PostDTO } from "../../models/post";
 import { Tag } from "../../models/tag";
 
