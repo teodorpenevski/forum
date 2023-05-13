@@ -19,14 +19,14 @@
 
       <div class="group-content">
 
-        <ng-container name="tags" *ngIf="dataGroup.data[0].type == 'tag'">
+        <ng-container name="tags" *ngIf="dataGroup.type == 'tag'">
 
           <app-tag *ngFor="let item of dataGroup.data" [tagInfo]="parseToTag(item)"></app-tag>
 
         </ng-container> <!-- .tags -->
 
 
-        <ng-container name="posts" *ngIf="dataGroup.data[0].type == 'post'">
+        <ng-container name="posts" *ngIf="dataGroup.type == 'post'">
 
           <app-post-preview *ngFor="let item of dataGroup.data" [postInfo]="parseToPost(item)"></app-post-preview>
 

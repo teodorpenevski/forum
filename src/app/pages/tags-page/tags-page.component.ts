@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DisplayData } from 'src/app/models/display-data';
+import { DisplayData } from 'src/app/interfaces/display-data';
 
 @Component({
   selector: 'app-tags-page',
@@ -11,28 +11,24 @@ export class TagsPageComponent {
   trendingTags: Array<DisplayData> = [
     {
       heading: '',
+      type: 'tag',
       data: [
         {
-          type: 'tag',
           name: "java"
         },
         {
-          type: 'tag',
           name: "css"
         },
         {
-          type: 'tag',
           name: "python"
-        }, {
-          type: 'tag',
+        },
+        {
           name: "html"
         },
         {
-          type: 'tag',
           name: "kotlin"
         },
         {
-          type: 'tag',
           name: "php"
         }
       ]

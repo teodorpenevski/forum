@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Link } from 'src/app/models/link';
+import { Link } from 'src/app/interfaces/link';
 
 @Component({
   selector: 'app-nav-links',

@@ -1,14 +1,14 @@
 <div class="post-preview">
   <div class="post-content">
     <h3 class="post-title">
-      <a routerLink="{{ postId }}">{{ title }}</a>
+      <a routerLink="{{ postId }}">{{ postInfo.title }}</a>
     </h3>
     <p class="post-text">
-      {{ text }}
+      {{ postInfo.text }}
     </p>
     <div class="post-attributes">
       <ul class="post-tags">
-        <li class="post-tag" *ngFor="let tag of tags">{{ tag.name }}</li>
+        <li class="post-tag" *ngFor="let tag of postInfo.tagNames">{{ tag }}</li>
       </ul>
       <p class="post-meta">
         Posted by

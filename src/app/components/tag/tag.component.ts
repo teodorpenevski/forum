@@ -9,7 +9,6 @@ import { Tag } from 'src/app/models/tag';
 export class TagComponent {
 
   @Input() tagInfo: Tag = {
-    type: 'tag',
     name: "tag"
   }
 }

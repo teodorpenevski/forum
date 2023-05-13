@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 import { Tag } from 'src/app/models/tag';
-import { Post } from 'src/app/models/post';
-import { DisplayData } from 'src/app/models/display-data';
+import { PostDTO } from 'src/app/models/post';
+import { DisplayData } from 'src/app/interfaces/display-data';
 
 @Component({
   selector: 'app-content-display',
@@ -17,12 +17,12 @@ export class ContentDisplayComponent {
 
   @Input() displayData: Array<DisplayData> = [];
 
-  parseToTag(item: Tag | Post): Tag {
+  parseToTag(item: Tag | PostDTO): Tag {
     return item as Tag;
   }
 
-  parseToPost(item: Tag | Post): Post {
-    return item as Post;
+  parseToPost(item: Tag | PostDTO): PostDTO {
+    return item as PostDTO;
   }
 
 }

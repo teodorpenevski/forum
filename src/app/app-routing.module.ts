@@ -14,8 +14,6 @@ const routes: Routes = [
   { path: 'posts', component: PostsPageComponent },
   { path: 'posts/:id', component: PostComponent },
   { path: 'create-post', component: CreatePostComponent }
-
-
 ];
 
 @NgModule({
