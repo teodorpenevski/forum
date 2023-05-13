@@ -40,6 +40,7 @@ body {
 }
 
 app-root {
+  display: flex;
   width: 100%;
   min-height: 100%;
   height: auto;
@@ -57,7 +58,9 @@ p {
 }
 
 
-app-home-page {
+app-home-page,
+app-tags-page,
+app-posts-page {
   width: 100%;
   min-height: 100%;
   height: auto;

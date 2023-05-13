@@ -78,6 +78,8 @@
   width: 100%;
   height: fit-content;
 
+  overflow: auto;
+
   /* flexbox */
   display: flex;
   justify-content: flex-start;
