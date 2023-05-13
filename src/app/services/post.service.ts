@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { apiLink} from "./global-constants";
+import { apiLink } from "../interfaces/global-constants";
 import { Observable } from "rxjs";
-import {Post, PostDTO} from "./post";
-import {Comment} from "./comment";
+import { Post, PostDTO } from "../models/post";
+import { Comment } from "../models/comment";
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +34,7 @@ export class PostService {
   }
 
   onComment(postId: number, comment: string) {
-    return this.http.post(this.postsApi + '/' + postId + '/comment', {text: comment});
+    return this.http.post(this.postsApi + '/' + postId + '/comment', { text: comment });
   }
 
   onEdit() {

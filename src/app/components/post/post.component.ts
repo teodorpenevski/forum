@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { PostService } from "../post.service";
-import { Post } from "../post";
-import { Comment } from "../comment";
-import { Tag } from "../tag";
+import { PostService } from "../../services/post.service";
+import { Post } from "../../models/post";
+import { Comment } from "../../models/comment";
+import { Tag } from "../../models/tag";
 
 @Component({
   selector: 'app-post',
@@ -52,8 +52,8 @@ export class PostComponent implements Post {
   });
 
   constructor(private route: ActivatedRoute,
-              private service: PostService
-              ) { }
+    private service: PostService
+  ) { }
 
   ngOnInit() {
     this.getPost();

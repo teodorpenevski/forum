@@ -3,18 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { AppComponent } from './app.component';
-import { PostComponent } from './post/post.component';
-import { TagComponent } from './tag/tag.component';
-import { CommentComponent } from './comment/comment.component';
-import { UserComponent } from './user/user.component';
+import { PostComponent } from './components/post/post.component';
+import { TagComponent } from './components/tag/tag.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { UserComponent } from './components/user/user.component';
 import { AppRoutingModule } from './app-routing.module';
-import { VoteComponent } from './vote/vote.component';
-import {NgOptimizedImage} from "@angular/common";
-import { PostPreviewComponent } from './post-preview/post-preview.component';
-import { PostsPageComponent } from './posts-page/posts-page.component';
-import { FilterComponent } from './filter/filter.component';
+import { VoteComponent } from './components/vote/vote.component';
+import { NgOptimizedImage } from "@angular/common";
+import { PostPreviewComponent } from './components/post-preview/post-preview.component';
+import { PostsPageComponent } from './pages/posts-page/posts-page.component';
+import { FilterComponent } from './components/filter/filter.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { CreatePostComponent } from './create-post/create-post.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
 import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({

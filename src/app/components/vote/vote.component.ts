@@ -1,5 +1,5 @@
-import {Component, HostListener, Input} from '@angular/core';
-import { VoteService } from "../vote.service";
+import { Component, HostListener, Input } from '@angular/core';
+import { VoteService } from "../../services/vote.service";
 
 @Component({
   selector: 'app-vote',

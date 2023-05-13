@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {PostService} from "../post.service";
+import { Component } from '@angular/core';
+import { PostService } from "../../services/post.service";
 
 @Component({
   selector: 'app-posts-page',
