@@ -8,9 +8,16 @@ import { TagComponent } from './components/tag/tag.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { UserComponent } from './components/user/user.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NavBarComponent } from './pages/nav-bar/nav-bar.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { TagsPageComponent } from './pages/tags-page/tags-page.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { NavLinksComponent } from './components/nav-links/nav-links.component';
+import { PostPreviewComponent } from './components/post-preview/post-preview.component';
+import { SideBarComponent } from './pages/side-bar/side-bar.component';
+import { ContentDisplayComponent } from './components/content-display/content-display.component';
 import { VoteComponent } from './components/vote/vote.component';
 import { NgOptimizedImage } from "@angular/common";
-import { PostPreviewComponent } from './components/post-preview/post-preview.component';
 import { PostsPageComponent } from './pages/posts-page/posts-page.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -24,8 +31,15 @@ import { HttpClientModule } from "@angular/common/http";
     TagComponent,
     CommentComponent,
     UserComponent,
-    VoteComponent,
+    NavBarComponent,
+    HomePageComponent,
+    TagsPageComponent,
+    SearchBarComponent,
+    NavLinksComponent,
     PostPreviewComponent,
+    SideBarComponent,
+    ContentDisplayComponent,
+    VoteComponent,
     PostsPageComponent,
     FilterComponent,
     CreatePostComponent

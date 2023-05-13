@@ -27,14 +27,17 @@
       <h3 class="comment-section-title" *ngIf="comments.length == 1">1 Answer</h3>
       <div class="comment" *ngIf="comments.length == 0">No answers yet</div>
       <div class="sort-buttons">
-        <button class="button" (click)="sort('created')" [ngClass]="{'sorted': sortAttribute === 'created', 'descending': !ascendingOrDescending}">Created
-          <img ngSrc="assets/upvote-icon.svg" alt="arrow-down" height="36" width="36"/>
+        <button class="button" (click)="sort('created')"
+          [ngClass]="{'sorted': sortAttribute === 'created', 'descending': !ascendingOrDescending}">Created
+          <img ngSrc="assets/upvote-icon.svg" alt="arrow-down" height="36" width="36" />
         </button>
-        <button class="button" (click)="sort('votes')" [ngClass]="{'sorted': sortAttribute === 'votes', 'descending': !ascendingOrDescending}">Votes
-          <img ngSrc="assets/upvote-icon.svg" alt="arrow-down" height="36" width="36"/>
+        <button class="button" (click)="sort('votes')"
+          [ngClass]="{'sorted': sortAttribute === 'votes', 'descending': !ascendingOrDescending}">Votes
+          <img ngSrc="assets/upvote-icon.svg" alt="arrow-down" height="36" width="36" />
         </button>
-        <button class="button" (click)="sort('modified')" [ngClass]="{'sorted': sortAttribute === 'modified', 'descending': !ascendingOrDescending}">Modified
-          <img ngSrc="assets/upvote-icon.svg" alt="arrow-down" height="36" width="36"/>
+        <button class="button" (click)="sort('modified')"
+          [ngClass]="{'sorted': sortAttribute === 'modified', 'descending': !ascendingOrDescending}">Modified
+          <img ngSrc="assets/upvote-icon.svg" alt="arrow-down" height="36" width="36" />
         </button>
       </div>
     </div>
