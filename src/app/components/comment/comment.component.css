@@ -1,0 +1,37 @@
+.comment {
+  display: grid;
+  grid-template-columns: 1fr fit-content(100%);
+  gap: 10px;
+  text-align: justify;
+}
+
+.comment-entry {
+  display: grid;
+  grid-template-rows: 1fr fit-content(100%);
+}
+
+.content {
+  margin: 10px 0;
+  font-size: 1.1em;
+}
+
+.tags {
+  display: flex;
+  gap: 5px;
+  margin: 10px 0;
+}
+
+.tag {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 0.8em;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 0.8em;
+  color: #666;
+}
