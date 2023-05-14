@@ -1,0 +1,21 @@
+<main>
+
+  <h2 class="page-heading">
+    Trending today
+  </h2> <!-- .page-heading -->
+
+  <app-content-display id="trending-tags" [type]="'inline'" [displayHeading]="'Tags'"
+    [displayData]="trendingTags"></app-content-display>
+
+  <div class="columns-aspect-80_20">
+
+    <app-content-display id="trending-posts" [type]="'dropdown'" [displayHeading]="'Posts'"
+      [displayData]="trendingPosts"></app-content-display>
+
+    <app-content-display id="popular-tags" [type]="'dropdown'" [displayHeading]="'Popular tags'"
+      [displayData]="popularTags"></app-content-display>
+
+  </div>
+
+
+</main>

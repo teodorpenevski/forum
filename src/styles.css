@@ -1,1 +1,79 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --color-background-light: #F0EFF2;
+  --color-background-mid-light: #cdcdce;
+  --color-background-mid: #ACABAD;
+  --color-background-dark: #676767;
+  --color-primary-lighter: #d2dfec;
+  --color-primary-light: #8faed0;
+  --color-primary-main: #1F5DA0;
+  --color-primary-dark: #194a80;
+  --color-primary-darker: #102f50;
+  --color-accent-orange-lightest: #fee6d4;
+  --color-accent-orange-lighter: #fdc094;
+  --color-accent-orange-light: #fa8128;
+  --color-accent-orange-main: #e36b14;
+  --color-accent-orange-dark: #CC5500;
+  --color-accent-green-lightest: #ced8d6;
+  --color-accent-green-lighter: #aebebb;
+  --color-accent-green-light: #5d7d76;
+  --color-accent-green-main: #3a6158;
+  --color-accent-green-dark: #18453B;
+  --color-text-light: #EAE8E8;
+  --color-text-main: #1F5DA0;
+  --color-text-dark: #003366;
+  --color-text-darker: #001a33;
+  --color-text-darkest: #000a14;
+  --color-text-accent-orange: orange;
+  --color-text-accent-green: green;
+}
+
+html {
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--color-text-light);
+}
+
+body {
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+}
+
+app-root {
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+app-home-page,
+app-tags-page,
+app-posts-page {
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+}

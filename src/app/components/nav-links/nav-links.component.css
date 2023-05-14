@@ -1,0 +1,142 @@
+/* for any type */
+
+.nav-list {
+  width: 100%;
+  height: 100%;
+
+  /* flexbox */
+  display: flex;
+  justify-content: flex-start;
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  height: 100%;
+
+  /* flexbox */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.nav-link {
+  /* flexbox */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.nav-icon {
+  width: 1.15rem;
+  aspect-ratio: 1;
+
+  margin-right: 0.2rem;
+  padding-top: 0.15rem;
+}
+
+
+
+
+/* .inline START*/
+
+.nav-list.inline {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.075rem;
+
+  /* flexbox */
+  flex-direction: row;
+  align-items: center;
+
+  color: var(--color-text-light);
+}
+
+.inline .nav-item {
+  width: auto;
+  padding: 0 0.75em;
+}
+
+.inline .nav-link:hover {
+  color: var(--color-primary-main);
+  text-shadow: 0 0 1px var(--color-primary-light);
+}
+
+.inline .nav-link:focus {
+  color: var(--color-accent-green-dark);
+}
+
+.inline .selected-link {
+  color: var(--color-accent-green-dark);
+  border-bottom: 1px dashed var(--color-accent-green-dark);
+}
+
+.inline .selected-link:hover {
+  color: var(--color-accent-orange-dark);
+  text-shadow: 0 0 1px var(--color-accent-green-dark);
+}
+
+.inline .nav-icon {
+  /* CURRENTLY NOT NEEDED */
+}
+
+/* .inline END */
+
+
+
+/* .dropdown START */
+
+.nav-list.dropdown {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.05rem;
+
+  /* flexbox */
+  flex-direction: column;
+  align-items: flex-start;
+
+  color: var(--color-accent-orange-dark);
+}
+
+.dropdown .nav-item {
+  width: 100%;
+  padding: 0.25rem calc(1.25rem + 5px) 0.25rem 1rem;
+}
+
+.dropdown .nav-item:has(.nav-link:hover) {
+  box-shadow: inset 0 0 2.5rem var(--color-accent-green-light);
+}
+
+.dropdown .nav-item:has(.nav-link:focus) {
+  box-shadow: inset 0 0 3rem var(--color-accent-green-main);
+}
+
+.dropdown .nav-item:has(.selected-link) {
+  padding: 0.25rem 1.25rem 0.25rem 1rem;
+
+  border-right: 5px solid var(--color-accent-green-light);
+
+  box-shadow: inset 0 0 2.5rem -0.75rem var(--color-accent-green-light);
+}
+
+.dropdown .nav-item:has(.selected-link:hover) {
+  padding: 0.25rem 1.25rem 0.25rem 1rem;
+
+  border-right: 5px solid var(--color-accent-orange-light);
+
+  box-shadow: inset 0 0 2.5rem var(--color-accent-orange-light);
+}
+
+.dropdown .nav-icon {
+  width: 1.15rem;
+  aspect-ratio: 1;
+
+  margin-right: 0.2rem;
+  padding-top: 0.15rem;
+}
+
+/* .dropdown END */

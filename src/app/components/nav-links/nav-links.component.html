@@ -1,0 +1,11 @@
+<ul class="nav-list" [class.inline]="type === 'inline'" [class.dropdown]="type === 'dropdown'">
+
+  <li *ngFor="let link of navLinks" class="nav-item">
+    <a class="nav-link" routerLink="{{link.path}}" routerLinkActive="selected-link" [routerLinkActiveOptions]="{exact:
+      true}">
+      <img *ngIf="link.icon" class="nav-icon" src="{{link.icon}}" alt="{{link.name}} icon">
+      {{link.name}}
+    </a>
+  </li>
+
+</ul>

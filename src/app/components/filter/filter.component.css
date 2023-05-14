@@ -1,0 +1,27 @@
+.filter-controller {
+  display: grid;
+  grid-template-rows: 1fr fit-content(100%);
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.filter-controller-settings {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.filter-controller-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.separator {
+  height: 1px;
+  width: 100%;
+  background-color: black;
+  margin: 0;
+}
+

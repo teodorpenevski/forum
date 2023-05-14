@@ -1,0 +1,66 @@
+header {
+  width: 100%;
+  height: 6vmin;
+
+  background: linear-gradient(75deg,
+      var(--color-background-dark),
+      var(--color-background-mid),
+      var(--color-background-mid),
+      var(--color-background-mid));
+
+  border-bottom: 1px ridge var(--color-accent-green-light);
+
+  /* flexbox */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+nav {
+  width: 100%;
+  height: 100%;
+
+  padding: 0 1em;
+
+  /* grid */
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  column-gap: 0;
+}
+
+.button {
+  width: 100%;
+  height: 100%;
+
+  /* flexbox */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  text-align: center;
+}
+
+.button a {
+  margin: 0;
+  padding: 0.15rem 1.25rem 0.25rem 1.25rem;
+
+  text-decoration: none;
+
+  border: 1px solid var(--color-primary-darker);
+  border-radius: 5px;
+  background-color: var(--color-accent-green-light);
+
+  color: var(--color-text-light);
+}
+
+.button a:hover {
+  background-color: var(--color-accent-orange-light);
+  box-shadow: 0 0 5px var(--color-accent-green-dark);
+}
+
+.button a:focus {
+  background-color: var(--color-accent-orange-dark);
+  box-shadow: 0 0 3px var(--color-accent-green-dark);
+}
