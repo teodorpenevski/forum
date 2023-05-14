@@ -1,43 +1,17 @@
 <div class="posts-page">
-
   <div class="header">
-
-    <h2>
-      Posts
-    </h2>
-
-    <a class="button" routerLink="/create-post">
-      Create Post
-    </a>
-
+    <h2>Posts</h2>
+    <a class="button" routerLink="/create-post">Create Post</a>
   </div>
-
-
   <div class="posts-controller">
-
     <div class="posts-controller-header">
-
-      <div class="posts-count" *ngIf="postIds.length !== 1">
-        {{postIds.length}} Posts
-      </div>
-
-      <div class="posts-count" *ngIf="postIds.length === 1">
-        1 Post
-      </div>
-
-      <button class="button posts-filter-button" (click)="isExpanded = !isExpanded">
-        Filter
-      </button>
-
+      <div class="posts-count" *ngIf="postIds.length !== 1">{{postIds.length}} Posts</div>
+      <div class="posts-count" *ngIf="postIds.length === 1">1 Post</div>
+      <button class="button posts-filter-button" (click)="isExpanded = !isExpanded">Filter</button>
     </div>
-
     <app-filter *ngIf="isExpanded" (cancelFilterEvent)="isExpanded = false"></app-filter>
-
   </div>
-
-
   <div class="content">
     <app-post-preview *ngFor="let postId of postIds" [postId]="postId"></app-post-preview>
   </div>
-
 </div>

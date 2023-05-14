@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { PostService } from "../../services/post.service";
-import { Tag } from 'src/app/models/tag';
 
 @Component({
   selector: 'app-create-post',
@@ -9,23 +8,16 @@ import { Tag } from 'src/app/models/tag';
   styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent {
-
   tags: Set<string> = new Set();
-
   postForm = new FormGroup({
-
     title: new FormControl('', [
       Validators.required,
     ]),
-
     text: new FormControl('', [
       Validators.required,
     ]),
-
     tags: new FormControl(['']),
-
     tagsInput: new FormControl('')
-
   })
 
   constructor(private service: PostService) { }
@@ -35,12 +27,9 @@ export class CreatePostComponent {
 
   createPost() {
     this.postForm.patchValue({ tags: Array.from(this.tags) });
-
     delete this.postForm.value.tagsInput;
-
     console.log(this.postForm.value);
-
-    this.service.createPost({ title: this.postForm.value.title!!, text: this.postForm.value.text!!, tags: this.parseStringToTag(this.postForm.value.tags!!) }).subscribe();
+    this.service.createPost({ title: this.postForm.value.title!!, text: this.postForm.value.text!!, tagNames: this.postForm.value.tags!! }).subscribe();
   }
 
   addToTags(event: any) {
@@ -61,13 +50,5 @@ export class CreatePostComponent {
 
   removeTag(tag: string) {
     this.tags.delete(tag);
-  }
-
-  parseStringToTag(tagNames: string[]): Tag[] {
-    const parsedTags: Tag[] = [];
-    for (let tagName of tagNames) {
-      parsedTags.push({ name: tagName });
-    }
-    return parsedTags;
   }
 }

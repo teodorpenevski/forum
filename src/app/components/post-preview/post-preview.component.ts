@@ -18,17 +18,7 @@ export class PostPreviewComponent {
       'ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. ' +
       'Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. ' +
       'Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue.',
-    tags: [
-      {
-        name: 'tag1'
-      },
-      {
-        name: 'tag2'
-      },
-      {
-        name: 'tag3'
-      }
-    ]
+    tagNames: ['tag1', 'tag2', 'tag3']
   }
 
   votes = 10;
@@ -36,15 +26,14 @@ export class PostPreviewComponent {
   author = 'Author';
   created = '2020-01-01';
   createdBy = 'User';
-
-  constructor(private postService: PostService) { }
+  constructor(private service: PostService) { }
 
   ngOnInit() {
     this.getPost();
   }
 
   getPost() {
-    this.postService.getPost(this.postId).subscribe(post => this.setPost(post));
+    this.service.getPost(this.postId).subscribe(post => this.setPost(post));
   }
 
   setPost(post: Post | null) {
@@ -52,8 +41,7 @@ export class PostPreviewComponent {
       this.postInfo.title = post.title;
       this.postInfo.text = post.text;
       for (const [index, tag] of post.tags.entries()) {
-
-        this.postInfo.tags[index].name = tag.name;
+        this.postInfo.tagNames[index] = tag.name;
       }
       this.createdBy = post.createdBy;
       this.votes = post.likes - post.dislikes;
