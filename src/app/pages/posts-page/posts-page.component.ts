@@ -7,9 +7,12 @@ import { PostService } from "../../services/post.service";
   styleUrls: ['./posts-page.component.css']
 })
 export class PostsPageComponent {
+
   postIds: number[] = [];
+
   isExpanded = false;
   sortAttribute = 'created';
+
   constructor(private service: PostService) { }
 
   ngOnInit() {

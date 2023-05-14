@@ -15,7 +15,7 @@ export interface Post {
 export interface PostDTO {
   title: string;
   text: string;
-  tagNames: string[];
+  tags: Tag[];
 }
 
 // export interface Post {
