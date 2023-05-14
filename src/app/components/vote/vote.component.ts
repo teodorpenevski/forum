@@ -23,6 +23,12 @@ export class VoteComponent {
     this.getFollowStatus();
   }
 
+  ngOnChanges() {
+    this.getVoteCount();
+    this.getVoteStatus();
+    this.getFollowStatus();
+  }
+
   getVoteCount() {
     this.service.getVoteCount(this.id).subscribe(post => {
       if (post) {
