@@ -28,7 +28,7 @@
 
         <ng-container name="posts" *ngIf="dataGroup.type == 'post'">
 
-          <app-post-preview *ngFor="let item of dataGroup.data" [postInfo]="parseToPost(item)"></app-post-preview>
+          <app-post-preview *ngFor="let item of dataGroup.data" [postId]="parseToPostID(item)"></app-post-preview>
 
         </ng-container> <!-- .posts -->
 

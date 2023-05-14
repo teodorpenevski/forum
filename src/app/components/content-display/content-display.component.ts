@@ -17,12 +17,12 @@ export class ContentDisplayComponent {
 
   @Input() displayData: Array<DisplayData> = [];
 
-  parseToTag(item: Tag | PostDTO): Tag {
+  parseToTag(item: Tag | number): Tag {
     return item as Tag;
   }
 
-  parseToPost(item: Tag | PostDTO): PostDTO {
-    return item as PostDTO;
+  parseToPostID(item: Tag | number): number {
+    return item as number;
   }
 
 }
