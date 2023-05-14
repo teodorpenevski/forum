@@ -1,1 +1,43 @@
-<p>post works!</p>
+<div class="post">
+  <h2 class="title">{{ title }}</h2>
+  <div class="tags">
+    <div class="tag" *ngFor="let tag of tags">{{ tag.name }}</div>
+  </div>
+  <div class="text">
+    <div class="text-entry">
+      <div class="content">
+        <p>{{ text }}</p>
+      </div>
+      <div class="meta">
+        <p class="by-user">Posted by <a href="#">{{ createdBy }}</a></p>
+        <p class="date-time">posted on {{ postedDate }}</p>
+        <p class="edit-time" *ngIf="lastEditedDate">last edit on {{ lastEditedDate }}</p>
+      </div>
+    </div>
+    <app-vote [id]="id"></app-vote>
+  </div>
+  <form class="comment-form" [formGroup]="commentForm" (ngSubmit)="onComment()">
+    <label for="comment-textarea">Add comment as <a href="">{{ user }}</a></label>
+    <textarea id="comment-textarea" class="comment-textarea" formControlName="text"></textarea>
+    <button type="submit" class="button comment-button">Add comment</button>
+  </form>
+  <div class="comment-section">
+    <div class="comment-section-header">
+      <h3 class="comment-section-title" *ngIf="comments.length != 1">{{ comments.length }} Answers</h3>
+      <h3 class="comment-section-title" *ngIf="comments.length == 1">1 Answer</h3>
+      <div class="comment" *ngIf="comments.length == 0">No answers yet</div>
+      <div class="sort-buttons">
+        <button class="button" (click)="sort('created')" [ngClass]="{'sorted': sortAttribute === 'created', 'descending': !ascendingOrDescending}">Created
+          <img ngSrc="assets/upvote-icon.svg" alt="arrow-down" height="36" width="36"/>
+        </button>
+        <button class="button" (click)="sort('votes')" [ngClass]="{'sorted': sortAttribute === 'votes', 'descending': !ascendingOrDescending}">Votes
+          <img ngSrc="assets/upvote-icon.svg" alt="arrow-down" height="36" width="36"/>
+        </button>
+        <button class="button" (click)="sort('modified')" [ngClass]="{'sorted': sortAttribute === 'modified', 'descending': !ascendingOrDescending}">Modified
+          <img ngSrc="assets/upvote-icon.svg" alt="arrow-down" height="36" width="36"/>
+        </button>
+      </div>
+    </div>
+    <app-comment *ngFor="let comment of comments" [comment]="comment"></app-comment>
+  </div>
+</div>
