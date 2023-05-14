@@ -16,12 +16,12 @@ export class SideBarComponent {
     },
     {
       name: 'Followed',
-      path: '/user/followed',
+      path: '/users/followed',
       icon: './assets/icons/thumbtack-solid.svg'
     },
     {
       name: 'Saved',
-      path: '/user/saved',
+      path: '/users/saved',
       icon: './assets/icons/bookmark-solid.svg'
     }
   ]
