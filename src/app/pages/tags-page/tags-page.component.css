@@ -16,6 +16,8 @@ main {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+
+  gap: 1rem;
 }
 
 .page-heading {
@@ -23,8 +25,6 @@ main {
 
   width: auto;
   height: 100%;
-
-  margin-bottom: 1rem;
 
   color: var(--color-text-main);
   opacity: 75%;
@@ -42,32 +42,6 @@ app-content-display {
   align-items: center;
 }
 
-#trending-tags {
+#all-tags {
   /* grid-area: tags; */
-  margin-bottom: 1rem;
-}
-
-#trending-posts {
-  /* grid-area: posts; */
-}
-
-#popular-tags {
-  /* grid-area: top-tags; */
-}
-
-.columns-aspect-80_20 {
-  width: 100%;
-  height: auto;
-
-  margin-bottom: 1rem;
-
-  /* grid */
-  display: grid;
-  grid-template-columns: calc(80% - 1.5rem/2) calc(20% - 1.5rem/2);
-  grid-template-rows: auto;
-  justify-content: center;
-  align-items: start;
-
-  column-gap: 1.5rem;
-  row-gap: 1rem;
 }

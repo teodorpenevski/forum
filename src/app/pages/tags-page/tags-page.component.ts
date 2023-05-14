@@ -13,6 +13,8 @@ export class TagsPageComponent {
 
   apiTags: Tag[] = [];
 
+  numberOfTags: string;
+
   allTagsDisplay: Array<DisplayData> = [];
 
   constructor(private tagService: TagService) { }
@@ -24,6 +26,7 @@ export class TagsPageComponent {
   getTagsFromApi() {
     this.tagService.getTags().subscribe(tags => {
       this.apiTags = tags;
+      this.numberOfTags = tags.length.toString() + ' tags';
       this.allTagsDisplay = this.displayAllTags(this.apiTags);
     });
   }

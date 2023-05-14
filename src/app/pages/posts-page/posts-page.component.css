@@ -1,42 +1,138 @@
-.posts-page {
+main {
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+
+  padding: 1.5rem 2.75rem;
+
+  box-sizing: border-box;
+
+  box-shadow: inset 0 0 2.5rem 0.25rem var(--color-accent-orange-lightest);
+
+  background-color: var(--color-background-light);
+
+  /* flexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  gap: 1rem;
+}
+
+.flex-row {
+  width: 100%;
+  height: 1.4rem;
+
+  /* flexbox */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 0.75rem;
+}
+
+.page-heading {
+  /* grid-area: heading; */
+
+  width: auto;
+  height: 100%;
+
+  color: var(--color-text-main);
+  opacity: 75%;
+  font-size: 1.15rem;
+
+  /* flexbox */
+  flex-grow: 1;
+}
+
+app-content-display {
+  width: 100%;
+  height: auto;
+
+  /* flexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#all-tags {
+  /* grid-area: tags; */
+}
+
+.button {
+  width: fit-content;
+  height: fit-content;
+
+  margin: 0;
+  padding: 0.25rem 0.75rem;
+
+  text-decoration: none;
+
+  border: 1px solid var(--color-primary-darker);
+  border-radius: 5px;
+  background-color: var(--color-primary-main-light);
+
+  color: var(--color-text-white);
+}
+
+.button:hover {
+  background-color: var(--color-accent-orange-light);
+  box-shadow: 0 0 5px var(--color-accent-green-dark);
+}
+
+.button:focus {
+  background-color: var(--color-accent-orange-dark);
+  box-shadow: 0 0 3px var(--color-accent-green-dark);
+}
+
+
+
+
+
+
+
+
+/* .posts-page {
   display: flex;
   flex-direction: column;
   width: 50%;
   padding: 20px;
-}
+} */
 
-.header {
+/* .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-}
+} */
 
-.posts-count {
+/* .posts-count {
   font-size: 22px;
   margin: 0;
-}
+} */
 
-.posts-filter {
+/* .posts-filter {
   border: 1px solid black;
-}
+} */
 
-.posts-controller-header {
+/* .posts-controller-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-}
+} */
 
-.posts-filter-controller {
+/* .posts-filter-controller {
   display: flex;
   gap: 10px;
-}
+} */
 
-.posts-tags {
+/* .posts-tags {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 0;
-}
-
+} */
