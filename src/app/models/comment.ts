@@ -3,3 +3,4 @@ export interface Comment {
   comment: string;
   createdBy: string;
 }
+
