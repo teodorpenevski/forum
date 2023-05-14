@@ -1,0 +1,39 @@
+<form class="filter-controller" ngForm [formGroup]="filterForm" (ngSubmit)="apply()">
+  <div class="filter-controller-settings">
+    <fieldset class="filter field">
+      <legend>Filter by</legend>
+      <div>
+        <input type="checkbox" id="no-comments" formControlName="noComments" value="no-comments">
+        <label for="no-comments">No comments</label>
+      </div>
+    </fieldset>
+    <fieldset class="sort field">
+      <legend>Sort by</legend>
+      <div>
+        <input type="radio" id="newest" formControlName="sort" value="newest" required>
+        <label for="newest">Newest created</label>
+      </div>
+      <div>
+        <input type="radio" id="highest-votes" formControlName="sort" value="highest-votes" required>
+        <label for="highest-votes">Highest votes</label>
+      </div>
+    </fieldset>
+    <fieldset class="tags field">
+      <legend>Tagged with</legend>
+      <div>
+        <input type="radio" id="followed-tags" formControlName="followedTags" value="followed-tags" required>
+        <label for="followed-tags">Followed tags</label>
+      </div>
+      <div>
+        <input type="radio" id="insert-tags" formControlName="followedTags" value="insert-tags" required>
+        <label for="insert-tags">Insert tags</label>
+      </div>
+      <input type="text" formControlName="tags" placeholder="Search Tags" (keyup)="searchTags($event)">
+    </fieldset>
+  </div>
+  <div class="separator"></div>
+  <div class="filter-controller-buttons">
+    <button type="submit" class="button">Apply</button>
+    <button type="reset" class="button" (click)="cancel()">Cancel</button>
+  </div>
+</form>
