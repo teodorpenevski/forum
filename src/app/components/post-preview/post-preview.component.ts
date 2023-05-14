@@ -48,4 +48,10 @@ export class PostPreviewComponent {
       this.commentsLength = post.comments.length;
     }
   }
+
+  parseStringToTag(tagName: string): Tag {
+    return {
+      name: tagName
+    };
+  }
 }
