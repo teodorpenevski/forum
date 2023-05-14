@@ -1,7 +1,9 @@
 package com.sorsix.forum.domain
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonManagedReference
 import jakarta.persistence.*
+import lombok.NoArgsConstructor
 import java.time.LocalDateTime
 
 
@@ -9,9 +11,10 @@ import java.time.LocalDateTime
 @Table(name = "users")
 data class User(
     @Id
-    val username: String,
-    val password: String,
-    val dateJoined: LocalDateTime,
+    val username: String = "",
+    val password: String = "",
+    @JsonFormat(pattern="dd-MMM-yyyy")
+    val dateJoined: LocalDateTime = LocalDateTime.now(),
     @OneToMany(mappedBy = "createdBy")
     @JsonManagedReference
     val postsCreated: List<Post> = listOf(),

@@ -28,7 +28,7 @@ class PostController(
 
     @PostMapping
     fun createPost(@RequestBody postDto: PostDto) {
-        service.createPost(postDto, "theDude123")
+        service.createPost(postDto, "user1")
     }
 
     @GetMapping("/ids")
