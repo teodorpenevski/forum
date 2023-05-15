@@ -32,9 +32,17 @@ class PostController(
     }
 
     @GetMapping("/ids")
-    fun getPostIds(): ResponseEntity<List<Long>> {
-        return if (service.findAllPostIds().isNotEmpty()) {
-            ResponseEntity.ok(service.findAllPostIds())
+    fun getPostIds(@RequestParam(defaultValue = "") tags: String, @RequestParam(defaultValue = "created") sort: String, @RequestParam(defaultValue = "false") noComments: String): ResponseEntity<List<Long>> {
+        return if (service.findAllPostIds(tags, sort, noComments).isNotEmpty()) {
+            ResponseEntity.ok(service.findAllPostIds(tags, sort, noComments))
+        } else ResponseEntity.noContent().build()
+    }
+
+    @GetMapping("/ids/{tags}")
+    fun getPostIdsByTags(@PathVariable tags: String): ResponseEntity<List<Long>> {
+        val tagsList = tags.split("-")
+        return if (service.findAllPostIdsByTags(tagsList).isNotEmpty()) {
+            ResponseEntity.ok(service.findAllPostIdsByTags(tagsList))
         } else ResponseEntity.noContent().build()
     }
 

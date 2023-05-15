@@ -6,20 +6,58 @@ import com.sorsix.forum.domain.PostDto
 import com.sorsix.forum.domain.Tag
 import com.sorsix.forum.repository.TagRepository
 import com.sorsix.forum.repository.UserRepository
+import com.sorsix.forum.service.util.GlobalState
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class PostService(
     private val repository: PostRepository,
     private val tagRepository: TagRepository,
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+    private val globalState: GlobalState
 ) {
 
     fun findAllPosts(): List<Post> = repository.findAll()
 
-    fun findAllPostIds(): List<Long> = repository.findAll().map { it.id }
+    fun findAllPostIds(tagsString: String, sort: String, noComments: String): List<Long> {
+        val tagObjects = if (tagsString == "followed-tags") {
+            val user = userRepository.findByUsername(globalState.loggedInUser!!)
+            user.tagsFollowed
+        } else {
+            val tags = tagsString.split("-")
+            tagRepository.findAllById(tags.map { it.lowercase() })
+        }
+        var posts = repository.findAll().stream().filter { it.tags.containsAll(tagObjects) }.toList()
+        when (sort) {
+            "created" -> {
+                posts = posts.sortedByDescending { it.createdAt }
+            }
+            "highest-votes" -> {
+                posts = posts.sortedByDescending { it.likes - it.dislikes }
+            }
+            "likes" -> {
+                posts = posts.sortedByDescending { it.likes }
+            }
+            "dislikes" -> {
+                posts = posts.sortedByDescending { it.dislikes }
+            }
+            "comments" -> {
+                posts = posts.sortedByDescending { it.comments.size }
+            }
+        }
+        if (noComments == "true") {
+            posts = posts.filter { it.comments.isEmpty() }
+        }
+        return posts.map { it.id }.toList()
+    }
 
     fun findById(id: Long): Post = repository.findById(id).get()
+
+    fun findAllPostIdsByTags(tags: List<String>): List<Long> {
+        val tagObjects = tagRepository.findAllById(tags.map { it.lowercase() })
+        return repository.findAll().stream().filter { it.tags.containsAll(tagObjects) }.map { it.id }.toList()
+    }
 
     fun createPost(post: PostDto, username: String): Post {
         val tags = post.tagNames.map { tagRepository.findByNameIgnoreCase(it) ?: tagRepository.save(Tag(it)) }

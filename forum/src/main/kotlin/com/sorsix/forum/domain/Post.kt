@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference
 import com.fasterxml.jackson.annotation.JsonManagedReference
 import jakarta.persistence.*
 import lombok.Getter
+import java.time.LocalDateTime
 
 @Entity
 @Table(name = "posts")
@@ -39,5 +40,6 @@ data class Post(
     @ManyToMany(mappedBy = "postsFollowed")
     @JsonBackReference
     val followedBy: List<User> = listOf(),
+    val createdAt: LocalDateTime = LocalDateTime.now()
 ) {
 }

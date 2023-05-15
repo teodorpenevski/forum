@@ -14,7 +14,7 @@ class TagService(
 
     fun findTag(tagName: String): Tag? = repository.findByNameIgnoreCase(tagName)
 
-    fun createTag(tag: Tag): Tag = repository.save(tag)
+    fun createTag(tag: Tag): Tag = repository.save(Tag(tag.name.lowercase()))
 
     fun deleteTag(tagName: String) = repository.deleteById(tagName)
 

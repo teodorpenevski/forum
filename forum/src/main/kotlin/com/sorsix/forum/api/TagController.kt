@@ -21,7 +21,7 @@ class TagController(val service: TagService) {
     @PostMapping
     fun createTag(@RequestBody tag: Tag) {
         if (!service.tagExists(tag.name))
-            service.createTag(tag)
+            service.createTag(Tag(tag.name.lowercase()))
     }
 
     @GetMapping("/{name}")
