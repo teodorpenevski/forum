@@ -9,6 +9,8 @@ import com.sorsix.forum.repository.UserRepository
 import com.sorsix.forum.service.util.GlobalState
 import org.springframework.stereotype.Service
 import java.util.*
+import java.util.regex.Pattern
+import kotlin.streams.toList
 
 @Service
 class PostService(
@@ -52,12 +54,15 @@ class PostService(
         return posts.map { it.id }.toList()
     }
 
-    fun findById(id: Long): Post = repository.findById(id).get()
-
-    fun findAllPostIdsByTags(tags: List<String>): List<Long> {
+    fun searchPosts(searchString: String, tagsString: String): List<Long> {
+        val search = searchString.split("+").joinToString(" ")
+        val tags = tagsString.split("-")
+        println(tags)
         val tagObjects = tagRepository.findAllById(tags.map { it.lowercase() })
-        return repository.findAll().stream().filter { it.tags.containsAll(tagObjects) }.map { it.id }.toList()
+        return repository.findAll().stream().filter { it.title.contains(search, true) || it.text.contains(search, true) }.filter{ it.tags.containsAll(tagObjects) }.map { it.id }.toList()
     }
+
+    fun findById(id: Long): Post = repository.findById(id).get()
 
     fun createPost(post: PostDto, username: String): Post {
         val tags = post.tagNames.map { tagRepository.findByNameIgnoreCase(it) ?: tagRepository.save(Tag(it)) }

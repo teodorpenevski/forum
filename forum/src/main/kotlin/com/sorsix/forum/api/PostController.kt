@@ -31,18 +31,17 @@ class PostController(
         service.createPost(postDto, "user1")
     }
 
+    @GetMapping("/search")
+    fun searchPosts(@RequestParam(defaultValue = "") query: String, @RequestParam(defaultValue = "") tags: String): ResponseEntity<List<Long>> {
+        return if (service.searchPosts(query, tags).isNotEmpty()) {
+            ResponseEntity.ok(service.searchPosts(query, tags))
+        } else ResponseEntity.noContent().build()
+    }
+
     @GetMapping("/ids")
     fun getPostIds(@RequestParam(defaultValue = "") tags: String, @RequestParam(defaultValue = "created") sort: String, @RequestParam(defaultValue = "false") noComments: String): ResponseEntity<List<Long>> {
         return if (service.findAllPostIds(tags, sort, noComments).isNotEmpty()) {
             ResponseEntity.ok(service.findAllPostIds(tags, sort, noComments))
-        } else ResponseEntity.noContent().build()
-    }
-
-    @GetMapping("/ids/{tags}")
-    fun getPostIdsByTags(@PathVariable tags: String): ResponseEntity<List<Long>> {
-        val tagsList = tags.split("-")
-        return if (service.findAllPostIdsByTags(tagsList).isNotEmpty()) {
-            ResponseEntity.ok(service.findAllPostIdsByTags(tagsList))
         } else ResponseEntity.noContent().build()
     }
 
