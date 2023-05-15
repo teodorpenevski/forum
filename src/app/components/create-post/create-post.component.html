@@ -1,44 +1,81 @@
-<div class="create-post">
-  <div class="header">
-    <h2>Create a new post</h2>
-  </div>
+<section class="create-post">
+
+  <h2 class="header">
+    Create a new post
+  </h2>
+
+
   <div class="body">
+
     <form class="create-post-form" [formGroup]="postForm" (ngSubmit)="createPost()">
+
       <div class="form-title">
-        <label for="title">Title</label>
-        <input type="text" class="post-title" id="title" placeholder="Post title" formControlName="title">
+        <input type="text" class="post-title" id="title" placeholder="Title" formControlName="title">
       </div>
+
       <div class="form-text">
-        <label for="text">Description</label>
-        <textarea id="text" class="post-description" placeholder="Post description" formControlName="text"></textarea>
-      </div>
-      <div class="form-tags">
-        <label for="tags">Tags</label>
-        <span class="select-tags-wrapper">
-          <ul class="select-tags">
-            <li class="tag" *ngFor="let tag of tags">
-              <span>{{ tag }}</span>
-              <button type="button" class="remove-tag"  (click)="removeTag(tag)">X</button>
-            </li>
-            <li>
-              <input type="text" id="tags" class="tag-input" formControlName="tagsInput" placeholder="Add a tag" (keyup)="addToTags($event)"/>
-            </li>
-          </ul>
-        </span>
-<!--        <div class="search-tags" [ngClass]="{'expand': tagsInput != ''}">-->
-<!--          <ul class="found-tags">-->
-<!--            <li class="tag">-->
-<!--              {{ tagsInput }}-->
-<!--            </li>-->
-<!--            <li class="tag" *ngFor="let tag of tags$">-->
-<!--              {{ tag }}-->
-<!--            </li>-->
-<!--          </ul>-->
-<!--        </div>-->
-      </div>
-      <div class="form-buttons">
-        <button type="submit" class="button">Create post</button>
-      </div>
-    </form>
-  </div>
-</div>
+        <textarea id="text" class="post-description" placeholder="Text" formControlName="text"></textarea>
+      </div> <!-- .form-text -->
+
+      <div class="flex-row">
+
+        <div class="form-tags">
+
+          <label for="tags">
+            <img class="tag-icon" src="./assets/icons/tag-solid.svg" alt="Tag icon">
+          </label>
+
+          <span class="select-tags-wrapper">
+
+            <ul class="select-tags">
+
+              <li class="tag" *ngFor="let tag of tags">
+
+                <span>
+                  {{ tag }}
+                </span>
+
+                <button type="button" class="remove-tag" (click)="removeTag(tag)">
+                  <img class="x-icon" src="./assets/icons/xmark-solid.svg" alt="Close icon">
+                </button>
+
+              </li>
+
+              <li>
+                <input type="text" id="tags" class="tag-input" formControlName="tagsInput" placeholder="Add tags"
+                  (keyup)="addToTags($event)" />
+              </li>
+
+            </ul>
+
+          </span> <!-- .select-tags-wrapper -->
+
+
+
+          <!--        <div class="search-tags" [ngClass]="{'expand': tagsInput != ''}">-->
+          <!--          <ul class="found-tags">-->
+          <!--            <li class="tag">-->
+          <!--              {{ tagsInput }}-->
+          <!--            </li>-->
+          <!--            <li class="tag" *ngFor="let tag of tags$">-->
+          <!--              {{ tag }}-->
+          <!--            </li>-->
+          <!--          </ul>-->
+          <!--        </div>-->
+
+
+        </div> <!-- .form-tags -->
+
+        <div class="form-buttons">
+          <button type="submit" class="submit-button">
+            Post
+          </button>
+        </div> <!-- .form-buttons -->
+
+      </div> <!-- .flex-row -->
+
+    </form> <!-- .create-post-form -->
+
+  </div> <!-- .body -->
+
+</section> <!-- .create-post -->

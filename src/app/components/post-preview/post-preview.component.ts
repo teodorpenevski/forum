@@ -18,7 +18,7 @@ export class PostPreviewComponent {
       'ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. ' +
       'Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. ' +
       'Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue.',
-    tagNames: ['tag1', 'tag2', 'tag3']
+    tagNames: []
   }
 
   votes = 10;
