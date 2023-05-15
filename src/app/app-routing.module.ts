@@ -17,7 +17,8 @@ const routes: Routes = [
   { path: 'posts/:id', component: PostComponent },
   { path: 'create-post', component: CreatePostComponent },
   { path: 'users/:username', component: UserComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'search', component: PostsPageComponent },
 ];
 
 @NgModule({

@@ -18,6 +18,10 @@ export class PostsPageComponent {
   }
 
   getPostIds() {
+    if (this.route.snapshot.queryParamMap.has('q')) {
+      // @ts-ignore
+      return this.service.searchPosts(this.route.snapshot.queryParamMap.get('q'), this.route.snapshot.queryParamMap.get('tags')).subscribe(postIds => this.postIds = postIds);
+    }
     return this.service.getPostIdsWithParams(this.route.snapshot.queryParamMap).subscribe(postIds => this.postIds = postIds);
   }
 }

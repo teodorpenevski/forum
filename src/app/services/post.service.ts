@@ -47,6 +47,13 @@ export class PostService {
     return this.http.post(this.postsApi + '/' + postId + '/comment', { text: comment });
   }
 
+  searchPosts(search: string, tags: string): Observable<number[]> {
+    if (!search.trim()) {
+      return this.getPostIds();
+    }
+    return this.http.get<number[]>(this.postsApi + '/search?query=' + search + '&tags=' + tags);
+  }
+
   onEdit() {
 
   }
