@@ -28,6 +28,25 @@ export class FilterComponent {
     ) { }
 
     ngOnInit() {
+      this.route.queryParams.subscribe(params => {
+        if (params['sort']) {
+          this.filterForm.patchValue({ sort: params['sort'] });
+        }
+        if (params['noComments']) {
+          this.filterForm.patchValue({ noComments: params['noComments'] == 'true' });
+        }
+        if (params['tags']) {
+          if (params['tags'] == 'followed-tags') {
+            this.filterForm.patchValue({ followedTags: 'followed-tags' });
+          }
+          else {
+            let tags = params['tags'].split('-');
+            tags.forEach((tag: string) => {
+              this.tags.add(tag);
+            });
+          }
+        }
+      });
     }
 
     cancel() {

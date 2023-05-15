@@ -20,7 +20,7 @@ export class PostComponent implements Post {
   likes = 0;
   dislikes = 0;
   createdBy = 'John Doe';
-  postedDate = 'March 1, 2018';
+  createdAt = 'March 1, 2018';
   isSaved: boolean = false;
   lastEditedDate = 'March 1, 2018';
   tags: Tag[] = [
@@ -71,6 +71,7 @@ export class PostComponent implements Post {
         this.tags = post.tags;
         this.comments = post.comments;
         this.commentCount = post.comments.length;
+        this.createdAt = post.createdAt;
       }
     });
   }
