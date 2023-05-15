@@ -37,7 +37,7 @@
 
 .content-display {
   width: 100%;
-  height: fit-content;
+  height: 100%;
 
   padding: 0.65rem;
 
@@ -92,7 +92,6 @@
 
 app-tag,
 app-post-preview {
-  width: fit-content;
   height: fit-content;
 
   /* flexbox */
@@ -102,10 +101,12 @@ app-post-preview {
 }
 
 app-tag {
+  width: fit-content;
   /* margin-right: 0.3rem; */
 }
 
 app-post-preview {
+  width: 100%;
   /* margin-bottom: 0.5rem; */
 }
 
@@ -155,7 +156,7 @@ app-post-preview {
   /* flexbox */
   flex-direction: row;
 
-  gap: 0.3rem;
+  gap: 0.35rem;
 }
 
 /* .inline end */
@@ -206,7 +207,7 @@ app-post-preview {
   /* flexbox */
   flex-direction: row;
 
-  gap: 0.3rem;
+  gap: 0.35rem;
 }
 
 
@@ -216,7 +217,7 @@ app-post-preview {
   /* flexbox */
   flex-direction: column;
 
-  gap: 0.5rem;
+  gap: 0.65rem;
 }
 
 

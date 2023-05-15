@@ -10,11 +10,13 @@
   --color-primary-main: #1F5DA0;
   --color-primary-dark: #194a80;
   --color-primary-darker: #102f50;
+  --color-accent-orange-lightest50: #fee6d47f;
   --color-accent-orange-lightest: #fee6d4;
   --color-accent-orange-lighter: #fdc094;
   --color-accent-orange-light: #fa8128;
   --color-accent-orange-main: #e36b14;
   --color-accent-orange-dark: #CC5500;
+  --color-accent-green-lightest50: #ced8d67f;
   --color-accent-green-lightest: #ced8d6;
   --color-accent-green-lighter: #aebebb;
   --color-accent-green-light: #5d7d76;
@@ -55,7 +57,9 @@ h3,
 h4,
 h5,
 h6,
-p {
+p,
+ol,
+ul {
   margin: 0;
   padding: 0;
 }

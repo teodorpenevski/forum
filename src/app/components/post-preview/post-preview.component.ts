@@ -25,7 +25,7 @@ export class PostPreviewComponent {
   commentsLength = 2;
   author = 'Author';
   created = '2020-01-01';
-  createdBy = 'User';
+  createdBy = "User";
   constructor(private service: PostService) { }
 
   ngOnInit() {
