@@ -1,37 +1,64 @@
 .comment {
-  display: grid;
-  grid-template-columns: 1fr fit-content(100%);
-  gap: 10px;
+  width: 100%;
+  height: fit-content;
+
+  margin: 0;
+  padding: 0.3rem 0.5rem;
+
+  background-color: var(--color-accent-green-lightest);
+
+  border: 2px dashed var(--color-accent-green-main);
+  border-radius: 0.5rem;
+
   text-align: justify;
+
+  /* flexbox */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .comment-entry {
-  display: grid;
-  grid-template-rows: 1fr fit-content(100%);
-}
+  width: 100%;
+  height: fit-content;
 
-.content {
-  margin: 10px 0;
-  font-size: 1.1em;
-}
+  margin: 0;
+  padding: 0;
 
-.tags {
+  /* flexbox */
   display: flex;
-  gap: 5px;
-  margin: 10px 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 
-.tag {
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 0.8em;
+.comment-content {
+  margin: 0;
+  padding: 0;
 }
 
-.meta {
+.comment-content p {
+  font-size: 1.05rem;
+
+  color: var(--color-accent-green-dark);
+}
+
+.comment-meta {
+  width: 100%;
+  height: fit-content;
+
+  margin: 0;
+  padding-top: 0.5rem;
+
+  /* border-top: 1px dashed var(--color-accent-green-dark); */
+
+  font-size: 0.75em;
+  color: var(--color-accent-green-main);
+
+  /* flexbox */
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  margin-top: 10px;
-  font-size: 0.8em;
-  color: #666;
+  align-items: center;
 }

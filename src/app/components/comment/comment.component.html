@@ -1,13 +1,32 @@
 <div class="comment">
+
   <div class="comment-entry">
-    <div class="content">
-      <p>{{ comment.comment }}</p>
-    </div>
-    <div class="meta">
-      <p class="by-user">Posted by <a href="#">{{ comment.createdBy }}</a></p>
-      <p class="date-time">posted on {{ commentDate }}</p>
-      <p class="edit-time" *ngIf="lastEditDate">last edit on {{ lastEditDate }}</p>
-    </div>
-  </div>
+
+    <div class="comment-content">
+      <p>
+        {{ comment.comment }}
+      </p>
+    </div> <!-- .comment-content -->
+
+    <div class="comment-meta">
+
+      <p class="by-user">
+        Posted by
+        <a href="#"> {{ comment.createdBy }} </a>
+      </p>
+
+      <p class="date-time">
+        Posted on {{ commentDate }}
+      </p>
+
+      <p class="edit-time" *ngIf="lastEditDate">
+        Last edit on {{ lastEditDate }}
+      </p>
+
+    </div> <!-- comment-meta-->
+
+  </div> <!-- .comment-entry -->
+
   <!--  <app-vote></app-vote>-->
-</div>
+
+</div> <!-- .comment -->
