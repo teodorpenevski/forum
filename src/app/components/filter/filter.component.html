@@ -1,4 +1,4 @@
-<form class="filter-controller" ngForm [formGroup]="filterForm" (ngSubmit)="apply()">
+<form class="filter-controller" [formGroup]="filterForm" (ngSubmit)="apply()">
   <div class="filter-controller-settings">
     <fieldset class="filter field">
       <legend>Filter by</legend>
@@ -28,7 +28,20 @@
         <input type="radio" id="insert-tags" formControlName="followedTags" value="insert-tags" required>
         <label for="insert-tags">Insert tags</label>
       </div>
-      <input type="text" formControlName="tags" placeholder="Search Tags" (keyup)="searchTags($event)">
+      <div class="form-tags">
+        <label for="tags">Tags</label>
+        <span class="select-tags-wrapper">
+          <ul class="select-tags">
+            <li class="tag" *ngFor="let tag of tags">
+              <span>{{ tag }}</span>
+              <button type="button" class="remove-tag"  (click)="removeTag(tag)">X</button>
+            </li>
+            <li>
+              <input type="text" id="tags" class="tag-input" formControlName="tagsInput" placeholder="Add a tag" (keyup)="searchTags($event)"/>
+            </li>
+          </ul>
+        </span>
+      </div>
     </fieldset>
   </div>
   <div class="separator"></div>

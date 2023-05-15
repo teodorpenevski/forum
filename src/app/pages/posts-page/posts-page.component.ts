@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PostService } from "../../services/post.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-posts-page',
@@ -9,20 +10,14 @@ import { PostService } from "../../services/post.service";
 export class PostsPageComponent {
   postIds: number[] = [];
   isExpanded = false;
-  sortAttribute = 'created';
-  constructor(private service: PostService) { }
+  constructor(private route: ActivatedRoute,
+              private service: PostService) { }
 
   ngOnInit() {
     this.getPostIds();
   }
 
   getPostIds() {
-    return this.service.getPostIds().subscribe(postIds => this.postIds = postIds);
+    return this.service.getPostIdsWithParams(this.route.snapshot.queryParamMap).subscribe(postIds => this.postIds = postIds);
   }
-
-  sort(attribute: string) {
-    this.sortAttribute = attribute;
-  }
-
-
 }
