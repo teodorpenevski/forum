@@ -52,6 +52,22 @@ data class User(
         inverseJoinColumns = [JoinColumn(name = "post_name")]
     )
     @JsonManagedReference
-    val tagsFollowed: List<Tag> = listOf()
+    val tagsFollowed: List<Tag> = listOf(),
+    @ManyToMany
+    @JoinTable(
+        name = "commentsLiked",
+        joinColumns = [JoinColumn(name = "username")],
+        inverseJoinColumns = [JoinColumn(name = "comment_id")]
+    )
+    @JsonManagedReference
+    val commentsLiked: List<Comment> = listOf(),
+    @ManyToMany
+    @JoinTable(
+        name = "commentsDisliked",
+        joinColumns = [JoinColumn(name = "username")],
+        inverseJoinColumns = [JoinColumn(name = "comment_id")]
+    )
+    @JsonManagedReference
+    val commentsDisliked: List<Comment> = listOf(),
 ) {
 }

@@ -2,6 +2,7 @@ package com.sorsix.forum.service
 
 import com.sorsix.forum.domain.User
 import com.sorsix.forum.domain.UserDto
+import com.sorsix.forum.repository.CommentRepository
 import com.sorsix.forum.repository.PostRepository
 import com.sorsix.forum.repository.TagRepository
 import com.sorsix.forum.repository.UserRepository
@@ -13,6 +14,7 @@ import java.time.LocalDateTime
 class UserService(private val repository: UserRepository,
                   private val postRepository: PostRepository,
                   private val tagRepository: TagRepository,
+                  private val commentRepository: CommentRepository,
                   private val globalState: GlobalState
 ) {
 
@@ -114,5 +116,45 @@ class UserService(private val repository: UserRepository,
         return repository.save(User(user.username, user.password, user.dateJoined, user.postsCreated, user.commentsCreated, user.postsLiked, user.postsDisliked, user.postsFollowed, tagsFollowed))
     }
 
+    fun likeComment(username: String, commentId: Long): User {
+        val user = repository.findByUsername("theDude123")
+        val likedComments = user.commentsLiked.toMutableList()
+        val dislikedComments = user.commentsDisliked.toMutableList()
+        var comment = likedComments.find { it.id == commentId }
+        if (comment != null) {
+            comment.likes -= 1
+            likedComments.remove(comment)
+        } else {
+            comment = commentRepository.findById(commentId).get()
+            comment.likes += 1
+            likedComments.add(comment)
+            if (dislikedComments.contains(comment)) {
+                comment.dislikes -= 1
+                dislikedComments.remove(comment)
+            }
+        }
+        commentRepository.save(comment)
+        return repository.save(User(user.username, user.password, user.dateJoined, user.postsCreated, user.commentsCreated, user.postsLiked, user.postsDisliked, user.postsFollowed, user.tagsFollowed, likedComments, dislikedComments))
+    }
 
+    fun dislikeComment(username: String, commentId: Long): User {
+        val user = repository.findByUsername("theDude123")
+        val likedComments = user.commentsLiked.toMutableList()
+        val dislikedComments = user.commentsDisliked.toMutableList()
+        var comment = dislikedComments.find { it.id == commentId }
+        if (comment != null) {
+            comment.dislikes -= 1
+            likedComments.remove(comment)
+        } else {
+            comment = commentRepository.findById(commentId).get()
+            comment.dislikes += 1
+            dislikedComments.add(comment)
+            if (likedComments.contains(comment)) {
+                comment.likes -= 1
+                likedComments.remove(comment)
+            }
+        }
+        commentRepository.save(comment)
+        return repository.save(User(user.username, user.password, user.dateJoined, user.postsCreated, user.commentsCreated, user.postsLiked, user.postsDisliked, user.postsFollowed, user.tagsFollowed, likedComments, dislikedComments))
+    }
 }

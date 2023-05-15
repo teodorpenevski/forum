@@ -59,6 +59,16 @@ class UserController(
         service.dislikePost(username, postId)
     }
 
+    @PostMapping("/{username}/likeComment/{commentId}")
+    fun likeComment(@PathVariable username: String, @PathVariable commentId: Long) {
+        service.likeComment(username, commentId)
+    }
+
+    @PostMapping("/{username}/dislikeComment/{commentId}")
+    fun dislikeComment(@PathVariable username: String, @PathVariable commentId: Long) {
+        service.dislikeComment(username, commentId)
+    }
+
     @PostMapping("/{username}/followPost/{postId}")
     fun followPost(@PathVariable username: String, @PathVariable postId: Long) {
         service.followPost(username, postId)

@@ -25,7 +25,7 @@ class CommentService(private val repository: CommentRepository) {
 
     fun editComment(commentId: Long, comment: String): Comment {
         val oldComment = this.findById(commentId)
-        return repository.save(Comment(oldComment.id, comment, oldComment.createdBy, oldComment.post))
+        return repository.save(Comment(oldComment.id, comment, oldComment.likes, oldComment.dislikes, oldComment.createdBy, oldComment.post))
     }
 
     fun deleteComment(commentId: Long) = repository.deleteById(commentId)

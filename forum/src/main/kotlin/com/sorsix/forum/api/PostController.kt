@@ -67,7 +67,7 @@ class PostController(
         val post = service.findById(id)
         // Change from static user to current user in the future
         val user = userService.getUserByUsername("theDude123")
-        val comment = Comment(0, commentDto.text, user, post)
+        val comment = Comment(0, commentDto.text, 0, 0, user, post)
         commentService.saveComment(comment)
     }
 
