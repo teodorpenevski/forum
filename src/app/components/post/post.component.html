@@ -1,43 +1,133 @@
-<div class="post">
-  <h2 class="title">{{ title }}</h2>
-  <div class="tags">
-    <div class="tag" *ngFor="let tag of tags">{{ tag.name }}</div>
-  </div>
-  <div class="text">
-    <div class="text-entry">
-      <div class="content">
-        <p>{{ text }}</p>
+<section class="post-page">
+
+  <button type="button" class="go-back" (click)="goBack()">
+    <img class="back-icon" src="./assets/icons/arrow-left-solid.svg" alt="Arrow to go back to posts">
+  </button> <!-- back button -->
+
+
+  <div class="flex-column">
+
+    <section class="post">
+
+      <div class="flex-row">
+
+        <h2 class="title">
+          {{ title }}
+        </h2>
+
+        <ul class="tags">
+
+          <li *ngFor="let tag of tags">
+            <app-tag [tagInfo]="tag"></app-tag>
+          </li>
+
+        </ul> <!-- .tags -->
+
+        <!-- <div class="tags">
+          <div class="tag" *ngFor="let tag of tags">
+            {{ tag.name }}
+          </div>
+        </div> -->
+
       </div>
+
+      <div class="text">
+        <p>
+          {{ text }}
+        </p>
+      </div> <!-- .text -->
+
       <div class="meta">
-        <p class="by-user">Posted by <a href="#">{{ createdBy }}</a></p>
-        <p class="date-time">posted on {{ postedDate }}</p>
-        <p class="edit-time" *ngIf="lastEditedDate">last edit on {{ lastEditedDate }}</p>
+
+        <p class="by-user">
+          Posted by
+          <a href="#"> {{ createdBy }} </a>
+        </p> <!-- .by-user -->
+
+        <p class="date-time">
+          Posted on {{ postedDate }}
+        </p> <!-- .date-time -->
+
+        <p class="edit-time" *ngIf="lastEditedDate">
+          Last edit on {{ lastEditedDate }}
+        </p> <!-- .edit-time -->
+
+      </div> <!-- .meta -->
+
+    </section>
+
+    <form class="comment-form" [formGroup]="commentForm" (ngSubmit)="onComment()">
+
+      <!-- <label for="comment-textarea">
+        Add comment as
+        <a href=""> {{ user }} </a>
+      </label> -->
+
+      <textarea id="comment-textarea" class="comment-textarea" formControlName="text"
+        placeholder="Add comment as {{ user}}"></textarea>
+
+      <button type="submit" class="comment-button">
+        Comment
+      </button>
+
+    </form> <!-- comment-form -->
+
+    <div class="comment-section">
+
+      <div class="flex-row">
+
+        <div class="comment-section-header">
+
+          <h3 class="comment-section-title" *ngIf="comments.length != 1">
+            {{ comments.length }} Answers
+          </h3>
+
+          <h3 class="comment-section-title" *ngIf="comments.length == 1">
+            1 Answer
+          </h3>
+
+          <h3 class="comment" *ngIf="comments.length == 0">
+            No answers yet
+          </h3>
+
+        </div> <!-- .comment-section-header -->
+
+        <div class="sort-buttons">
+
+          <button (click)="sort('created')"
+            [ngClass]="{'sorted': sortAttribute === 'created', 'descending': !ascendingOrDescending}">
+
+            Created
+            <img class="sort-icon" src="assets/upvote-icon.svg" alt="arrow-down" />
+
+          </button> <!-- Created -->
+
+          <button (click)="sort('votes')"
+            [ngClass]="{'sorted': sortAttribute === 'votes', 'descending': !ascendingOrDescending}">
+
+            Votes
+            <img class="sort-icon" src="assets/upvote-icon.svg" alt="arrow-down" />
+
+          </button> <!-- Votes -->
+
+          <button (click)="sort('modified')"
+            [ngClass]="{'sorted': sortAttribute === 'modified', 'descending': !ascendingOrDescending}">
+
+            Modified
+            <img class="sort-icon" src="assets/upvote-icon.svg" alt="arrow-down" />
+
+          </button> <!-- Modified -->
+
+        </div> <!-- .sort-buttons -->
+
       </div>
-    </div>
-    <app-vote [id]="id"></app-vote>
-  </div>
-  <form class="comment-form" [formGroup]="commentForm" (ngSubmit)="onComment()">
-    <label for="comment-textarea">Add comment as <a href="">{{ user }}</a></label>
-    <textarea id="comment-textarea" class="comment-textarea" formControlName="text"></textarea>
-    <button type="submit" class="button comment-button">Add comment</button>
-  </form>
-  <div class="comment-section">
-    <div class="comment-section-header">
-      <h3 class="comment-section-title" *ngIf="comments.length != 1">{{ comments.length }} Answers</h3>
-      <h3 class="comment-section-title" *ngIf="comments.length == 1">1 Answer</h3>
-      <div class="comment" *ngIf="comments.length == 0">No answers yet</div>
-      <div class="sort-buttons">
-        <button class="button" (click)="sort('created')" [ngClass]="{'sorted': sortAttribute === 'created', 'descending': !ascendingOrDescending}">Created
-          <img ngSrc="assets/upvote-icon.svg" alt="arrow-down" height="36" width="36"/>
-        </button>
-        <button class="button" (click)="sort('votes')" [ngClass]="{'sorted': sortAttribute === 'votes', 'descending': !ascendingOrDescending}">Votes
-          <img ngSrc="assets/upvote-icon.svg" alt="arrow-down" height="36" width="36"/>
-        </button>
-        <button class="button" (click)="sort('modified')" [ngClass]="{'sorted': sortAttribute === 'modified', 'descending': !ascendingOrDescending}">Modified
-          <img ngSrc="assets/upvote-icon.svg" alt="arrow-down" height="36" width="36"/>
-        </button>
-      </div>
-    </div>
-    <app-comment *ngFor="let comment of comments" [comment]="comment"></app-comment>
-  </div>
-</div>
+
+      <app-comment *ngFor="let comment of comments" [comment]="comment"></app-comment>
+
+    </div> <!-- comment-section -->
+
+  </div> <!-- .flex-column -->
+
+  <app-vote [id]="id"></app-vote>
+
+</section>

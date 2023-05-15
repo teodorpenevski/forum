@@ -47,7 +47,12 @@ body {
   min-height: 100%;
 }
 
-app-root {
+app-root,
+app-home-page,
+app-tags-page,
+app-posts-page,
+app-create-post,
+app-post {
   width: 100%;
   min-height: 100%;
 }
@@ -77,11 +82,3 @@ ul {
 .clickable {
   cursor: pointer;
 } */
-
-app-home-page,
-app-tags-page,
-app-posts-page,
-app-create-post {
-  width: 100%;
-  min-height: 100%;
-}

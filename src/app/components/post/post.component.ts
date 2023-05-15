@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Location } from '@angular/common';
+
 import { PostService } from "../../services/post.service";
 import { Post } from "../../models/post";
 import { Comment } from "../../models/comment";
@@ -42,6 +44,7 @@ export class PostComponent implements Post {
     }
   ];
   commentCount: number = 1;
+
   sortAttribute: string = 'created';
   ascendingOrDescending: boolean = true;
 
@@ -51,9 +54,7 @@ export class PostComponent implements Post {
     ]),
   });
 
-  constructor(private route: ActivatedRoute,
-              private service: PostService
-  ) { }
+  constructor(private route: ActivatedRoute, private service: PostService, private location: Location) { }
 
   ngOnInit() {
     this.getPost();
@@ -101,11 +102,20 @@ export class PostComponent implements Post {
   }
 
   sort(attribute: string) {
+
     if (this.sortAttribute === attribute) {
+
       this.ascendingOrDescending = !this.ascendingOrDescending;
+
     } else {
+
       this.ascendingOrDescending = true;
       this.sortAttribute = attribute;
+
     }
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }
