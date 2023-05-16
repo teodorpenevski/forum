@@ -3,11 +3,11 @@ import { VoteService } from "../../services/vote.service";
 
 @Component({
   selector: 'app-vote',
-  templateUrl: './vote.component.html',
-  styleUrls: ['./vote.component.css']
+  templateUrl: './vote-comment.component.html',
+  styleUrls: ['./vote-comment.component.css']
 })
 
-export class VoteComponent {
+export class VoteCommentComponent {
   @Input() id: number = 1;
   voteStatus: number = 0;
   followStatus: boolean = false;
