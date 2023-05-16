@@ -52,7 +52,8 @@ app-home-page,
 app-tags-page,
 app-posts-page,
 app-create-post,
-app-post {
+app-post,
+app-login {
   width: 100%;
   min-height: 100%;
 }
