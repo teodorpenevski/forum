@@ -15,7 +15,15 @@
       </div>
       <div>
         <input type="radio" id="highest-votes" formControlName="sort" value="highest-votes" required>
-        <label for="highest-votes">Highest votes</label>
+        <label for="highest-votes">Highest score</label>
+      </div>
+      <div>
+        <input type="radio" id="controversial" formControlName="sort" value="controversial" required>
+        <label for="controversial">Controversial</label>
+      </div>
+      <div>
+        <input type="radio" id="most-commented" formControlName="sort" value="most-commented" required>
+        <label for="most-commented">Most commented</label>
       </div>
     </fieldset>
     <fieldset class="tags field">
@@ -34,10 +42,11 @@
           <ul class="select-tags">
             <li class="tag" *ngFor="let tag of tags">
               <span>{{ tag }}</span>
-              <button type="button" class="remove-tag"  (click)="removeTag(tag)">X</button>
+              <button type="button" class="remove-tag" (click)="removeTag(tag)">X</button>
             </li>
             <li>
-              <input type="text" id="tags" class="tag-input" formControlName="tagsInput" placeholder="Add a tag" (keyup)="searchTags($event)"/>
+              <input type="text" id="tags" class="tag-input" formControlName="tagsInput" placeholder="Add a tag"
+                (keyup)="searchTags($event)" />
             </li>
           </ul>
         </span>

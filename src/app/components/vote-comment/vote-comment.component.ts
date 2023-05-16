@@ -2,7 +2,7 @@ import { Component, HostListener, Input } from '@angular/core';
 import { VoteService } from "../../services/vote.service";
 
 @Component({
-  selector: 'app-vote',
+  selector: 'app-vote-comment',
   templateUrl: './vote-comment.component.html',
   styleUrls: ['./vote-comment.component.css']
 })
