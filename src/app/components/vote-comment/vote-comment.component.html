@@ -6,8 +6,6 @@
     <img ngSrc="/assets/upvote-icon.svg" class="down-vote clickable" (click)="dislike()"
       [ngClass]="{'clicked' : voteStatus === -1}" height="36" width="36" alt="downvote button" />
   </div>
-  <img ngSrc="/assets/save-icon.svg" class="save clickable" (click)="follow()" [ngClass]="{'clicked' : followStatus}"
-    height="36" width="36" alt="save button" />
   <div class="dropdown clickable extras">
     <span class="extras clickable">...</span>
     <div class="dropdown-content" [ngClass]="{'show': clicked}">

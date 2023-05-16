@@ -40,7 +40,10 @@ export class PostComponent implements Post {
     {
       id: 1,
       comment: "I love dogs!",
-      createdBy: "Jane Doe"
+      createdBy: "Jane Doe",
+      createdAt: "March 1, 2018",
+      likes: 0,
+      dislikes: 0,
     }
   ];
   commentCount: number = 1;

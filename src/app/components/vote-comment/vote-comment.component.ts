@@ -1,5 +1,6 @@
 import { Component, HostListener, Input } from '@angular/core';
 import { VoteService } from "../../services/vote.service";
+import { Comment } from "../../models/comment";
 
 @Component({
   selector: 'app-vote-comment',
@@ -20,33 +21,25 @@ export class VoteCommentComponent {
   ngOnInit() {
     this.getVoteCount();
     this.getVoteStatus();
-    this.getFollowStatus();
   }
 
   ngOnChanges() {
     this.getVoteCount();
     this.getVoteStatus();
-    this.getFollowStatus();
   }
 
   getVoteCount() {
-    this.service.getVoteCount(this.id).subscribe(post => {
-      if (post) {
-        this.likes = post.likes;
-        this.dislikes = post.dislikes;
+    this.service.getVoteCountComment(this.id).subscribe((comment: Comment | null) => {
+      if (comment) {
+        this.likes = comment.likes;
+        this.dislikes = comment.dislikes;
       }
     });
   }
 
   getVoteStatus() {
-    this.service.getVoteStatus('username', this.id).subscribe(status => {
+    this.service.getVoteStatusComment('username', this.id).subscribe(status => {
       this.voteStatus = status
-    });
-  }
-
-  getFollowStatus() {
-    this.service.getFollowStatus('username', this.id).subscribe(status => {
-      this.followStatus = status;
     });
   }
 
@@ -63,7 +56,7 @@ export class VoteCommentComponent {
       this.likes++;
       this.dislikes--;
     }
-    this.service.likePost('username', this.id).subscribe();
+    this.service.likeComment('username', this.id).subscribe();
   }
 
   dislike() {
@@ -79,7 +72,7 @@ export class VoteCommentComponent {
       this.likes--;
       this.dislikes++;
     }
-    this.service.dislikePost('username', this.id).subscribe();
+    this.service.dislikeComment('username', this.id).subscribe();
   }
 
   follow() {

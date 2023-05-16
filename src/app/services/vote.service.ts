@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Post } from "../models/post";
+import { Comment } from "../models/comment";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,22 @@ export class VoteService {
 
   getFollowStatus(username: string, id: number): Observable<boolean> {
     return this.http.get<boolean>(this.usersApi + '/' + username + '/followStatus/' + id);
+  }
+
+  getVoteCountComment(id: number): Observable<Comment | null> {
+    return this.http.get<Comment | null>(this.commentsApi + '/' + id);
+  }
+
+  getVoteStatusComment(username: string, id: number): Observable<number> {
+    return this.http.get<number>(this.usersApi + '/' + username + '/voteStatusComment/' + id);
+  }
+
+  likeComment(username: string, id: number) {
+    return this.http.post(this.commentsApi + username + '/like' + id, null);
+  }
+
+  dislikeComment(username: string, id: number) {
+    return this.http.post(this.commentsApi + username + '/dislike' + id, null);
   }
 
   likePost(username: string, id: number) {
