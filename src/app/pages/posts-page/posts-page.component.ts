@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
+
 import { PostService } from "../../services/post.service";
 import { DisplayData } from 'src/app/interfaces/display-data';
 
@@ -16,24 +18,27 @@ export class PostsPageComponent {
   allPostsByIDsDisplay: Array<DisplayData> = [];
 
   isExpanded = false;
-  sortAttribute = 'created';
-
-  constructor(private postService: PostService) { }
+  constructor(private route: ActivatedRoute, private postService: PostService) { }
 
   ngOnInit() {
     this.getPostIds();
   }
 
   getPostIds() {
-    return this.postService.getPostIds().subscribe(postIds => {
+    if (this.route.snapshot.queryParamMap.has('q')) {
+      // @ts-ignore
+      return this.postService.searchPosts(this.route.snapshot.queryParamMap.get('q'), this.route.snapshot.queryParamMap.get('tags')).subscribe(postIds => {
+        this.postIds = postIds;
+        this.numberOfPosts = postIds.length.toString() + ' posts';
+        this.allPostsByIDsDisplay = this.displayAllPostsByID(this.postIds);
+      });
+    }
+
+    return this.postService.getPostIdsWithParams(this.route.snapshot.queryParamMap).subscribe(postIds => {
       this.postIds = postIds;
       this.numberOfPosts = postIds.length.toString() + ' posts';
       this.allPostsByIDsDisplay = this.displayAllPostsByID(this.postIds);
     });
-  }
-
-  sort(attribute: string) {
-    this.sortAttribute = attribute;
   }
 
   displayAllPostsByID(allPostIDs: number[]): Array<DisplayData> {

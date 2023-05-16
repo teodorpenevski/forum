@@ -23,12 +23,6 @@
 
         </ul> <!-- .tags -->
 
-        <!-- <div class="tags">
-          <div class="tag" *ngFor="let tag of tags">
-            {{ tag.name }}
-          </div>
-        </div> -->
-
       </div>
 
       <div class="text">
@@ -41,11 +35,11 @@
 
         <p class="by-user">
           Posted by
-          <a href="#"> {{ createdBy }} </a>
+          <a href="/users/{{ createdBy }}"> {{ createdBy }} </a>
         </p> <!-- .by-user -->
 
         <p class="date-time">
-          Posted on {{ postedDate }}
+          Posted on {{ createdAt }}
         </p> <!-- .date-time -->
 
         <p class="edit-time" *ngIf="lastEditedDate">

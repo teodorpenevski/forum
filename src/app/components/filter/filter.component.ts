@@ -10,17 +10,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 export class FilterComponent {
     @Output() cancelFilterEvent = new EventEmitter<void>();
-
+    tags: Set<string> = new Set();
     filterForm = new FormGroup({
       sort: new FormControl('newest', [
         Validators.required,
       ]),
-      noComments: new FormControl(null),
+      noComments: new FormControl(false),
       followedTags: new FormControl('insert-tags', [
         Validators.required
       ]),
-      tags: new FormControl('', [
-      ])
+      tags: new FormControl(''),
+      tagsInput: new FormControl('')
     });
 
     constructor(private route: ActivatedRoute,
@@ -28,6 +28,25 @@ export class FilterComponent {
     ) { }
 
     ngOnInit() {
+      this.route.queryParams.subscribe(params => {
+        if (params['sort']) {
+          this.filterForm.patchValue({ sort: params['sort'] });
+        }
+        if (params['noComments']) {
+          this.filterForm.patchValue({ noComments: params['noComments'] == 'true' });
+        }
+        if (params['tags']) {
+          if (params['tags'] == 'followed-tags') {
+            this.filterForm.patchValue({ followedTags: 'followed-tags' });
+          }
+          else {
+            let tags = params['tags'].split('-');
+            tags.forEach((tag: string) => {
+              this.tags.add(tag);
+            });
+          }
+        }
+      });
     }
 
     cancel() {
@@ -36,17 +55,41 @@ export class FilterComponent {
 
     apply() {
       if (!this.filterForm.valid) {
-        console.log("not valid");
+        console.log('invalid form');
         return;
       }
-      if (this.filterForm.value.tags === '') {
-        delete this.filterForm.value.tags;
+      delete this.filterForm.value.tagsInput;
+      if (this.filterForm.value.followedTags == 'followed-tags') {
+        this.filterForm.patchValue({ tags: 'followed-tags' });
+        this.router.navigate(['/posts'], { queryParams: this.filterForm.value }).then(() => {
+          window.location.reload();
+        });
       }
-      console.log('applied filters: ', this.filterForm.value);
-      this.router.navigate(['/posts'], { queryParams: this.filterForm.value });
-      this.filterForm.reset(this.filterForm.value);
+      else {
+        this.filterForm.patchValue({ tags: Array.from(this.tags).join("-") });
+        this.router.navigate(['/posts'], { queryParams: this.filterForm.value }).then(() => {
+          window.location.reload();
+        });
+      }
     }
 
-    searchTags(event: any) { // Search for tags and delimit with space
+    searchTags(event: any) {
+      if (event.code !== 'Space') {
+        return;
+      }
+      let tag = this.filterForm.value.tagsInput!!.trim();
+      if (tag === '') {
+        this.filterForm.patchValue({ tagsInput: '' });
+        return;
+      }
+      this.filterForm.patchValue({ tagsInput: tag });
+      if (this.tags.has(tag!!))
+        return;
+      this.tags.add(tag!!);
+      this.filterForm.patchValue({ tagsInput: '' });
+    }
+
+    removeTag(tag: string) {
+      this.tags.delete(tag);
     }
 }

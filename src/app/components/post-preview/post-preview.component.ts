@@ -24,8 +24,8 @@ export class PostPreviewComponent {
   votes = 10;
   commentsLength = 2;
   author = 'Author';
-  created = '2020-01-01';
-  createdBy = "User";
+  createdAt = '2020-01-01';
+  createdBy = 'User';
   constructor(private service: PostService) { }
 
   ngOnInit() {
@@ -46,6 +46,7 @@ export class PostPreviewComponent {
       this.createdBy = post.createdBy;
       this.votes = post.likes - post.dislikes;
       this.commentsLength = post.comments.length;
+      this.createdAt = post.createdAt
     }
   }
 

@@ -1,9 +1,11 @@
-<form class="search-bar" role="search">
-
-  <input type="search" placeholder="Search..." />
-
+<form class="search-bar" [formGroup]="searchForm" (ngSubmit)="search()" role="search">
+  <input type="search" placeholder="Search..." formControlName="search"/>
   <button type="submit">
     <img src="./assets/icons/magnifying-glass-solid.svg" alt="">
   </button>
-
+  <div class="pop-up" [ngClass]="{'pop' : searchStatus}">
+    <div class="text"><b>"text"</b> search within post title or text</div>
+    <div class="tag"><b>[tag]</b> search withing a tag</div>
+  </div>
 </form>
+

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import { apiLink } from "../interfaces/global-constants";
 import { Observable } from "rxjs";
 import { Post, PostDTO } from "../models/post";
 import { Comment } from "../models/comment";
+import {ParamMap} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -29,12 +30,28 @@ export class PostService {
     return this.http.get<number[]>(this.postsApi + '/ids');
   }
 
+  getPostIdsWithParams(params: ParamMap): Observable<number[]> {
+    let httpParams = new HttpParams();
+    params.keys.forEach(key => {
+      // @ts-ignore
+      httpParams = httpParams.append(key, params.get(key));
+    });
+    return this.http.get<number[]>(this.postsApi + '/ids', { params: httpParams });
+  }
+
   getPostComments(id: number): Observable<Comment[]> {
     return this.http.get<Comment[]>(this.postsApi + '/' + id + '/comments');
   }
 
   onComment(postId: number, comment: string) {
     return this.http.post(this.postsApi + '/' + postId + '/comment', { text: comment });
+  }
+
+  searchPosts(search: string, tags: string): Observable<number[]> {
+    if (!search.trim()) {
+      return this.getPostIds();
+    }
+    return this.http.get<number[]>(this.postsApi + '/search?query=' + search + '&tags=' + tags);
   }
 
   onEdit() {
