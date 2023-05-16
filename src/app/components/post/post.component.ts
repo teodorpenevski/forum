@@ -91,7 +91,7 @@ export class PostComponent implements Post {
   }
 
   updateComments() {
-    this.service.getPostComments(this.id).subscribe(comments => {
+    this.service.getPostComments(this.id, this.sortAttribute, this.ascendingOrDescending).subscribe(comments => {
       this.comments = comments;
       this.commentCount = comments.length;
     });
@@ -117,6 +117,8 @@ export class PostComponent implements Post {
       this.sortAttribute = attribute;
 
     }
+
+    this.updateComments();
   }
 
   goBack(): void {

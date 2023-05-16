@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { apiLink } from "../interfaces/global-constants";
 import { Observable } from "rxjs";
 import { Post, PostDTO } from "../models/post";
 import { Comment } from "../models/comment";
-import {ParamMap} from "@angular/router";
+import { ParamMap } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -39,8 +39,11 @@ export class PostService {
     return this.http.get<number[]>(this.postsApi + '/ids', { params: httpParams });
   }
 
-  getPostComments(id: number): Observable<Comment[]> {
-    return this.http.get<Comment[]>(this.postsApi + '/' + id + '/comments');
+  getPostComments(id: number, sortAttribute: string, ascendingOrDescending: boolean): Observable<Comment[]> {
+    let httpParams = new HttpParams();
+    httpParams = httpParams.append('sort', sortAttribute);
+    httpParams = httpParams.append('ascending', ascendingOrDescending);
+    return this.http.get<Comment[]>(this.postsApi + '/' + id + '/comments', { params: httpParams });
   }
 
   onComment(postId: number, comment: string) {

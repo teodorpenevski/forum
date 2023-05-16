@@ -30,6 +30,7 @@ export class VoteCommentComponent {
 
   getVoteCount() {
     this.service.getVoteCountComment(this.id).subscribe((comment: Comment | null) => {
+      console.log(comment);
       if (comment) {
         this.likes = comment.likes;
         this.dislikes = comment.dislikes;
@@ -75,17 +76,10 @@ export class VoteCommentComponent {
     this.service.dislikeComment('username', this.id).subscribe();
   }
 
-  follow() {
-    this.followStatus = !this.followStatus;
-    this.service.followPost('username', this.id).subscribe();
-  }
-
-  edit() {
-
-  }
-
   delete() {
-
+    this.service.deleteComment(this.id).subscribe({
+      complete: () => { window.location.reload() }
+    });
   }
 
   report() {

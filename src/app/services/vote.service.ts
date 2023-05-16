@@ -36,11 +36,11 @@ export class VoteService {
   }
 
   likeComment(username: string, id: number) {
-    return this.http.post(this.commentsApi + username + '/like' + id, null);
+    return this.http.post(this.usersApi + '/' + username + '/likeComment/' + id, null);
   }
 
   dislikeComment(username: string, id: number) {
-    return this.http.post(this.commentsApi + username + '/dislike' + id, null);
+    return this.http.post(this.usersApi + '/' + username + '/dislikeComment/' + id, null);
   }
 
   likePost(username: string, id: number) {
@@ -55,5 +55,8 @@ export class VoteService {
     return this.http.post(this.usersApi + '/' + username + '/followPost/' + id, null);
   }
 
+  deleteComment(id: number) {
+    return this.http.delete(this.commentsApi + '/delete/' + id);
+  }
 
 }
