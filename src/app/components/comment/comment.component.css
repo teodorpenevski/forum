@@ -62,3 +62,15 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.post-creator {
+  text-decoration: none;
+
+  color: var(--color-accent-orange-main);
+}
+
+.post-creator:hover {
+  border-bottom: 1px dashed var(--color-accent-orange-dark);
+
+  color: var(--color-accent-orange-dark);
+}

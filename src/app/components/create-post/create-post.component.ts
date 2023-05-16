@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { PostService } from "../../services/post.service";
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+
+import { PostService } from "../../services/post.service";
 
 @Component({
   selector: 'app-create-post',
@@ -21,7 +23,7 @@ export class CreatePostComponent {
     tagsInput: new FormControl('')
   })
 
-  constructor(private service: PostService, private router: Router) { }
+  constructor(private service: PostService, private router: Router, private location: Location) { }
 
   ngOnInit(): void {
   }
@@ -53,5 +55,9 @@ export class CreatePostComponent {
 
   removeTag(tag: string) {
     this.tags.delete(tag);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }
