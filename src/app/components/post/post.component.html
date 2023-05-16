@@ -52,11 +52,6 @@
 
     <form class="comment-form" [formGroup]="commentForm" (ngSubmit)="onComment()">
 
-      <!-- <label for="comment-textarea">
-        Add comment as
-        <a href=""> {{ user }} </a>
-      </label> -->
-
       <textarea id="comment-textarea" class="comment-textarea" formControlName="text"
         placeholder="Add comment as {{ user}}"></textarea>
 
@@ -80,9 +75,9 @@
             1 Answer
           </h3>
 
-          <h3 class="comment" *ngIf="comments.length == 0">
+          <!-- <h3 class="comment" *ngIf="comments.length == 0">
             No answers yet
-          </h3>
+          </h3> -->
 
         </div> <!-- .comment-section-header -->
 
