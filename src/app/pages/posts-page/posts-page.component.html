@@ -6,19 +6,23 @@
       All posts
     </h2> <!-- .page-heading -->
 
+    <button *ngIf="!isExpanded" class="button" (click)="isExpanded = !isExpanded">
+      Filter
+    </button>
+
     <a class="button" routerLink="/create-post">
       Create Post
     </a>
 
-    <button class="button" (click)="isExpanded = !isExpanded">
-      Filter
-    </button>
-
   </div> <!-- .flex-row -->
 
-  <app-filter *ngIf="isExpanded" (cancelFilterEvent)="isExpanded = false"></app-filter>
+  <div class="flex-row-content">
 
-  <app-content-display id="all-posts" [type]="'dropdown'" [displayHeading]="numberOfPosts"
-    [displayData]="allPostsByIDsDisplay"></app-content-display>
+    <app-content-display id="all-posts" [type]="'dropdown'" [displayHeading]="numberOfPosts"
+      [displayData]="allPostsByIDsDisplay"></app-content-display>
+
+    <app-filter *ngIf="isExpanded" (cancelFilterEvent)="isExpanded = false"></app-filter>
+
+  </div>
 
 </main>

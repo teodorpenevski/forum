@@ -88,6 +88,22 @@ app-content-display {
   box-shadow: 0 0 3px var(--color-accent-green-dark);
 }
 
+.flex-row-content {
+  width: 100%;
+
+  /* flexbox */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  gap: 1.5rem;
+}
+
+app-filter {
+  width: calc(20% - 1.5rem/2);
+}
+
 
 
 

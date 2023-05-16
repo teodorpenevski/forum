@@ -1,61 +1,109 @@
 <form class="filter-controller" [formGroup]="filterForm" (ngSubmit)="apply()">
+
+  <div class="filter-heading">
+
+    <h3>
+      Filter
+    </h3>
+
+    <button type="reset" class="cancel" (click)="cancel()">
+      <img class="cancel-icon" src="./assets/icons/xmark-solid.svg" alt="Close filter">
+    </button>
+
+  </div> <!-- .filter-heading -->
+
   <div class="filter-controller-settings">
-    <fieldset class="filter field">
+
+    <fieldset id="filter-field" class="controller-field">
+
       <legend>Filter by</legend>
+
       <div>
         <input type="checkbox" id="no-comments" formControlName="noComments" value="no-comments">
         <label for="no-comments">No comments</label>
       </div>
-    </fieldset>
-    <fieldset class="sort field">
+
+    </fieldset> <!-- #filter-field -->
+
+    <fieldset id="sort-field" class="controller-field">
+
       <legend>Sort by</legend>
+
       <div>
         <input type="radio" id="newest" formControlName="sort" value="newest" required>
         <label for="newest">Newest created</label>
       </div>
+
       <div>
         <input type="radio" id="highest-votes" formControlName="sort" value="highest-votes" required>
         <label for="highest-votes">Highest score</label>
       </div>
+
       <div>
         <input type="radio" id="controversial" formControlName="sort" value="controversial" required>
         <label for="controversial">Controversial</label>
       </div>
+
       <div>
         <input type="radio" id="most-commented" formControlName="sort" value="most-commented" required>
         <label for="most-commented">Most commented</label>
       </div>
-    </fieldset>
-    <fieldset class="tags field">
+
+    </fieldset> <!-- #sort-field -->
+
+    <fieldset id="tags-field" class="controller-field">
+
       <legend>Tagged with</legend>
+
       <div>
         <input type="radio" id="followed-tags" formControlName="followedTags" value="followed-tags" required>
         <label for="followed-tags">Followed tags</label>
       </div>
+
       <div>
         <input type="radio" id="insert-tags" formControlName="followedTags" value="insert-tags" required>
         <label for="insert-tags">Insert tags</label>
       </div>
+
       <div class="form-tags">
-        <label for="tags">Tags</label>
+
         <span class="select-tags-wrapper">
+
           <ul class="select-tags">
+
             <li class="tag" *ngFor="let tag of tags">
-              <span>{{ tag }}</span>
-              <button type="button" class="remove-tag" (click)="removeTag(tag)">X</button>
+
+              <span>
+                {{ tag }}
+              </span>
+
+              <button type="button" class="remove-tag" (click)="removeTag(tag)">
+                <img class="x-icon" src="./assets/icons/xmark-solid.svg" alt="Close icon">
+              </button>
+
             </li>
+
             <li>
-              <input type="text" id="tags" class="tag-input" formControlName="tagsInput" placeholder="Add a tag"
+              <input type="text" id="tags" class="tag-input" formControlName="tagsInput" placeholder="Add tags"
                 (keyup)="searchTags($event)" />
             </li>
+
           </ul>
-        </span>
-      </div>
-    </fieldset>
-  </div>
-  <div class="separator"></div>
-  <div class="filter-controller-buttons">
-    <button type="submit" class="button">Apply</button>
-    <button type="reset" class="button" (click)="cancel()">Cancel</button>
-  </div>
-</form>
+
+        </span> <!-- .select-tags-wrapper -->
+
+      </div> <!-- .form-tags -->
+
+    </fieldset> <!-- #tags-field -->
+
+    <div class="filter-controller-buttons">
+
+      <button type="submit" class="submit-button">
+        Apply
+      </button>
+
+    </div> <!-- .filter-controller-buttons -->
+
+  </div> <!-- .filter-controller-settings -->
+
+</form> <!-- .filter-controller -->
