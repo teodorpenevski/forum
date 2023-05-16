@@ -7,6 +7,7 @@ import { PostService } from "../../services/post.service";
 import { Post } from "../../models/post";
 import { Comment } from "../../models/comment";
 import { Tag } from "../../models/tag";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-post',
@@ -23,8 +24,7 @@ export class PostComponent implements Post {
   dislikes = 0;
   createdBy = 'John Doe';
   createdAt = 'March 1, 2018';
-  isSaved: boolean = false;
-  lastEditedDate = 'March 1, 2018';
+  updatedAt = 'March 1, 2018';
   tags: Tag[] = [
     {
       name: 'dogs'
@@ -36,17 +36,8 @@ export class PostComponent implements Post {
       name: 'animals'
     }
   ];
-  comments: Comment[] = [
-    {
-      id: 1,
-      comment: "I love dogs!",
-      createdBy: "Jane Doe",
-      createdAt: "March 1, 2018",
-      likes: 0,
-      dislikes: 0,
-    }
-  ];
-  commentCount: number = 1;
+  comments: Comment[] = [];
+  commentCount: number = 0;
 
   sortAttribute: string = 'created';
   ascendingOrDescending: boolean = true;
@@ -57,9 +48,15 @@ export class PostComponent implements Post {
     ]),
   });
 
-  constructor(private route: ActivatedRoute, private service: PostService, private location: Location) { }
+  constructor(private route: ActivatedRoute,
+              private service: PostService,
+              private location: Location,
+              private authentication: AuthService) { }
 
   ngOnInit() {
+    this.authentication.getCurrentUser().subscribe(user => {
+      this.user = user;
+    });
     this.getPost();
   }
 
@@ -75,7 +72,8 @@ export class PostComponent implements Post {
         this.tags = post.tags;
         this.comments = post.comments;
         this.commentCount = post.comments.length;
-        this.createdAt = post.createdAt;
+        this.createdAt = post.createdAt.split('T')[0].split('-').reverse().join('.');
+        this.updatedAt = post.updatedAt.split('T')[0].split('-').reverse().join('.');
       }
     });
   }
@@ -95,14 +93,6 @@ export class PostComponent implements Post {
       this.comments = comments;
       this.commentCount = comments.length;
     });
-  }
-
-  onEdit() {
-
-  }
-
-  onDelete() {
-
   }
 
   sort(attribute: string) {
