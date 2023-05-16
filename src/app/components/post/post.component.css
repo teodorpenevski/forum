@@ -30,6 +30,10 @@
   background-color: transparent;
 
   border: 0;
+
+  position: sticky;
+  top: calc(6vmin + 1.25rem);
+  z-index: 5;
 }
 
 .go-back .back-icon {

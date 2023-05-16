@@ -30,3 +30,18 @@
   opacity: 75%;
   font-size: 0.7rem;
 }
+
+.sticky {
+  width: 100%;
+  height: fit-content;
+
+  /* flexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  position: sticky;
+  top: 6vmin;
+  z-index: 5;
+}
