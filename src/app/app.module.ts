@@ -24,6 +24,7 @@ import { FilterComponent } from './components/filter/filter.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { VoteCommentComponent } from './components/vote-comment/vote-comment.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PostsPageComponent,
     FilterComponent,
     CreatePostComponent,
-    LoginComponent
+    LoginComponent,
+    VoteCommentComponent
   ],
   imports: [
     BrowserModule,
