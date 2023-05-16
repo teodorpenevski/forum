@@ -1,6 +1,6 @@
-import {Component, HostListener} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import { Component, HostListener } from '@angular/core';
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-search-bar',
@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent {
+
   searchStatus: boolean = false;
 
   searchForm = new FormGroup({
@@ -16,7 +17,7 @@ export class SearchBarComponent {
     ])
   })
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
 
@@ -38,6 +39,6 @@ export class SearchBarComponent {
 
   @HostListener('document:click', ['$event.target'])
   onDocumentClick() {
-      this.searchStatus = false;
+    this.searchStatus = false;
   }
 }
