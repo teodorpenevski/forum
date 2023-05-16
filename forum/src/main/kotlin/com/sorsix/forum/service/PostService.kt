@@ -4,10 +4,12 @@ import com.sorsix.forum.repository.PostRepository
 import com.sorsix.forum.domain.Post
 import com.sorsix.forum.domain.PostDto
 import com.sorsix.forum.domain.Tag
+import com.sorsix.forum.repository.CommentRepository
 import com.sorsix.forum.repository.TagRepository
 import com.sorsix.forum.repository.UserRepository
 import com.sorsix.forum.service.util.GlobalState
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
 import java.util.*
 import java.util.regex.Pattern
 import kotlin.streams.toList
@@ -17,6 +19,7 @@ class PostService(
     private val repository: PostRepository,
     private val tagRepository: TagRepository,
     private val userRepository: UserRepository,
+    private val commentRepository: CommentRepository,
     private val globalState: GlobalState
 ) {
 
@@ -71,7 +74,7 @@ class PostService(
     fun editPost(oldPostId: Long, post: PostDto): Post {
         val tags = tagRepository.findAllById(post.tagNames)
         val oldPost = repository.findById(oldPostId).get()
-        val newPost = Post(oldPostId, post.title, post.text, oldPost.likes, oldPost.dislikes, tags, oldPost.createdBy)
+        val newPost = Post(oldPostId, post.title, post.text, oldPost.likes, oldPost.dislikes, tags, oldPost.createdBy, oldPost.comments, oldPost.likedBy, oldPost.dislikedBy, oldPost.followedBy, oldPost.createdAt, LocalDateTime.now())
         return repository.save(newPost)
     }
 
@@ -86,7 +89,14 @@ class PostService(
         return repository.findAll().stream().filter { it.tags.contains(tagObj) }.toList()
     }
 
-    fun deletePost(postId: Long) = repository.deleteById(postId)
+    fun deletePost(postId: Long) {
+        val post = repository.findById(postId).get()
+        post.comments.forEach { commentRepository.deleteById(it.id) }
+        post.dislikedBy.forEach { userRepository.save(it.copy(postsDisliked = it.postsDisliked.filter { it.id != postId })) }
+        post.likedBy.forEach { userRepository.save(it.copy(postsLiked = it.postsLiked.filter { it.id != postId })) }
+        post.followedBy.forEach { userRepository.save(it.copy(postsFollowed = it.postsFollowed.filter { it.id != postId })) }
+        repository.deleteById(postId)
+    }
 
 
 }

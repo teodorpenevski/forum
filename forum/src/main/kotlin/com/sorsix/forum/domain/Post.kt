@@ -39,6 +39,7 @@ data class Post(
     @ManyToMany(mappedBy = "postsFollowed")
     @JsonBackReference
     val followedBy: List<User> = listOf(),
-    val createdAt: LocalDateTime = LocalDateTime.now()
+    val createdAt: LocalDateTime = LocalDateTime.now(),
+    val updatedAt: LocalDateTime = LocalDateTime.now(),
 ) {
 }

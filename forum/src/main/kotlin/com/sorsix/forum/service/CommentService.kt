@@ -3,10 +3,12 @@ package com.sorsix.forum.service
 import com.sorsix.forum.domain.Comment
 import com.sorsix.forum.domain.CommentDto
 import com.sorsix.forum.repository.CommentRepository
+import com.sorsix.forum.repository.UserRepository
 import org.springframework.stereotype.Service
 
 @Service
-class CommentService(private val repository: CommentRepository) {
+class CommentService(private val repository: CommentRepository,
+                     private val userRepository: UserRepository) {
     fun findAllComments(): List<Comment> = repository.findAll()
 
     fun findById(id: Long): Comment = repository.findById(id).get()
@@ -37,7 +39,12 @@ class CommentService(private val repository: CommentRepository) {
         return repository.save(Comment(oldComment.id, comment, oldComment.likes, oldComment.dislikes, oldComment.createdBy, oldComment.post))
     }
 
-    fun deleteComment(commentId: Long) = repository.deleteById(commentId)
+    fun deleteComment(commentId: Long) {
+        val comment = this.findById(commentId)
+        comment.likedBy.forEach { userRepository.save(it.copy(commentsLiked = it.commentsLiked.filter { it.id != commentId })) }
+        comment.dislikedBy.forEach { userRepository.save(it.copy(commentsDisliked = it.commentsDisliked.filter { it.id != commentId })) }
+        repository.deleteById(commentId)
+    }
 
     fun saveComment(comment: Comment): Comment = repository.save(comment)
 
