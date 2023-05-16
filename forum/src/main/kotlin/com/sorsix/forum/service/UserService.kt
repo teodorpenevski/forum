@@ -39,17 +39,22 @@ class UserService(private val repository: UserRepository,
     }
 
     fun getVoteStatus(username: String, postId: Long): Int {
-        val user = repository.findByUsername("theDude123")
+        val user = repository.findByUsername("Matej")
         return if (user.postsLiked.any { it.id == postId }) 1 else if (user.postsDisliked.any { it.id == postId }) -1 else 0
     }
 
+    fun getVoteStatusComment(username: String, commentId: Long): Int {
+        val user = repository.findByUsername("Matej")
+        return if (user.commentsLiked.any { it.id == commentId }) 1 else if (user.commentsDisliked.any { it.id == commentId }) -1 else 0
+    }
+
     fun isPostFollowed(username: String, postId: Long): Boolean {
-        val user = repository.findByUsername("theDude123")
+        val user = repository.findByUsername("Matej")
         return user.postsFollowed.any { it.id == postId }
     }
 
     fun likePost(username: String, postId: Long): User {
-        val user = repository.findByUsername("theDude123")
+        val user = repository.findByUsername("Matej")
         val likedPosts = user.postsLiked.toMutableList()
         val dislikedPosts = user.postsDisliked.toMutableList()
         var post = likedPosts.find { it.id == postId }
@@ -70,7 +75,7 @@ class UserService(private val repository: UserRepository,
     }
 
     fun dislikePost(username: String, postId: Long): User {
-        val user = repository.findByUsername("theDude123")
+        val user = repository.findByUsername("Matej")
         val dislikedPosts = user.postsDisliked.toMutableList()
         val likedPosts = user.postsLiked.toMutableList()
         var post = dislikedPosts.find { it.id == postId }
@@ -91,7 +96,7 @@ class UserService(private val repository: UserRepository,
     }
 
     fun followPost(username: String, postId: Long): User {
-        val user = repository.findByUsername("theDude123")
+        val user = repository.findByUsername("Matej")
         val postsFollowed = user.postsFollowed.toMutableList()
         var post = postsFollowed.find { it.id == postId }
         if (post != null) {
@@ -117,7 +122,7 @@ class UserService(private val repository: UserRepository,
     }
 
     fun likeComment(username: String, commentId: Long): User {
-        val user = repository.findByUsername("theDude123")
+        val user = repository.findByUsername("Matej")
         val likedComments = user.commentsLiked.toMutableList()
         val dislikedComments = user.commentsDisliked.toMutableList()
         var comment = likedComments.find { it.id == commentId }
@@ -138,7 +143,7 @@ class UserService(private val repository: UserRepository,
     }
 
     fun dislikeComment(username: String, commentId: Long): User {
-        val user = repository.findByUsername("theDude123")
+        val user = repository.findByUsername("Matej")
         val likedComments = user.commentsLiked.toMutableList()
         val dislikedComments = user.commentsDisliked.toMutableList()
         var comment = dislikedComments.find { it.id == commentId }

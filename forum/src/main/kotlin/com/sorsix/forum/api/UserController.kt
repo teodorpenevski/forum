@@ -44,6 +44,11 @@ class UserController(
         return service.getVoteStatus(username, postId)
     }
 
+    @GetMapping("/{username}/voteStatusComment/{commentId}")
+    fun getVoteStatusComment(@PathVariable username: String, @PathVariable commentId: Long): Int {
+        return service.getVoteStatusComment(username, commentId)
+    }
+
     @GetMapping("/{username}/followStatus/{postId}")
     fun isPostFollowed(@PathVariable username: String, @PathVariable postId: Long): Boolean {
         return service.isPostFollowed(username, postId)

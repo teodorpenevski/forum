@@ -18,11 +18,10 @@ class CommentController(val service: CommentService) {
         } else ResponseEntity.noContent().build()
     }
 
-    @GetMapping("/{postId}")
-    fun getCommentsForPost(@PathVariable postId: Long): ResponseEntity<List<Comment>> {
-        return if (service.findAllCommentsForPost(postId).isNotEmpty()) {
-            ResponseEntity.ok(service.findAllCommentsForPost(postId))
-        } else ResponseEntity.noContent().build()
+    @GetMapping("/{commentId}")
+    fun getCommentById(@PathVariable commentId: Long): Comment {
+        println(commentId)
+        return service.findById(commentId)
     }
 
     @PostMapping("/edit/{id}")

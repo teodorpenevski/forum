@@ -28,7 +28,7 @@ class PostController(
 
     @PostMapping
     fun createPost(@RequestBody postDto: PostDto) {
-        service.createPost(postDto, "user1")
+        service.createPost(postDto, "Matej")
     }
 
     @GetMapping("/search")
@@ -66,15 +66,15 @@ class PostController(
     fun postComment(@PathVariable id: Long, @RequestBody commentDto: CommentDto) {
         val post = service.findById(id)
         // Change from static user to current user in the future
-        val user = userService.getUserByUsername("theDude123")
+        val user = userService.getUserByUsername("Matej")
         val comment = Comment(0, commentDto.text, 0, 0, user, post)
         commentService.saveComment(comment)
     }
 
     @GetMapping("/{id}/comments")
-    fun getCommentsForPost(@PathVariable id: Long): ResponseEntity<List<Comment>> {
-        return if (commentService.findAllCommentsForPost(id).isNotEmpty()) {
-            ResponseEntity.ok(commentService.findAllCommentsForPost(id))
+    fun getCommentsForPost(@PathVariable id: Long, @RequestParam(defaultValue = "created") sort: String, @RequestParam(defaultValue = "true") ascending: String): ResponseEntity<List<Comment>> {
+        return if (commentService.findAllCommentsForPost(id, sort, ascending).isNotEmpty()) {
+            ResponseEntity.ok(commentService.findAllCommentsForPost(id, sort, ascending))
         } else ResponseEntity.noContent().build()
     }
 

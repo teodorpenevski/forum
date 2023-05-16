@@ -33,18 +33,15 @@ class PostService(
         var posts = repository.findAll().stream().filter { it.tags.containsAll(tagObjects) }.toList()
         when (sort) {
             "created" -> {
-                posts = posts.sortedByDescending { it.createdAt }
+                posts = posts.sortedBy { it.createdAt }
             }
             "highest-votes" -> {
                 posts = posts.sortedByDescending { it.likes - it.dislikes }
             }
-            "likes" -> {
-                posts = posts.sortedByDescending { it.likes }
+            "controversial" -> {
+                posts = posts.sortedByDescending { it.dislikes / (it.likes + it.dislikes + 1) }
             }
-            "dislikes" -> {
-                posts = posts.sortedByDescending { it.dislikes }
-            }
-            "comments" -> {
+            "most-commented" -> {
                 posts = posts.sortedByDescending { it.comments.size }
             }
         }
