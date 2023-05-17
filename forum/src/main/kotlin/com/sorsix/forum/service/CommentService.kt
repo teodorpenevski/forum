@@ -1,7 +1,6 @@
 package com.sorsix.forum.service
 
 import com.sorsix.forum.domain.Comment
-import com.sorsix.forum.domain.CommentDto
 import com.sorsix.forum.repository.CommentRepository
 import com.sorsix.forum.repository.UserRepository
 import org.springframework.stereotype.Service
@@ -27,7 +26,7 @@ class CommentService(private val repository: CommentRepository,
                 comments = comments.sortedByDescending { it.createdAt }
             }
             "votes" -> {
-                comments = comments.sortedByDescending { it.likes - it.dislikes }
+                comments = comments.sortedBy { it.likes - it.dislikes }
             }
         }
         if (ascending == "false") comments.reverse()

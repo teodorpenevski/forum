@@ -10,9 +10,6 @@ import com.sorsix.forum.repository.UserRepository
 import com.sorsix.forum.service.util.GlobalState
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
-import java.util.*
-import java.util.regex.Pattern
-import kotlin.streams.toList
 
 @Service
 class PostService(
@@ -35,8 +32,8 @@ class PostService(
         }
         var posts = repository.findAll().stream().filter { it.tags.containsAll(tagObjects) }.toList()
         when (sort) {
-            "created" -> {
-                posts = posts.sortedBy { it.createdAt }
+            "newest" -> {
+                posts = posts.sortedByDescending { it.createdAt }
             }
             "highest-votes" -> {
                 posts = posts.sortedByDescending { it.likes - it.dislikes }
@@ -91,12 +88,17 @@ class PostService(
 
     fun deletePost(postId: Long) {
         val post = repository.findById(postId).get()
-        post.comments.forEach { commentRepository.deleteById(it.id) }
+        post.comments.forEach{ it.likedBy.forEach { user -> userRepository.save(user.copy(commentsLiked = user.commentsLiked.filter { comment -> comment.id != it.id } ))
+            it.dislikedBy.forEach { user -> userRepository.save(user.copy(commentsDisliked = user.commentsDisliked.filter { comment -> comment.id != it.id } )); } }
+            commentRepository.deleteById(it.id)
+        }
         post.dislikedBy.forEach { userRepository.save(it.copy(postsDisliked = it.postsDisliked.filter { it.id != postId })) }
         post.likedBy.forEach { userRepository.save(it.copy(postsLiked = it.postsLiked.filter { it.id != postId })) }
         post.followedBy.forEach { userRepository.save(it.copy(postsFollowed = it.postsFollowed.filter { it.id != postId })) }
         repository.deleteById(postId)
     }
+
+    fun existsById(id: Long): Boolean = repository.existsById(id)
 
 
 }

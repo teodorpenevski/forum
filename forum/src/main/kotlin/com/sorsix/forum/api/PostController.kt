@@ -7,6 +7,7 @@ import com.sorsix.forum.domain.PostDto
 import com.sorsix.forum.service.CommentService
 import com.sorsix.forum.service.PostService
 import com.sorsix.forum.service.UserService
+import com.sorsix.forum.service.util.GlobalState
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -17,6 +18,7 @@ class PostController(
     val service: PostService,
     val userService: UserService,
     val commentService: CommentService,
+    val globalState: GlobalState
 ) {
 
     @GetMapping
@@ -54,7 +56,9 @@ class PostController(
 
     @GetMapping("/{id}")
     fun getPost(@PathVariable id: Long): ResponseEntity<Post> {
-        return ResponseEntity.ok(service.findById(id))
+        return if (service.existsById(id)) {
+            ResponseEntity.ok(service.findById(id))
+        } else ResponseEntity.noContent().build()
     }
 
     @PostMapping("/{id}/edit")
@@ -66,7 +70,7 @@ class PostController(
     fun postComment(@PathVariable id: Long, @RequestBody commentDto: CommentDto) {
         val post = service.findById(id)
         // Change from static user to current user in the future
-        val user = userService.getUserByUsername("Matej")
+        val user = userService.getUserByUsername(globalState.loggedInUser!!)
         val comment = Comment(0, commentDto.text, 0, 0, user, post)
         commentService.saveComment(comment)
     }
