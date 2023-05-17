@@ -61,8 +61,8 @@ export class PostComponent implements Post {
   }
 
   getPost() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.service.getPost(id).subscribe(post => {
+    const postId = Number(this.route.snapshot.paramMap.get('id'));
+    this.service.getPost(postId).subscribe(post => {
       if (post) {
         this.id = post.id;
         this.text = post.text;
@@ -90,8 +90,14 @@ export class PostComponent implements Post {
 
   updateComments() {
     this.service.getPostComments(this.id, this.sortAttribute, this.ascendingOrDescending).subscribe(comments => {
-      this.comments = comments;
-      this.commentCount = comments.length;
+      if (comments) {
+        this.comments = comments;
+        this.commentCount = comments.length;
+      }
+      else {
+        this.comments = [];
+        this.commentCount = 0;
+      }
     });
   }
 

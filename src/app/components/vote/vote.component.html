@@ -8,12 +8,8 @@
   </div>
   <img ngSrc="/assets/save-icon.svg" class="save clickable" (click)="follow()" [ngClass]="{'clicked' : followStatus}"
        height="36" width="36"  alt="save button"/>
-  <div class="dropdown clickable extras">
-    <span class="extras clickable">...</span>
-    <div class="dropdown-content" [ngClass]="{'show': clicked}">
-      <div class="dropdown-item report" (click)="report()">Report</div>
-      <div class="dropdown-item edit" (click)="edit()">Edit</div>
-      <div class="dropdown-item delete" (click)="delete()">Delete</div>
-    </div>
+  <div class="buttons">
+      <button type="button" class="button edit" (click)="edit()">Edit</button>
+      <button type="button" class="button delete" (click)="delete()">Delete</button>
   </div>
 </div>

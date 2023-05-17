@@ -18,11 +18,15 @@ export class PostsPageComponent {
   allPostsByIDsDisplay: Array<DisplayData> = [];
 
   isExpanded = false;
+
+  filterRoute = '/posts';
   constructor(private route: ActivatedRoute, private postService: PostService) { }
 
   ngOnInit() {
     this.getPostIds();
   }
+
+
 
   getPostIds() {
     if (this.route.snapshot.queryParamMap.has('q')) {

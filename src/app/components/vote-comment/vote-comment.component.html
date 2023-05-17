@@ -6,11 +6,5 @@
     <img ngSrc="/assets/upvote-icon.svg" class="down-vote clickable" (click)="dislike()"
       [ngClass]="{'clicked' : voteStatus === -1}" height="36" width="36" alt="downvote button" />
   </div>
-  <div class="dropdown clickable extras">
-    <span class="extras clickable">...</span>
-    <div class="dropdown-content" [ngClass]="{'show': clicked}">
-      <div class="dropdown-item report" (click)="report()">Report</div>
-      <div class="dropdown-item delete" (click)="delete()">Delete</div>
-    </div>
-  </div>
+  <button type="button" class="button delete" (click)="delete()">Delete</button>
 </div>
