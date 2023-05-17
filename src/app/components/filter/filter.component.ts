@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 export class FilterComponent {
     @Output() cancelFilterEvent = new EventEmitter<void>();
+    @Output() applyFilterEvent = new EventEmitter<void>();
     tags: Set<string> = new Set();
     filterForm = new FormGroup({
       sort: new FormControl('newest', [
@@ -61,16 +62,13 @@ export class FilterComponent {
       delete this.filterForm.value.tagsInput;
       if (this.filterForm.value.followedTags == 'followed-tags') {
         this.filterForm.patchValue({ tags: 'followed-tags' });
-        this.router.navigate(['/posts'], { queryParams: this.filterForm.value }).then(() => {
-          window.location.reload();
-        });
       }
       else {
         this.filterForm.patchValue({ tags: Array.from(this.tags).join("-") });
-        this.router.navigate(['/posts'], { queryParams: this.filterForm.value }).then(() => {
-          window.location.reload();
-        });
       }
+      this.router.navigate(['/posts'], { queryParams: this.filterForm.value }).then(() => {
+        this.applyFilterEvent.emit();
+      });
     }
 
     searchTags(event: any) {

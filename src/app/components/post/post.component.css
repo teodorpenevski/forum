@@ -347,3 +347,11 @@
 app-vote {
   margin-right: 1rem;
 }
+
+
+.comment {
+  display: grid;
+  grid-template-columns: 1fr fit-content(100%);
+  grid-auto-rows: auto;
+  column-gap: 10px;
+}

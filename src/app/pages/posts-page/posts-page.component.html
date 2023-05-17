@@ -21,7 +21,7 @@
     <app-content-display id="all-posts" [type]="'dropdown'" [displayHeading]="numberOfPosts"
       [displayData]="allPostsByIDsDisplay"></app-content-display>
 
-    <app-filter *ngIf="isExpanded" (cancelFilterEvent)="isExpanded = false"></app-filter>
+    <app-filter *ngIf="isExpanded" (cancelFilterEvent)="isExpanded = false" (applyFilterEvent)="getPostIds()"></app-filter>
 
   </div>
 

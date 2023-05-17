@@ -103,7 +103,10 @@
 
       </div>
 
-      <app-comment *ngFor="let comment of comments" [comment]="comment"></app-comment>
+      <div class="comment" *ngFor="let comment of comments">
+        <app-comment [comment]="comment"></app-comment>
+        <app-vote-comment [id]="comment.id" (deleteComment)="updateComments()"></app-vote-comment>
+      </div>
 
     </div> <!-- comment-section -->
 

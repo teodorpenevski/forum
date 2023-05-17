@@ -1,4 +1,4 @@
-import { Component, HostListener, Input } from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, Output} from '@angular/core';
 import { VoteService } from "../../services/vote.service";
 import { Comment } from "../../models/comment";
 
@@ -10,6 +10,7 @@ import { Comment } from "../../models/comment";
 
 export class VoteCommentComponent {
   @Input() id: number = 1;
+  @Output() deleteComment = new EventEmitter<void>();
   voteStatus: number = 0;
   likes: number = 0;
   dislikes: number = 0;
@@ -77,7 +78,7 @@ export class VoteCommentComponent {
 
   delete() {
     this.service.deleteComment(this.id).subscribe({
-      complete: () => { window.location.reload() }
+      complete: () => { this.deleteComment.emit(); }
     });
   }
 
