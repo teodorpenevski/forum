@@ -345,8 +345,9 @@
 }
 
 app-vote {
-  margin-right: 0.85rem;
+  margin-right: 1rem;
 }
+
 
 .comment {
   display: grid;

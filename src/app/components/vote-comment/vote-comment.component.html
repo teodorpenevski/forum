@@ -1,10 +1,25 @@
 <div class="vote-box">
+
   <div class="vote">
-    <img ngSrc="/assets/upvote-icon.svg" class="up-vote clickable" (click)="like()"
-      [ngClass]="{'clicked' : voteStatus === 1}" height="36" width="36" alt="upvote button" />
-    <div class="vote-count">{{ likes - dislikes }}</div>
-    <img ngSrc="/assets/upvote-icon.svg" class="down-vote clickable" (click)="dislike()"
-      [ngClass]="{'clicked' : voteStatus === -1}" height="36" width="36" alt="downvote button" />
+
+    <img src="/assets/upvote-icon.svg" class="up-vote clickable" (click)="like()"
+      [ngClass]="{'clicked' : voteStatus === 1}" alt="upvote button" />
+
+    <p class="vote-count">
+      {{ likes - dislikes }}
+    </p>
+
+    <img src="/assets/upvote-icon.svg" class="down-vote clickable" (click)="dislike()"
+      [ngClass]="{'clicked' : voteStatus === -1}" alt="downvote button" />
+
+  </div> <!-- .vote -->
+
+  <div class="clickable-extras">
+
+    <button class="extra-item" type="button" (click)="delete()">
+      <img class="extras-icon" src="./assets/icons/trash-can-solid.svg" alt="Delete post icon">
+    </button>
+
   </div>
-  <button type="button" class="button delete" (click)="delete()">Delete</button>
-</div>
+
+</div> <!-- .vote-box -->
