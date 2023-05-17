@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Location } from '@angular/common';
 
 import { PostService } from "../../services/post.service";
@@ -12,7 +12,11 @@ import { PostService } from "../../services/post.service";
 })
 export class CreatePostComponent {
   tags: Set<string> = new Set();
+  postOrEdit: string = 'Post';
+  header: string = 'Create a new post';
+
   postForm = new FormGroup({
+    id: new FormControl(0),
     title: new FormControl('', [
       Validators.required,
     ]),
@@ -23,18 +27,38 @@ export class CreatePostComponent {
     tagsInput: new FormControl('')
   })
 
-  constructor(private service: PostService, private router: Router, private location: Location) { }
+  constructor(private service: PostService, private route: ActivatedRoute, private router: Router, private location: Location) { }
 
   ngOnInit(): void {
+    if (this.router.url.includes("posts/edit")) {
+      const id = +(this.route.snapshot.paramMap.get('id')!!);
+      this.service.getPost(id).subscribe(post => {
+        if (post) {
+          this.postForm.patchValue({ title: post.title });
+          this.postForm.patchValue({ text: post.text });
+          this.tags = new Set(post.tags.map(tag => tag.name));
+        }
+      });
+      this.postOrEdit = 'Edit';
+      this.header = 'Edit your post';
+      this.postForm.patchValue({ id: id });
+    }
   }
 
   createPost() {
     this.postForm.patchValue({ tags: Array.from(this.tags) });
     delete this.postForm.value.tagsInput;
     console.log(this.postForm.value);
-    this.service.createPost({ title: this.postForm.value.title!!, text: this.postForm.value.text!!, tagNames: this.postForm.value.tags!! }).subscribe({
-      complete: () => this.router.navigate(['/posts'])
-    });
+    if (this.postOrEdit === 'Post') {
+      this.service.createPost({ title: this.postForm.value.title!!, text: this.postForm.value.text!!, tagNames: this.postForm.value.tags!! }).subscribe({
+        complete: () => this.router.navigate(['/posts'])
+      });
+    }
+    else {
+      this.service.editPost(this.postForm.value.id!!, { title: this.postForm.value.title!!, text: this.postForm.value.text!!, tagNames: this.postForm.value.tags!! }).subscribe({
+        complete: () => this.router.navigate(['/posts'])
+      });
+    }
   }
 
   addToTags(event: any) {

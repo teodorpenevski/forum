@@ -55,6 +55,10 @@ export class VoteService {
     return this.http.post(this.usersApi + '/' + username + '/followPost/' + id, null);
   }
 
+  deletePost(id: number) {
+    return this.http.delete(this.postsApi + '/' + id);
+  }
+
   deleteComment(id: number) {
     return this.http.delete(this.commentsApi + '/delete/' + id);
   }

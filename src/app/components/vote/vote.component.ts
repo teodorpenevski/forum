@@ -1,5 +1,6 @@
 import { Component, HostListener, Input } from '@angular/core';
 import { VoteService } from "../../services/vote.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-vote',
@@ -15,7 +16,9 @@ export class VoteComponent {
   dislikes: number = 0;
   clicked: boolean = false;
 
-  constructor(private service: VoteService) { }
+  constructor(private service: VoteService,
+              private router: Router
+              ) { }
 
   ngOnInit() {
     this.getVoteCount();
@@ -88,11 +91,15 @@ export class VoteComponent {
   }
 
   edit() {
-
+    this.router.navigate(['posts/edit', this.id]);
   }
 
   delete() {
-
+    this.service.deletePost(this.id).subscribe({
+      complete: () => {
+        this.router.navigate(['/posts']);
+      }
+    });
   }
 
   report() {

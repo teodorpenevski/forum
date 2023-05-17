@@ -42,8 +42,8 @@
           Posted on {{ createdAt }}
         </p> <!-- .date-time -->
 
-        <p class="edit-time" *ngIf="lastEditedDate">
-          Last edit on {{ lastEditedDate }}
+        <p class="edit-time" *ngIf="updatedAt">
+          Last edit on {{ updatedAt }}
         </p> <!-- .edit-time -->
 
       </div> <!-- .meta -->
@@ -53,7 +53,7 @@
     <form class="comment-form" [formGroup]="commentForm" (ngSubmit)="onComment()">
 
       <textarea id="comment-textarea" class="comment-textarea" formControlName="text"
-        placeholder="Add comment as {{ user}}"></textarea>
+        placeholder="Add comment as {{ user }}"></textarea>
 
       <button type="submit" class="comment-button">
         Comment

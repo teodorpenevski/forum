@@ -11,7 +11,6 @@ import { Comment } from "../../models/comment";
 export class VoteCommentComponent {
   @Input() id: number = 1;
   voteStatus: number = 0;
-  followStatus: boolean = false;
   likes: number = 0;
   dislikes: number = 0;
   clicked: boolean = false;

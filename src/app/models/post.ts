@@ -9,6 +9,7 @@ export interface Post {
   dislikes: number;
   createdBy: string;
   createdAt: string;
+  updatedAt: string;
   tags: Tag[];
   comments: Comment[];
 }

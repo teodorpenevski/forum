@@ -57,8 +57,8 @@ export class PostService {
     return this.http.get<number[]>(this.postsApi + '/search?query=' + search + '&tags=' + tags);
   }
 
-  onEdit() {
-
+  editPost(id: number, post: PostDTO) {
+    return this.http.post(this.postsApi + '/' + id + '/edit', post);
   }
 
   onDelete() {
