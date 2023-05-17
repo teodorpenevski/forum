@@ -1,89 +1,108 @@
-<section class="bg-light vh-100">
+<section id="user-page">
 
-  <div class="container">
+  <div id="user-card">
 
-    <div class="row">
+    <div id="user-image">
+      <img src="./assets/icons/circle-user-regular.svg" alt="..." />
+    </div> <!-- #user-image -->
 
-      <div class="col-lg-12 mb-4 mb-sm-5">
 
-        <div class="card card-style1 border-0">
+    <div id="user-info">
 
-          <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+      <h3 id="user-name">
+        {{ user?.username }}
+      </h3> <!-- #user-name -->
 
-            <div class="row align-items-center">
+      <span id="user-date-joined">
+        Account Created On: {{ user?.dateJoined }}
+      </span> <!-- #user-date-joined -->
 
-              <div class="col-lg-4 mb-4 mb-lg-0">
-                <img height="200px" src="./assets/icons/circle-user-regular.svg" alt="..." />
-              </div>
+    </div> <!-- #user-info -->
 
-              <div class="col-lg-6 px-xl-10">
-                <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
-                  <h3 class="h2 text-white mb-0">{{ user?.username }}</h3>
-                  <span class="text-white">Account Created On: {{ user?.dateJoined }}</span>
-                </div>
-              </div>
-            </div>
-          </div>
+  </div> <!-- #user-card -->
+
+
+  <div id="user-activity">
+
+    <!-- Tab navigation START -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+      <!-- Posts tab START -->
+      <li class="nav-item" role="presentation">
+
+        <button class="nav-link active" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts" type="button"
+          role="tab" aria-controls="posts" aria-selected="true">
+          Posts
+        </button>
+
+      </li>
+      <!-- Posts tab END -->
+
+
+      <!-- Liked posts tab START -->
+      <li class="nav-item" role="presentation">
+
+        <button class="nav-link" id="liked-tab" data-bs-toggle="tab" data-bs-target="#liked" type="button" role="tab"
+          aria-controls="liked" aria-selected="false">
+          Liked posts
+        </button>
+
+      </li>
+      <!-- Liked posts tab END -->
+
+
+      <!-- Comments tab START -->
+      <li class="nav-item" role="presentation">
+
+        <button class="nav-link" id="comments-tab" data-bs-toggle="tab" data-bs-target="#comments" type="button"
+          role="tab" aria-controls="comments" aria-selected="false">
+          Comments
+        </button>
+
+      </li>
+      <!-- Comments tab END -->
+
+    </ul>
+    <!-- Tab navigation END -->
+
+    <!-- Tab content START -->
+    <div class="tab-content" id="myTabContent">
+
+      <!-- Tab section for posts START -->
+      <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+        <div class="list-group">
+
+          <app-post-preview *ngFor="let post of user?.postsCreated" [postId]="post.id"></app-post-preview>
+
         </div>
       </div>
-      <div class="col-lg-12 mb-4 mb-sm-5">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts" type="button"
-              role="tab" aria-controls="posts" aria-selected="true">
-              Posts
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="liked-tab" data-bs-toggle="tab" data-bs-target="#liked" type="button"
-              role="tab" aria-controls="liked" aria-selected="false">
-              Liked posts
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="comments-tab" data-bs-toggle="tab" data-bs-target="#comments" type="button"
-              role="tab" aria-controls="comments" aria-selected="false">
-              Comments
-            </button>
-          </li>
-        </ul>
-        <!-- se od tuka dole sto e anchor link da se smeni vo post-preview -->
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
-            <div class="list-group">
-              <a *ngFor="let post of user?.postsCreated" href="#" class="list-group-item list-group-item-action active">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">{{ post.title }}</h5>
-                  <small>Posted on: 03.05.2023</small>
-                </div>
-                <p class="mb-1">
-                  {{ post.text }}
-                </p>
-              </a>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="liked" role="tabpanel" aria-labelledby="liked-tab">
-            <a *ngFor="let post of user?.postsLiked" [routerLink]="['/comments', post]"
-              class="list-group-item list-group-item-action active">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">{{post.title}}</h5>
-                <small>Posted on: 03.05.2023</small>
-              </div>
-            </a>
-          </div>
-          <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
-            <div class="list-group">
-              <a *ngFor="let comment of user?.commentsCreated" [routerLink]="['/comments', comment]"
-                class="list-group-item list-group-item-action active">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">{{comment.comment}}</h5>
-                  <small>Posted on: 03.05.2023</small>
-                </div>
-              </a>
-            </div>
-          </div>
+      <!-- Tab section for posts END -->
+
+
+      <!-- Tab section for liked posts START -->
+      <div class="tab-pane fade" id="liked" role="tabpanel" aria-labelledby="liked-tab">
+        <div class="list-group">
+
+          <app-post-preview *ngFor="let post of user?.postsLiked" [postId]="post.id"></app-post-preview>
+
         </div>
       </div>
+      <!-- Tab section for liked posts END -->
+
+
+      <!-- Tab section for comments START -->
+      <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+        <div class="list-group">
+
+          <app-comment *ngFor="let comment of user?.commentsCreated" [comment]="comment"></app-comment>
+
+        </div>
+      </div>
+      <!-- Tab section for comments END -->
+
     </div>
+    <!-- Tab content END -->
+
   </div>
-</section>
+
+</section> <!-- #user-page -->
