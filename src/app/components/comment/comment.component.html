@@ -13,14 +13,7 @@
       <p class="by-user">
         Posted by
         <a href="/users/{{ comment.createdBy }}" class="post-creator"> {{ comment.createdBy }} </a>
-      </p>
-
-      <p class="date-time">
-        Posted on {{ commentDate }}
-      </p>
-
-      <p class="edit-time" *ngIf="lastEditDate">
-        Last edit on {{ lastEditDate }}
+        , on {{ commentDate }}
       </p>
 
     </div> <!-- comment-meta-->
