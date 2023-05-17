@@ -1,19 +1,36 @@
 <div class="vote-box">
+
   <div class="vote">
-    <img ngSrc="/assets/upvote-icon.svg" class="up-vote clickable" (click)="like()" [ngClass]="{'clicked' : voteStatus === 1}"
-         height="36" width="36"  alt="upvote button"/>
-    <div class="vote-count">{{ likes - dislikes }}</div>
-    <img ngSrc="/assets/upvote-icon.svg" class="down-vote clickable" (click)="dislike()" [ngClass]="{'clicked' : voteStatus === -1}"
-         height="36" width="36"  alt="downvote button"/>
+
+    <img src="/assets/upvote-icon.svg" class="up-vote clickable" (click)="like()"
+      [ngClass]="{'clicked' : voteStatus === 1}" alt="upvote button" />
+
+    <p class="vote-count">
+      {{ likes - dislikes }}
+    </p>
+
+    <img src="/assets/upvote-icon.svg" class="down-vote clickable" (click)="dislike()"
+      [ngClass]="{'clicked' : voteStatus === -1}" alt="downvote button" />
+
+  </div> <!-- .vote -->
+
+  <div class="clickable-extras">
+
+    <button class="extra-item" type="button" (click)="follow()">
+      <img *ngIf="!followStatus" src="./assets/icons/bookmark-regular.svg" id="save-icon" class="extras-icon"
+        alt="Save button" />
+      <img *ngIf="followStatus" src="./assets/icons/bookmark-solid.svg" id="save-icon" class="extras-icon"
+        alt="Save button" />
+    </button>
+
+    <button class="extra-item" type="button" (click)="edit()">
+      <img src="./assets/icons/pen-to-square-solid.svg" id="edit-icon" class="extras-icon" alt="Edit button" />
+    </button>
+
+    <button class="extra-item" type="button" (click)="delete()">
+      <img src="./assets/icons/trash-can-solid.svg" id="delete-icon" class="extras-icon" alt="Delete button" />
+    </button>
+
   </div>
-  <img ngSrc="/assets/save-icon.svg" class="save clickable" (click)="follow()" [ngClass]="{'clicked' : followStatus}"
-       height="36" width="36"  alt="save button"/>
-  <div class="dropdown clickable extras">
-    <span class="extras clickable">...</span>
-    <div class="dropdown-content" [ngClass]="{'show': clicked}">
-      <div class="dropdown-item report" (click)="report()">Report</div>
-      <div class="dropdown-item edit" (click)="edit()">Edit</div>
-      <div class="dropdown-item delete" (click)="delete()">Delete</div>
-    </div>
-  </div>
-</div>
+
+</div> <!-- .vote-box -->
