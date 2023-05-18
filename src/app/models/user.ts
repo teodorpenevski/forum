@@ -7,4 +7,6 @@ export interface User {
   postsCreated: Post[];
   commentsCreated: Comment[];
   postsLiked: Post[];
+  postsFollowed: Post[];
+  commentsLiked: Comment[];
 }
