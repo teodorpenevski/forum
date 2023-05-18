@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Link } from 'src/app/interfaces/link';
 import { AuthService } from 'src/app/services/auth.service';
+import { UpdateService } from 'src/app/services/update.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,10 +12,10 @@ export class NavBarComponent implements OnInit {
 
   currentUser: string;
 
-  constructor(private authService: AuthService) { }
+  constructor(private updateService: UpdateService) { }
 
   ngOnInit(): void {
-    this.authService.getCurrentUser().subscribe(user => this.currentUser = user);
+    this.updateService.getValue().subscribe(newValue => this.currentUser = newValue);
   }
 
   mainNavLinks: Link[] = [

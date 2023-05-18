@@ -2,6 +2,7 @@ import { Component, DoCheck, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { UpdateService } from 'src/app/services/update.service';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
+    private updateService: UpdateService
   ) {
   }
 
@@ -27,7 +29,7 @@ export class LoginComponent implements OnInit {
     });
 
     this.authService.getCurrentUser().subscribe((data) => {
-      if(data != ""){
+      if (data != "") {
         this.router.navigateByUrl(`/users/${data}`)
       }
     })
@@ -38,9 +40,12 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.loginForm.value['username'])
+    // console.log(this.loginForm.value['username'])
+
     this.authService.logIn(this.loginForm.value).subscribe(data => {
       this.router.navigateByUrl(`/users/${data.username}`)
     })
+
+    this.updateService.updateValue(this.loginForm.value.username);
   }
 }

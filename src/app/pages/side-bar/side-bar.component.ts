@@ -1,12 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { Link } from 'src/app/interfaces/link';
+import { AuthService } from 'src/app/services/auth.service';
+import { UpdateService } from 'src/app/services/update.service';
 
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
   styleUrls: ['./side-bar.component.css']
 })
-export class SideBarComponent {
+export class SideBarComponent implements OnInit {
+
+  currentUser: string = '';
+
+  constructor(private updateService: UpdateService) { }
+
+  ngOnInit(): void {
+    this.updateService.getValue().subscribe(newValue => this.currentUser = newValue);
+  }
 
   sideNavLinks: Link[] = [
     {
@@ -16,12 +27,12 @@ export class SideBarComponent {
     },
     {
       name: 'Followed',
-      path: '/users/followed',
+      path: `/users/${this.currentUser}`,
       icon: './assets/icons/thumbtack-solid.svg'
     },
     {
       name: 'Saved',
-      path: '/users/saved',
+      path: `/users/${this.currentUser}`,
       icon: './assets/icons/bookmark-solid.svg'
     }
   ]
