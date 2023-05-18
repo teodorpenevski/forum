@@ -30,7 +30,7 @@ class PostController(
 
     @PostMapping
     fun createPost(@RequestBody postDto: PostDto) {
-        service.createPost(postDto, "theDude123")
+        service.createPost(postDto, globalState.loggedInUser!!)
     }
 
     @GetMapping("/search")
