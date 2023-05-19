@@ -1,7 +1,11 @@
 package com.sorsix.forum.api
 
+import com.fasterxml.jackson.core.JsonEncoding
+import com.fasterxml.jackson.core.JsonParser
+import com.fasterxml.jackson.databind.util.JSONPObject
 import com.sorsix.forum.domain.Comment
 import com.sorsix.forum.domain.CommentDto
+import com.sorsix.forum.domain.UserDto
 import com.sorsix.forum.service.CommentService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -20,8 +24,12 @@ class CommentController(val service: CommentService) {
 
     @GetMapping("/{commentId}")
     fun getCommentById(@PathVariable commentId: Long): Comment {
-        println(commentId)
         return service.findById(commentId)
+    }
+
+    @GetMapping("/{commentId}/user")
+    fun getCommentCreator(@PathVariable commentId: Long): UserDto {
+        return UserDto(service.findById(commentId).createdBy.username, "")
     }
 
     @PostMapping("/edit/{id}")

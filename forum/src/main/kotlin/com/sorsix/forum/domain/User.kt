@@ -1,7 +1,9 @@
 package com.sorsix.forum.domain
 
 import com.fasterxml.jackson.annotation.JsonFormat
+import com.fasterxml.jackson.annotation.JsonIdentityInfo
 import com.fasterxml.jackson.annotation.JsonManagedReference
+import com.fasterxml.jackson.annotation.ObjectIdGenerators
 import jakarta.persistence.*
 import lombok.NoArgsConstructor
 import java.time.LocalDateTime
@@ -9,6 +11,7 @@ import java.time.LocalDateTime
 
 @Entity
 @Table(name = "users")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator::class, property = "username")
 data class User(
     @Id
     val username: String = "",
@@ -16,7 +19,6 @@ data class User(
     @JsonFormat(pattern="dd-MMM-yyyy")
     val dateJoined: LocalDateTime = LocalDateTime.now(),
     @OneToMany(mappedBy = "createdBy")
-    @JsonManagedReference
     val postsCreated: List<Post> = listOf(),
     @OneToMany(mappedBy = "createdBy")
     @JsonManagedReference

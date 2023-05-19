@@ -1,12 +1,16 @@
 package com.sorsix.forum.domain
 
 import com.fasterxml.jackson.annotation.JsonBackReference
+import com.fasterxml.jackson.annotation.JsonIdentityInfo
 import com.fasterxml.jackson.annotation.JsonManagedReference
+import com.fasterxml.jackson.annotation.ObjectIdGenerators
 import jakarta.persistence.*
 import java.time.LocalDateTime
+import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType
 
 @Entity
 @Table(name = "posts")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator::class, property = "id")
 data class Post(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,7 +29,6 @@ data class Post(
     val tags: List<Tag> = listOf(),
     @ManyToOne
     @JoinColumn(name = "username")
-    @JsonBackReference
     val createdBy: User,
     @OneToMany(mappedBy = "post")
     @JsonManagedReference
