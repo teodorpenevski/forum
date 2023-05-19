@@ -1,4 +1,4 @@
-import {Component, EventEmitter, HostListener, Input, Output} from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { VoteService } from "../../services/vote.service";
 import { Comment } from "../../models/comment";
 
@@ -30,7 +30,6 @@ export class VoteCommentComponent {
 
   getVoteCount() {
     this.service.getVoteCountComment(this.id).subscribe((comment: Comment | null) => {
-      console.log(comment);
       if (comment) {
         this.likes = comment.likes;
         this.dislikes = comment.dislikes;

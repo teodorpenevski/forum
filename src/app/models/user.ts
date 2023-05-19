@@ -10,3 +10,7 @@ export interface User {
   postsFollowed: Post[];
   commentsLiked: Comment[];
 }
+
+export interface UserDto {
+  username: string;
+}

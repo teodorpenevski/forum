@@ -7,7 +7,7 @@ import { PostService } from "../../services/post.service";
 import { Post } from "../../models/post";
 import { Comment } from "../../models/comment";
 import { Tag } from "../../models/tag";
-import {AuthService} from "../../services/auth.service";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-post',
@@ -15,7 +15,7 @@ import {AuthService} from "../../services/auth.service";
   styleUrls: ['./post.component.css']
 })
 
-export class PostComponent implements Post {
+export class PostComponent {
   id: number = 1;
   user: string = 'John Doe';
   title = 'Dogs are awesome';
@@ -49,9 +49,9 @@ export class PostComponent implements Post {
   });
 
   constructor(private route: ActivatedRoute,
-              private service: PostService,
-              private location: Location,
-              private authentication: AuthService) { }
+    private service: PostService,
+    private location: Location,
+    private authentication: AuthService) { }
 
   ngOnInit() {
     this.authentication.getCurrentUser().subscribe(user => {
@@ -72,6 +72,7 @@ export class PostComponent implements Post {
         this.tags = post.tags;
         this.comments = post.comments;
         this.commentCount = post.comments.length;
+        this.createdBy = post.createdBy.username;
         this.createdAt = post.createdAt.split('T')[0].split('-').reverse().join('.');
         this.updatedAt = post.updatedAt.split('T')[0].split('-').reverse().join('.');
       }

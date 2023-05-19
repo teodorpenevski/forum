@@ -43,10 +43,10 @@ export class PostPreviewComponent {
       for (const [index, tag] of post.tags.entries()) {
         this.postInfo.tagNames[index] = tag.name;
       }
-      this.createdBy = post.createdBy;
+      this.createdBy = post.createdBy.username;
       this.votes = post.likes - post.dislikes;
       this.commentsLength = post.comments.length;
-      this.createdAt = post.createdAt
+      this.createdAt = post.createdAt.split('T')[0].split('-').reverse().join('.');
     }
   }
 

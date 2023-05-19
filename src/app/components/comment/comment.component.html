@@ -12,8 +12,8 @@
 
       <p class="by-user">
         Posted by
-        <a href="/users/{{ comment.createdBy }}" class="post-creator"> {{ comment.createdBy }} </a>
-        , on {{ commentDate }}
+        <a routerLink="/users/{{ comment.createdBy }}" class="post-creator">
+          {{ comment.createdBy }}</a>, on {{comment.createdAt }}
       </p>
 
     </div> <!-- comment-meta-->

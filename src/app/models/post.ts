@@ -1,5 +1,6 @@
 import { Tag } from "./tag";
 import { Comment } from "./comment";
+import { User } from "./user";
 
 export interface Post {
   id: number;
@@ -7,7 +8,7 @@ export interface Post {
   text: string;
   likes: number;
   dislikes: number;
-  createdBy: string;
+  createdBy: User;
   createdAt: string;
   updatedAt: string;
   tags: Tag[];
